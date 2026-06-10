@@ -54,6 +54,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-10] — Deploy GitHub Pages + điền links Vivi Soul
+**Agent/Người thực hiện:** Claude Code
+**Files thay đổi:** script.js, CHANGELOG.md (+ git init, push)
+**Nội dung:**
+- Init git repo, commit toàn bộ, tạo repo GitHub `Denis-Pham/Denis-portfolio` qua API, push branch main
+- Bật GitHub Pages (main / root) — site live tại **https://denis-pham.github.io/Denis-portfolio/** (đã verify HTTP 200 + đúng nội dung)
+- Điền links project Vivi Soul: live `https://denis-pham.github.io/vivi-soul/` (verify HTTP 200), github `https://github.com/Denis-Pham/vivi-soul`
+- Xóa số điện thoại khỏi CHANGELOG trước khi public repo (bảo mật)
+**Lý do / ghi chú:** Từ giờ quy trình update: sửa code local → ghi CHANGELOG → `git add -A && git commit && git push` → Pages tự rebuild sau ~1 phút.
+
 ## [2026-06-10] — Cập nhật quy mô: 50+ → 300+ stores
 **Agent/Người thực hiện:** Claude Code (theo Denis cung cấp)
 **Files thay đổi:** index.html, script.js, CHANGELOG.md

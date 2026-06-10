@@ -176,8 +176,8 @@ const projects = [
     initial: 'V',
     tags: ['HTML', 'CSS', 'JS', 'GitHub Pages'],
     links: {
-      live: '',     // [TODO] add live GitHub Pages URL once deployed
-      github: '',   // [TODO] add repo URL once pushed
+      live: 'https://denis-pham.github.io/vivi-soul/',
+      github: 'https://github.com/Denis-Pham/vivi-soul',
       caseStudy: ''
     }
   }
