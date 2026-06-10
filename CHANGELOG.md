@@ -22,6 +22,7 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 ## 📋 Quy ước cho AI agents
 
+0. **Đọc `DESIGN.md` (Notion design analysis) trước khi viết bất kỳ UI nào.** Áp dụng có chọn lọc: canvas giấy ấm + card trắng, CTA pill, shadow nhiều lớp mờ, hairline border, màu accent phụ (violet/teal/amber) chỉ dùng TRANG TRÍ. **Ngoại lệ của project này:** heading dùng serif Crimson Pro (chữ ký riêng, không đổi sang Inter), accent chính giữ #2563eb + gradient xanh→tím cho CTA.
 1. **Đọc `CHANGELOG.md` này trước** khi thay đổi bất cứ thứ gì.
 2. Sau mỗi thay đổi, **thêm 1 entry mới lên ĐẦU mục "Lịch sử update"** theo format mẫu bên dưới.
 3. Nội dung (text, dự án, kinh nghiệm) sửa trong `script.js` — **không hard-code nội dung vào HTML**.
@@ -53,6 +54,19 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 ---
 
 # 📅 Lịch sử update
+
+## [2026-06-10] — Notion-ize: áp design system từ DESIGN.md (getdesign.md)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis, nguồn: getdesign.md/design-md/notion)
+**Files thay đổi:** DESIGN.md (mới), index.html, style.css (gián tiếp qua cv.pdf), cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- Cài `DESIGN.md` (bản phân tích design Notion, tải qua `npx getdesign add notion`) vào project làm chuẩn UI cho mọi agent — thêm quy ước #0
+- **Canvas giấy ấm:** `--bg` #fafaf9 → **#f6f5f4**; nav backdrop đồng bộ; section Skills + Education đổi từ `--surface-2` sang dải **trắng** để giữ nhịp tương phản giấy/trắng
+- **CTA pill:** border-radius nút 8px → **999px** + hiệu ứng nhấn `scale(0.97)`
+- **Shadow nhiều lớp mờ:** thêm token `--shadow-1`/`--shadow-2` (4 lớp gần trong suốt kiểu Notion) thay các drop-shadow đơn ở card hover, nút secondary
+- **Typography:** tracking heading -0.015em → -0.02em, hero h1 → -0.03em (nguyên tắc "càng to càng âm")
+- Giữ nguyên: heading serif Crimson Pro, gradient CTA xanh→tím, sticker palette trang trí (đúng triết lý Notion: màu phụ chỉ decorate)
+- Tạo lại cv.pdf (vẫn 5 trang); verify computed styles trên preview: bg/radius/shadow/tracking đều đúng
+**Lý do / ghi chú:** Denis muốn trang đẹp hơn theo design.md từ getdesign.md. Chọn Notion vì mô tả "warm minimalism, serif headings, soft surfaces" khớp định hướng sẵn có.
 
 ## [2026-06-10] — Thumbnails cho 5 projects + tạo cv.pdf
 **Agent/Người thực hiện:** Claude Code

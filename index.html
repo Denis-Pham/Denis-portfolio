@@ -13,9 +13,13 @@
   <style>
     /* ===== Theme tokens (Light Professional) ===== */
     :root {
-      --bg: #fafaf9;
+      /* Warm paper canvas (Notion-style) — page sits on soft off-white, cards on pure white */
+      --bg: #f6f5f4;
       --surface: #ffffff;
       --surface-2: #f5f5f4;
+      /* Barely-there layered shadows (Notion levels 1-2) */
+      --shadow-1: rgba(0,0,0,0.01) 0 0.2px 1px, rgba(0,0,0,0.02) 0 0.8px 3px, rgba(0,0,0,0.027) 0 2px 8px, rgba(0,0,0,0.04) 0 4px 18px;
+      --shadow-2: rgba(0,0,0,0.02) 0 1px 2px, rgba(0,0,0,0.03) 0 4px 8px, rgba(0,0,0,0.04) 0 10px 24px, rgba(0,0,0,0.05) 0 23px 52px;
       --fg: #1c1b1a;
       --muted: #6b6964;
       --soft: #a8a5a0;
@@ -45,7 +49,9 @@
       overflow-x: hidden;
     }
     img, svg { max-width: 100%; height: auto; }
-    h1, h2, h3, h4 { font-family: 'Crimson Pro', Georgia, serif; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+    /* Serif headings stay (portfolio signature) — tracking tightened per Notion's
+       "more negative the larger the size" display principle */
+    h1, h2, h3, h4 { font-family: 'Crimson Pro', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: var(--accent-dark); }
     .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
@@ -53,13 +59,14 @@
     /* ===== Buttons ===== */
     button, .btn {
       font: inherit; cursor: pointer;
-      padding: 11px 22px;
-      border-radius: 8px;
+      padding: 11px 24px;
+      border-radius: 999px; /* Notion-style marketing pill CTAs */
       font-weight: 500; font-size: 14px;
       transition: all 0.2s ease;
       display: inline-flex; align-items: center; gap: 8px;
       text-decoration: none;
     }
+    .btn:active { transform: scale(0.97); }
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: 1px solid transparent;
     }
@@ -67,11 +74,12 @@
       background: linear-gradient(135deg, var(--accent-dark), var(--accent-2-dark)); border-color: transparent;
       color: white;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(99, 70, 235, 0.3);
+      box-shadow: var(--shadow-2);
     }
     .btn-secondary {
       background: white; color: var(--fg);
       border: 1px solid var(--border);
+      box-shadow: var(--shadow-1);
     }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
     .btn-link {
@@ -83,7 +91,7 @@
     /* ===== Nav ===== */
     header.topnav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(250, 250, 249, 0.85);
+      background: rgba(246, 245, 244, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 16px 0;
@@ -224,7 +232,7 @@
     .hero h1 {
       font-size: clamp(40px, 6vw, 64px);
       margin: 0 0 14px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
     .hero .role {
       font-size: clamp(20px, 2.5vw, 26px);
@@ -280,7 +288,7 @@
       padding: 24px;
       transition: all 0.2s;
     }
-    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-1); }
     .skill-card h3 { font-size: 18px; margin: 0 0 14px; font-family: 'Inter', sans-serif; font-weight: 600; }
     .skill-card .skill-icon {
       width: 36px; height: 36px;
@@ -408,7 +416,7 @@
       transition: all 0.25s;
       display: flex; flex-direction: column;
     }
-    .project-card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+    .project-card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: var(--shadow-2); }
     .project-thumb {
       aspect-ratio: 16 / 10;
       background: linear-gradient(135deg, var(--accent-soft), var(--surface-2));
@@ -601,7 +609,7 @@
   </section>
 
   <!-- ===== SKILLS ===== -->
-  <section id="skills" style="background: var(--surface-2);">
+  <section id="skills" style="background: var(--surface);">
     <div class="wrap">
       <p class="section-kicker">Skills</p>
       <h2>What I bring</h2>
@@ -640,7 +648,7 @@
   </section>
 
   <!-- ===== EDUCATION ===== -->
-  <section id="education" style="background: var(--surface-2);">
+  <section id="education" style="background: var(--surface);">
     <div class="wrap">
       <p class="section-kicker">Education</p>
       <h2>Background</h2>
