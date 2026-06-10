@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="640" height="400" fill="#fafaf9"/>
+  <!-- BEFORE slide (messy) -->
+  <g transform="translate(30,80) rotate(-3 130 90)">
+    <rect width="260" height="180" rx="8" fill="#ffffff" stroke="#d6d4d0" stroke-width="2"/>
+    <rect x="18" y="18" width="170" height="14" rx="3" fill="#a8a5a0"/>
+    <rect x="18" y="46" width="224" height="8" rx="3" fill="#e6e4e0"/>
+    <rect x="18" y="62" width="224" height="8" rx="3" fill="#e6e4e0"/>
+    <rect x="18" y="78" width="190" height="8" rx="3" fill="#e6e4e0"/>
+    <rect x="18" y="94" width="224" height="8" rx="3" fill="#e6e4e0"/>
+    <rect x="18" y="110" width="208" height="8" rx="3" fill="#e6e4e0"/>
+    <rect x="18" y="126" width="224" height="8" rx="3" fill="#e6e4e0"/>
+    <rect x="18" y="142" width="160" height="8" rx="3" fill="#e6e4e0"/>
+    <text x="200" y="172" font-size="11" fill="#a8a5a0">before</text>
+  </g>
+  <!-- arrow -->
+  <g stroke="#7c3aed" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M 300 196 L 348 196"/>
+    <path d="M 336 182 L 352 196 L 336 210"/>
+  </g>
+  <!-- AFTER slide (branded, clean) -->
+  <g transform="translate(356,70)">
+    <rect width="260" height="180" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="2.5"/>
+    <rect width="260" height="44" rx="8" fill="#0d9488"/>
+    <rect y="36" width="260" height="8" fill="#0d9488"/>
+    <rect x="18" y="14" width="120" height="14" rx="4" fill="#ffffff" opacity="0.95"/>
+    <circle cx="232" cy="22" r="11" fill="#ffffff" opacity="0.9"/>
+    <g>
+      <circle cx="30" cy="72" r="5" fill="#0d9488"/><rect x="44" y="66" width="160" height="9" rx="3" fill="#6b6964"/>
+      <circle cx="30" cy="98" r="5" fill="#0d9488"/><rect x="44" y="92" width="180" height="9" rx="3" fill="#6b6964"/>
+      <circle cx="30" cy="124" r="5" fill="#0d9488"/><rect x="44" y="118" width="140" height="9" rx="3" fill="#6b6964"/>
+    </g>
+    <rect x="18" y="146" width="100" height="22" rx="11" fill="#ccfbf1"/>
+    <text x="206" y="166" font-size="11" fill="#0d9488" font-weight="600">after ✓</text>
+  </g>
+  <!-- pipeline caption -->
+  <g transform="translate(0,300)">
+    <rect x="86" y="0" width="130" height="34" rx="17" fill="#ffffff" stroke="#e6e4e0"/>
+    <text x="106" y="22" font-size="13" fill="#6b6964">extract .pptx</text>
+    <line x1="216" y1="17" x2="252" y2="17" stroke="#a8a5a0" stroke-width="2"/>
+    <rect x="252" y="0" width="136" height="34" rx="17" fill="#ffffff" stroke="#e6e4e0"/>
+    <text x="270" y="22" font-size="13" fill="#6b6964">review as MD</text>
+    <line x1="388" y1="17" x2="424" y2="17" stroke="#a8a5a0" stroke-width="2"/>
+    <rect x="424" y="0" width="130" height="34" rx="17" fill="#ede9fe"/>
+    <text x="440" y="22" font-size="13" fill="#6d28d9" font-weight="600">rebuild ✨</text>
+  </g>
+</svg>

@@ -54,6 +54,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-10] — Thumbnails cho 5 projects + tạo cv.pdf
+**Agent/Người thực hiện:** Claude Code
+**Files thay đổi:** projects/*.svg (5 file mới), script.js, style.css, cv.pdf (mới), CHANGELOG.md
+**Nội dung:**
+- Vẽ 5 thumbnail SVG minh họa phong cách dashboard cho từng project (kpi-dashboard, sales-kpi, bills-heatmap, pptx-redesign, vivi-soul) — KHÔNG dùng số liệu thật để bảo mật; gán vào `projects[].image`
+- Tạo `cv.pdf` (5 trang) bằng Chrome headless in từ chính trang web qua print stylesheet — nút "Download CV (PDF)" hết 404
+- **Fix bug print CSS:** khối `<style>` inline trong index.html load SAU style.css nên đè ngược các rule print cùng specificity → các rule print giờ dùng `!important`; đồng thời ẩn thumbnail/CTA/lede khi in và nén font cho CV gọn (11 trang → 5 trang)
+- Verify: 5/5 ảnh load OK trên preview (naturalWidth > 0), cv.pdf hợp lệ có đúng nội dung hero
+**Lý do / ghi chú:** Khi nội dung trang thay đổi đáng kể, nhớ chạy lại lệnh tạo cv.pdf (xem README hoặc dùng Chrome headless --print-to-pdf). Thumbnail SVG có thể thay bằng screenshot thật (đã ẩn danh số liệu) sau này.
+
 ## [2026-06-10] — Deploy GitHub Pages + điền links Vivi Soul
 **Agent/Người thực hiện:** Claude Code
 **Files thay đổi:** script.js, CHANGELOG.md (+ git init, push)

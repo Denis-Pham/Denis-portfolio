@@ -23,12 +23,30 @@ section { animation: fadeIn 0.6s ease-out backwards; }
   background-clip: text;
 }
 
-/* Print stylesheet — clean version for "Save as PDF" CV exports */
+/* Print stylesheet — clean version for "Save as PDF" CV exports.
+   NOTE: the inline <style> in index.html loads AFTER this file, so at equal
+   specificity it wins the cascade — print overrides need !important. */
 @media print {
-  header.topnav, .contact { display: none; }
-  body { background: white; color: black; font-size: 12pt; }
-  section { padding: 24px 0; break-inside: avoid; }
-  .timeline-item, .project-card, .skill-card { break-inside: avoid; }
-  a { color: black; text-decoration: underline; }
-  .hero h1 { -webkit-text-fill-color: black; color: black; }
+  header.topnav, .contact { display: none !important; }
+  /* visual-only blocks that bloat the PDF — hide for a compact CV */
+  .project-thumb, .featured-project-thumb, .hero-tech, .eyebrow,
+  .avatar, .hero .cta, .section-lede { display: none !important; }
+  .hero::before { display: none !important; }
+  body { background: white !important; color: black !important; font-size: 10pt !important; line-height: 1.45 !important; }
+  section, .hero { padding: 14px 0 !important; background: white !important; }
+  section h2 { font-size: 15pt !important; }
+  .hero h1 { font-size: 24pt !important; -webkit-text-fill-color: black; color: black; background: none !important; }
+  .hero .role { font-size: 13pt !important; margin-bottom: 8px !important; }
+  .hero .tagline { font-size: 10.5pt !important; margin-bottom: 12px !important; }
+  .timeline-item li, .skill-card li { font-size: 9.5pt !important; padding: 2px 0 !important; }
+  .skills-grid { gap: 10px !important; }
+  .skill-card { padding: 12px 14px !important; }
+  .projects-grid { gap: 12px !important; }
+  .project-body { padding: 10px 14px 12px !important; }
+  .hero-stats { margin-top: 16px !important; padding-top: 14px !important; }
+  .about-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .featured-project-card { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .timeline-item, .project-card, .skill-card, .education-item { break-inside: avoid; }
+  .timeline-item { padding-bottom: 18px !important; }
+  a { color: black !important; text-decoration: underline; }
 }

@@ -134,7 +134,7 @@ const projects = [
   {
     title: 'Hasaki KPI Dashboard',
     summary: 'Monthly performance analytics tool for 300+ cosmetics retail stores. Reads raw Excel KPI files, flags anomalies (negative KPIs, formula source mismatches), and renders an interactive dashboard for store managers.',
-    image: '',
+    image: 'projects/kpi-dashboard.svg',
     initial: 'K',
     tags: ['Excel', 'JavaScript', 'Chart.js', 'Anomaly detection'],
     // metrics show as 3 stat boxes on the Featured Project card. Only added to projects[0].
@@ -148,7 +148,7 @@ const projects = [
   {
     title: 'Combined Sales × KPI Dashboard',
     summary: 'Joins two separate dashboards (Sales + KPI) to surface a key insight: which stores have low sales but suspiciously high KPI — a flag for performance reviews.',
-    image: '',
+    image: 'projects/sales-kpi.svg',
     initial: 'C',
     tags: ['Data joining', 'Cross-analytics', 'JavaScript'],
     links: { live: '', github: '', caseStudy: '' }
@@ -156,7 +156,7 @@ const projects = [
   {
     title: 'Bills Dashboard',
     summary: 'Heatmap of bills × hour × weekday plus a cash deposit calculator, built from raw payment receipt files. FastAPI backend + static frontend.',
-    image: '',
+    image: 'projects/bills-heatmap.svg',
     initial: 'B',
     tags: ['Python', 'FastAPI', 'Heatmap', 'JS'],
     links: { live: '', github: '', caseStudy: '' }
@@ -164,7 +164,7 @@ const projects = [
   {
     title: 'Quy Định Shop PPTX Redesign',
     summary: 'Tool that extracts a company policy PowerPoint, reviews it as Markdown, then rebuilds a more polished version with pptxgenjs — using official Hasaki brand assets.',
-    image: '',
+    image: 'projects/pptx-redesign.svg',
     initial: 'Q',
     tags: ['pptxgenjs', 'Node.js', 'Branding', 'Automation'],
     links: { live: '', github: '', caseStudy: '' }
@@ -172,7 +172,7 @@ const projects = [
   {
     title: 'Vivi Soul Landing Page',
     summary: 'Dark cinematic landing page for an AI music YouTube channel. Data-driven track cards rendered via JavaScript, fully responsive, deployed to GitHub Pages.',
-    image: '',
+    image: 'projects/vivi-soul.svg',
     initial: 'V',
     tags: ['HTML', 'CSS', 'JS', 'GitHub Pages'],
     links: {
