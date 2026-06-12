@@ -55,6 +55,18 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Hero "numbers-first": số liệu lên đầu trang cho HR quét 10 giây
+**Agent/Người thực hiện:** Claude Code (Denis góp ý: trang nhiều chữ không điểm nhấn, HR phải thấy con số ấn tượng trước tiên)
+**Files thay đổi:** index.html, scroll-fx.js, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- **Đảo bố cục hero:** eyebrow → tên → role → **4 STAT CARDS** → tagline → CTA → meta → tech. Số liệu (300+ stores, 5d→live, 3d→30m, 5+ tools) giờ là thứ đầu tiên HR đọc, nằm trọn trong màn hình đầu không cần cuộn (desktop & mobile)
+- **Stats nâng từ hàng chữ nhỏ → 4 card nổi:** nền trắng glass + shadow + bo 14px, thanh màu 3px trên đầu mỗi card (blue/violet/teal/amber — sticker palette), số serif phóng to 28→50px (mobile 27px để "3d → 30m" không bị cắt, đã verify)
+- **Cắt chữ:** tagline hero 4 dòng → 1 câu ("One loop, one owner: SOP → daily tasks → KPI scoring..."); About bỏ lede placeholder ("A short intro — who I am...") thay bằng câu thật; About rút 3 đoạn → 2 đoạn (bỏ đoạn hobby web dev)
+- **Thêm class `.hl`** — highlight vàng nhạt kiểu Notion cho cụm từ then chốt (write the SOPs / KPI framework I designed / six years of QA/QC / Claude Code) → mắt quét có điểm dừng
+- scroll-fx.js: đổi thứ tự stagger hero intro khớp DOM mới (stats hiện ra ngay sau role)
+- Verify preview: desktop 1280px = 4 card 1 hàng, font 50px, đáy stats ở 534/900px; mobile 375px = lưới 2×2, không tràn ngang, không cắt chữ
+**Lý do / ghi chú:** Nguyên tắc 10-15 giây của HR — số trước, chữ sau. Mobile dùng lưới 2×2 thay 1 cột để cả 4 số vẫn trên màn hình đầu.
+
 ## [2026-06-12] — Fix tag bị xé đôi chữ / tràn mép card trong projects grid
 **Agent/Người thực hiện:** Claude Code (Denis báo: tag bị xé đôi hoặc mất chữ, ví dụ "Cross-analytics")
 **Files thay đổi:** index.html, CHANGELOG.md

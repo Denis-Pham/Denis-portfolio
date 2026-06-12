@@ -170,6 +170,13 @@
       color: var(--accent);
       font-weight: 600;
     }
+    /* Notion-style text highlight — soft amber wash behind key phrases,
+       gives scanners an anchor without shouting */
+    .hl {
+      background: linear-gradient(transparent 52%, rgba(251, 191, 36, 0.32) 52%);
+      border-radius: 2px;
+      padding: 0 1px;
+    }
 
     /* ===== HERO ===== */
     .hero {
@@ -202,30 +209,47 @@
     }
     @media (max-width: 900px) { #stage { display: none; } } /* mobile keeps the 2D page */
 
-    /* Hero stats row — 3 big numbers below the meta */
+    /* Hero stats — 4 big number cards, the first thing HR reads */
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 32px;
-      padding-top: 28px;
-      border-top: 1px solid var(--border);
+      gap: 14px;
+      margin: 34px 0 30px;
     }
+    .hero-stats .stat {
+      background: var(--surface-glass);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px 16px;
+      box-shadow: var(--shadow-1);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Decorative colored top bar — one accent per card (sticker palette) */
+    .hero-stats .stat::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--accent);
+    }
+    .hero-stats .stat:nth-child(2)::before { background: var(--accent-2); }
+    .hero-stats .stat:nth-child(3)::before { background: var(--accent-3); }
+    .hero-stats .stat:nth-child(4)::before { background: var(--accent-4); }
     .hero-stats .stat .stat-value {
       font-family: 'Crimson Pro', serif;
       font-weight: 600;
-      font-size: clamp(28px, 3.5vw, 38px);
+      font-size: clamp(34px, 4.2vw, 50px);
       color: var(--fg);
       line-height: 1.1;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
     .hero-stats .stat .stat-value .unit { color: var(--accent); }
     .hero-stats .stat:nth-child(2) .stat-value .unit { color: var(--accent-2); }
     .hero-stats .stat:nth-child(3) .stat-value .unit { color: var(--accent-3); }
     .hero-stats .stat:nth-child(4) .stat-value .unit { color: var(--accent-4); }
     .hero-stats .stat .stat-label {
-      font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-      color: var(--muted); margin-top: 6px; font-weight: 500;
+      font-size: 11.5px; letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--muted); margin-top: 7px; font-weight: 500;
     }
 
     /* Tech chips — quick-scan stack right under stats */
@@ -531,7 +555,9 @@
       .hero { padding: 60px 0 56px; }
       .hero .cta .btn { width: 100%; justify-content: center; }
       .hero-meta { flex-direction: column; gap: 10px; }
-      .hero-stats { grid-template-columns: 1fr; gap: 16px; padding-top: 22px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .hero-stats .stat { padding: 14px 14px 12px; }
+      .hero-stats .stat .stat-value { font-size: 27px; } /* "3d → 30m" must fit a half-width card */
       .featured-metrics { grid-template-columns: 1fr; gap: 12px; }
       nav.links a:not(.contact-link) { display: none; } /* mobile: only the Contact CTA */
       nav.links .nav-pill { display: none; } /* spy targets are hidden here */
@@ -570,23 +596,8 @@
       <span class="eyebrow">Open to new opportunities</span>
       <h1>Denis Pham</h1>
       <p class="role">Operations Performance Specialist</p>
-      <p class="tagline">
-        I build the end-to-end performance system for Hasaki Vietnam's Cosmetics
-        division — writing the SOPs that define how stores operate, routing them
-        into daily task workflows, and closing the loop with KPI scoring that
-        powers performance reviews across 300+ locations.
-      </p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#contact">Get in touch →</a>
-        <a class="btn btn-secondary" href="cv.pdf" target="_blank">Download CV (PDF)</a>
-      </div>
-      <div class="hero-meta">
-        <span class="meta-item">📍 <strong>Ho Chi Minh City</strong></span>
-        <span class="meta-item">🏢 <strong>Hasaki Vietnam</strong></span>
-        <span class="meta-item">⏱ <strong>10+ years</strong> in quality, operations &amp; performance</span>
-      </div>
 
-      <!-- Hero stats row — credibility at a glance -->
+      <!-- Numbers FIRST — the 10-second HR scan lands here -->
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-value">300<span class="unit">+</span></div>
@@ -604,6 +615,20 @@
           <div class="stat-value">5<span class="unit">+</span></div>
           <div class="stat-label">Internal tools shipped</div>
         </div>
+      </div>
+
+      <p class="tagline">
+        One loop, one owner: <strong>SOP → daily tasks → KPI scoring</strong> —
+        the performance engine behind Hasaki's Cosmetics division.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Get in touch →</a>
+        <a class="btn btn-secondary" href="cv.pdf" target="_blank">Download CV (PDF)</a>
+      </div>
+      <div class="hero-meta">
+        <span class="meta-item">📍 <strong>Ho Chi Minh City</strong></span>
+        <span class="meta-item">🏢 <strong>Hasaki Vietnam</strong></span>
+        <span class="meta-item">⏱ <strong>10+ years</strong> in quality, operations &amp; performance</span>
       </div>
 
       <!-- Tech stack chips -->
@@ -630,33 +655,27 @@
       <p class="section-kicker">About</p>
       <h2>Numbers tell stories. I help people listen.</h2>
       <p class="section-lede">
-        A short intro — who I am, what I care about, and why someone should hire me.
+        Ten years in quality and operations, one obsession: turning messy reality
+        into numbers people can act on.
       </p>
       <div class="about-grid">
         <div class="avatar">DP</div>
         <div class="about-text">
           <p>
             I run the performance system for Hasaki Vietnam's Cosmetics division,
-            end to end: I write the SOPs that define how stores should operate,
-            turn them into daily task workflows assigned to store teams, then
-            measure the results with the KPI framework I designed — the same
-            numbers that drive monthly performance reviews. Because one person owns
-            the whole loop, the standards, the tasks, and the scores always agree
-            with each other.
+            end to end: I <span class="hl">write the SOPs</span> that define how
+            stores operate, turn them into daily task workflows, then measure the
+            results with the <span class="hl">KPI framework I designed</span> —
+            the same numbers that drive monthly performance reviews. One owner for
+            the whole loop means the standards, the tasks, and the scores always
+            agree with each other.
           </p>
           <p>
-            That system thinking comes from a decade in quality: six years of
-            QA/QC across manufacturing, retail and education — internal audits,
-            root-cause analysis, quality documentation — then project management
-            at a game studio before moving into retail performance. My toolbox is
-            Excel (deeply), Python pandas, and increasingly Claude Code for
+            That system thinking comes from <span class="hl">six years of QA/QC</span>
+            across manufacturing, retail and education, then project management at
+            a game studio before moving into retail performance. My toolbox: Excel
+            (deeply), Python pandas, and <span class="hl">Claude Code</span> for
             shipping internal tools in a single sitting.
-          </p>
-          <p>
-            Outside of work I'm learning web development one project at a time —
-            data dashboards, a landing page for an AI music channel, document automation
-            tools. The common thread: take messy reality, turn it into something
-            people can act on.
           </p>
         </div>
       </div>

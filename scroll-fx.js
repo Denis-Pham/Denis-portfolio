@@ -20,8 +20,8 @@
 
   // ---------- hero intro (on load, not scroll) ----------
   gsap.from(
-    ['.hero .eyebrow', '.hero h1', '.hero .role', '.hero .tagline', '.hero .cta',
-     '.hero-meta', '.hero-stats', '.hero-tech'],
+    ['.hero .eyebrow', '.hero h1', '.hero .role', '.hero-stats', '.hero .tagline',
+     '.hero .cta', '.hero-meta', '.hero-tech'],
     { y: 28, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09, clearProps: 'all' }
   );
 
