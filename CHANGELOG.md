@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Tái định vị chức danh: Operations Excellence & Performance Management
+**Agent/Người thực hiện:** Claude Code (Denis chốt sau khi bàn định vị nghề nghiệp)
+**Files thay đổi:** index.html, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- Headline hero + `<title>` + meta description + og:title/description đổi từ "Operations Performance Specialist" → **"Operations Excellence & Performance Management"** — đúng từ khóa thị trường OpEx/Performance Management mà recruiter chuỗi bán lẻ tìm
+- Tagline hero đổi thành câu định vị: *"I design how 300+ stores run — then build the systems that measure it. SOP → daily tasks → KPI scoring: one loop, one owner."*
+- **QUAN TRỌNG — giữ nguyên có chủ đích:** chức danh trong Experience (script.js, Hasaki) vẫn là "Operations Performance Specialist" — đây là chức danh chính thức trong hợp đồng, phải khớp khi HR check reference. Headline là ĐỊNH VỊ, experience là SỰ THẬT. Agent nào sửa experience role phải hỏi Denis trước
+- Lý do không chọn hướng Data Analyst: tool là phương tiện, 10 năm kinh nghiệm vận hành mới là giá trị chính
+**Lý do / ghi chú:** "Specialist" bán rẻ scope thực tế (own toàn bộ vòng lặp một khối ngành hàng, 300+ store). Denis nên đồng bộ LinkedIn headline theo hướng này.
+
 ## [2026-06-12] — About v2: hết "chữ mờ" + loop card SOP→Task→KPI làm điểm nhấn
 **Agent/Người thực hiện:** Claude Code (Denis góp ý: trang không đẹp, chữ mờ, không điểm nhấn, quá đơn điệu)
 **Files thay đổi:** index.html, style.css, cv.pdf (tạo lại), CHANGELOG.md
