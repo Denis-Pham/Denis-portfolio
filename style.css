@@ -46,7 +46,9 @@
   /* visual-only blocks that bloat the PDF — hide for a compact CV */
   .project-thumb, .featured-project-thumb, .hero-tech, .eyebrow,
   .loop-card, .hero .cta, .section-lede, #stage,
+  .sidebar, .lang-toggle,
   .co-badge { display: none !important; } /* print strips backgrounds → white-on-white monogram */
+  body { padding-left: 0 !important; } /* undo the ≥1280px sidebar shift */
   .hero::before { display: none !important; }
   .about-grid { grid-template-columns: 1fr !important; } /* loop-card hidden — don't leave an empty track */
   body { background: white !important; color: black !important; font-size: 10pt !important; line-height: 1.45 !important; }

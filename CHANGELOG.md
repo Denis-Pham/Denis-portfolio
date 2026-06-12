@@ -55,6 +55,19 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Sidebar trái + title header + nới layout 1240px + chuyển ngữ EN/VI
+**Agent/Người thực hiện:** Claude Code (Denis yêu cầu: title ngắn trên đầu trang, sidebar trái, trang rộng ra, chuyển đổi EN/VI)
+**Files thay đổi:** index.html, script.js, scroll-fx.js, style.css, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- **Layout rộng hơn:** `.wrap` max-width 1080 → **1240px**, padding 32 → 36px
+- **Header:** thêm `.logo-role` "Operations Excellence" cạnh logo (uppercase nhỏ, ẩn ≤760px)
+- **Sidebar trái (≥1280px):** fixed 232px — avatar DP gradient + tên + title, nav dọc 6 mục (active màu accent-soft, đồng bộ scrollspy qua setActive trong scroll-fx.js), cuối sidebar là lang toggle + social links. `body { padding-left: 232px }` đẩy nội dung sang phải, lấp khoảng trống cũ. Topnav + pill giữ nguyên
+- **i18n EN/VI hoàn chỉnh:** `LANG` từ localStorage, helper `t()` — chuỗi dịch là object `{en, vi}` trong data arrays (skills/experience bullets/projects summaries/education/featured metrics ĐÃ DỊCH HẾT sang tiếng Việt); chrome tĩnh dịch qua `UI_I18N` (selector → bản dịch, hỗ trợ html) gồm nav, hero, stats, about + loop card, section headers, contact. **Đổi ngữ = lưu localStorage + reload** (word-reveal của GSAP tách h2 thành span lúc load nên reload sạch hơn re-render). Mặc định EN
+- 2 nút toggle EN/VI: header (mọi cỡ màn hình) + sidebar; nút active sơn gradient
+- Print: ẩn `.sidebar`/`.lang-toggle`, body padding-left về 0; cv.pdf in bản EN (headless Chrome không có localStorage)
+- Verify: 1440px sidebar hiện + đồng bộ active khi cuộn (Skills); VI phủ đủ nav/hero/stats/about/skills/experience/featured/education/contact; toggle round-trip EN↔VI ok; mobile 375px không overflow, toggle vẫn dùng được; console sạch
+**Lý do / ghi chú:** Selector trong UI_I18N phụ thuộc cấu trúc index.html — agent sửa markup hero/about/loop card NHỚ kiểm tra lại UI_I18N trong script.js. Chuỗi mới thêm vào trang phải có cặp {en, vi}.
+
 ## [2026-06-12] — Favicon + brand badge công ty + làm rõ stat "5d → live"
 **Agent/Người thực hiện:** Claude Code (Denis yêu cầu: favicon, brand icon công ty cũ, và "5d - live" người xem không hiểu)
 **Files thay đổi:** favicon.svg (mới), index.html, script.js, style.css, cv.pdf (tạo lại), CHANGELOG.md
