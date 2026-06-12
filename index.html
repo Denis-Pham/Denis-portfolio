@@ -165,6 +165,19 @@
     }
     .hero > .wrap { position: relative; z-index: 1; }
 
+    /* ===== HERO 3D — KPI Skyline canvas (right side, behind text) ===== */
+    #hero-3d {
+      position: absolute; top: 0; right: 0; bottom: 0;
+      width: 54%;
+      z-index: 0;
+      pointer-events: none; /* text/CTAs stay fully clickable */
+      /* fade the scene out under the headline so copy always wins */
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 30%, black 60%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 30%, black 60%);
+    }
+    #hero-3d canvas { width: 100%; height: 100%; display: block; }
+    @media (max-width: 900px) { #hero-3d { display: none; } } /* mobile gets the 2D hero */
+
     /* Hero stats row — 3 big numbers below the meta */
     .hero-stats {
       display: grid;
@@ -515,6 +528,7 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
+    <div id="hero-3d" aria-hidden="true"></div>
     <div class="wrap">
       <span class="eyebrow">Open to new opportunities</span>
       <h1>Denis Pham</h1>
@@ -682,5 +696,15 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- 3D KPI Skyline hero — Three.js via CDN import map, no build step.
+       Loads lazily after first paint; skipped on mobile / no-WebGL. -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script type="module" src="hero-3d.js"></script>
 </body>
 </html>

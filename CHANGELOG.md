@@ -55,6 +55,52 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-10] — Hero 3D "KPI Skyline" (Three.js, sau khi benchmark các 3D portfolio)
+**Agent/Người thực hiện:** Claude Code (benchmark: Bruno Simon, Henry Heffernan, Jesse Zhou, GitHub Skyline...)
+**Files thay đổi:** hero-3d.js (mới), index.html, style.css, CHANGELOG.md
+**Nội dung:**
+- Benchmark 7 trang 3D nổi tiếng → chọn concept **"KPI Skyline"** (kiểu GitHub Skyline): thành phố cột 3D data-driven, hợp chất data analyst — KHÔNG làm game/room scene (cần Blender, sai định vị)
+- `hero-3d.js`: Three.js qua CDN import map (pin v0.165.0, không build step), scene 100% geometry code — không file model nào; InstancedMesh 117 cột (13×9) + 3 cube "sticker" bay; màu theo DESIGN.md (xanh cấu trúc + sticker palette điểm xuyết)
+- **Progressive enhancement đúng benchmark:** chỉ init khi viewport ≥900px + có WebGL; mobile giữ hero 2D; `prefers-reduced-motion` → render 1 frame tĩnh; lazy-init qua requestIdleCallback (không chặn first paint); pause khi canvas ra khỏi viewport/tab ẩn; pixelRatio clamp 2
+- Canvas đặt nửa phải hero, `pointer-events: none` + mask gradient — text/CTA luôn đọc được và click được; mouse parallax xoay nhẹ scene
+- Cờ debug `?force3d=1` bypass gate độ rộng (preview panel hẹp); ẩn `#hero-3d` khi in CV
+- Verify: 0 lỗi console, **4 draw calls** (budget <100), mode animated chạy, gate mobile hoạt động
+**Lý do / ghi chú:** Denis muốn portfolio 3D. Theo benchmark, nội dung CV giữ nguyên HTML scannable — 3D chỉ là lớp hero. Báo cáo benchmark đầy đủ trong chat 2026-06-10.
+
+## [2026-06-10] — Tạo lại cv.pdf từ trang đã cập nhật
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** cv.pdf
+**Nội dung:**
+- In lại trang (headless Chrome, print stylesheet) thành cv.pdf mới — bao gồm đủ: Hasaki KPI System (50+ KPIs, 100+ data fields), bằng Ngôn ngữ Anh USSH, 2 chứng chỉ, skill "Quality & Process Management", các bullets kinh nghiệm bổ sung từ CV gốc
+**Lý do / ghi chú:** Nút "Download CV (PDF)" trỏ vào cv.pdf — file cũ in trước khi cập nhật nội dung. Lệnh tạo lại: `chrome --headless=new --no-pdf-header-footer --print-to-pdf=cv.pdf http://localhost:5173/index.html`
+
+## [2026-06-10] — Nâng featured project: "Hasaki KPI Dashboard" → "Hasaki KPI System"
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** script.js
+**Nội dung:**
+- Đổi tên + viết lại summary featured project: hệ thống KPI end-to-end (file Excel thô → tự động tính → tự động ghi nhận → dashboard), không chỉ là dashboard
+- Cập nhật metrics: 300+ stores · 50+ KPIs / 100+ data fields · 3d → 30m (bỏ "12+ KPIs")
+- Thêm tag "Automation"; cập nhật bullet Hasaki trong `experience` tương ứng
+**Lý do / ghi chú:** Denis làm rõ quy mô thật của hệ thống — hơn 50 KPI, hơn 100 trường data.
+
+## [2026-06-10] — Thêm bằng Ngôn ngữ Anh (USSH — VNU-HCM)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** script.js
+**Nội dung:**
+- Thêm vào `education`: Bachelor of Arts — English Language, University of Social Sciences and Humanities (USSH — VNU-HCM), 2020 — 2023; xếp trên HCMUT vì mới hơn
+**Lý do / ghi chú:** Denis bổ sung trực tiếp, không có trong CV PDF.
+
+## [2026-06-10] — Bổ sung thông tin từ CV gốc (PHAM-MANH-DUC-Project Manager.pdf)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** script.js
+**Nội dung:**
+- Thêm 2 chứng chỉ vào `education`: Six Sigma Green Belt (2012), Quality Auditor — Controller QA/QC (2016); xóa comment `[TODO]` certifications
+- Bổ sung chi tiết học vấn HCMUT: Quality management focus (7 QC tools, JIT, Lean)
+- Thêm skill category mới "Quality & Process Management" (Six Sigma, root-cause, internal audit, quality docs)
+- Bổ sung bullets kinh nghiệm: Allied (phân tích rủi ro sản xuất), VinMart+ (an toàn thực phẩm, camera), FPT (soạn thảo & theo dõi quyết định công ty)
+- Chuẩn hóa theo CV: "Allied Saigon" → "Allied Technologies", "VinMart (Vingroup)" → "VinMart+ (VinCommerce)", "FPT University" → "FPT Academic International", "QA Lead" → "QA Leader", kỳ VinMart May–Nov 2019 → Apr–Oct 2019
+**Lý do / ghi chú:** Đồng bộ portfolio với CV gốc do Denis cung cấp. KIMDUC (2015–2016) không có trong CV nhưng giữ nguyên vì đã có từ LinkedIn.
+
 ## [2026-06-10] — Notion-ize: áp design system từ DESIGN.md (getdesign.md)
 **Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis, nguồn: getdesign.md/design-md/notion)
 **Files thay đổi:** DESIGN.md (mới), index.html, style.css (gián tiếp qua cv.pdf), cv.pdf (tạo lại), CHANGELOG.md

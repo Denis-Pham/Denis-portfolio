@@ -30,7 +30,7 @@ section { animation: fadeIn 0.6s ease-out backwards; }
   header.topnav, .contact { display: none !important; }
   /* visual-only blocks that bloat the PDF — hide for a compact CV */
   .project-thumb, .featured-project-thumb, .hero-tech, .eyebrow,
-  .avatar, .hero .cta, .section-lede { display: none !important; }
+  .avatar, .hero .cta, .section-lede, #hero-3d { display: none !important; }
   .hero::before { display: none !important; }
   body { background: white !important; color: black !important; font-size: 10pt !important; line-height: 1.45 !important; }
   section, .hero { padding: 14px 0 !important; background: white !important; }

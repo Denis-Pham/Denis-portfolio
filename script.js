@@ -51,6 +51,16 @@ const skills = [
     ]
   },
   {
+    icon: '✅',
+    category: 'Quality & Process Management',
+    items: [
+      'Six Sigma Green Belt — 7 QC tools, Lean, JIT',
+      'Root-cause analysis (5 Whys, 8D, fishbone, 4M change)',
+      'Internal audit planning & execution',
+      'Quality document systems & non-conformity resolution'
+    ]
+  },
+  {
     icon: '🌐',
     category: 'Web (learning)',
     items: [
@@ -73,7 +83,7 @@ const experience = [
       'Own the end-to-end performance system for the Cosmetics division: **SOP design → task workflows → KPI scoring** for **300+** retail stores',
       'Author operating SOPs for store teams and convert them into daily task workflows assigned and tracked per store',
       'Designed the KPI framework that scores store staff against those workflows — the numbers behind monthly performance reviews',
-      'Built monthly KPI dashboards covering **300+** cosmetics retail stores, cutting reporting time from **3 days** to **~30 minutes**',
+      'Built the Hasaki KPI System end-to-end — raw Excel files → automated calculation → automated recording → monthly dashboard covering **300+** stores, **50+ KPIs** and **100+** data fields — cutting reporting time from **3 days** to **~30 minutes**',
       'Created combined sales × KPI cross-analytics and anomaly-detection logic flagging underperforming stores and suspected system errors',
       'Authored an automated PowerPoint redesign pipeline (pptxgenjs) for **5+** company policy documents'
     ]
@@ -91,31 +101,34 @@ const experience = [
   {
     period: 'Nov 2019 — Nov 2021',
     role: 'Quality Assurance Engineer',
-    company: 'Allied Saigon · Ho Chi Minh City',
+    company: 'Allied Technologies · Ho Chi Minh City',
     bullets: [
       'Led root-cause investigations of product defects and customer complaints using **5 Whys, 8D, fishbone and 4M-change** analysis',
+      'Identified manufacturing-process risks, analyzed data trends and implemented preventive measures to minimize defects',
       'Prepared monthly in-house quality reports and customer-facing quality documentation (Shipment Approval, RoHS, inspection documents)',
       'Planned QC manpower per production line with HR and line managers to keep quality coverage fully staffed'
     ]
   },
   {
-    period: 'May 2019 — Nov 2019',
+    period: 'Apr 2019 — Oct 2019',
     role: 'Quality Assurance Inspector',
-    company: 'VinMart (Vingroup) · Vietnam',
+    company: 'VinMart+ (VinCommerce) · Vietnam',
     bullets: [
       'Inspected stores against checklists covering hygiene, goods display, brand identity, service quality and process compliance',
+      'Supported stores on food-safety and hygiene incidents — direct inspection, complaint handling and removal of non-compliant products',
       'Ran probability-based inventory audits (**10–20** item codes per visit) and appraised inventory-difference explanations',
-      'Investigated fraud, loss and theft cases; signed off construction and equipment acceptance for newly opened stores'
+      'Investigated fraud, loss and theft cases; signed off construction and equipment acceptance for newly opened stores; managed store camera-system operations'
     ]
   },
   {
     period: 'Mar 2017 — Apr 2019',
-    role: 'Quality Assurance Lead',
-    company: 'FPT University · Ho Chi Minh City',
+    role: 'Quality Assurance Leader',
+    company: 'FPT Academic International · Ho Chi Minh City',
     bullets: [
       'Implemented the university-wide **KPI plan** for quality data collection and monitored alignment on the **BSC strategy system**',
       'Built the annual internal-audit plan, assigned and led the QA team, and reported audit results and countermeasures to directors',
-      'Owned the quality-document system end-to-end: evaluation, non-conformity resolution, releases and cross-department rollout'
+      'Owned the quality-document system end-to-end: evaluation, non-conformity resolution, releases and cross-department rollout',
+      'Contributed to drafting company decisions, coordinated their release with the clerical department and monitored implementation'
     ]
   },
   {
@@ -132,16 +145,16 @@ const experience = [
 // ---------- 3) PROJECTS (first item = Featured) ----------
 const projects = [
   {
-    title: 'Hasaki KPI Dashboard',
-    summary: 'Monthly performance analytics tool for 300+ cosmetics retail stores. Reads raw Excel KPI files, flags anomalies (negative KPIs, formula source mismatches), and renders an interactive dashboard for store managers.',
+    title: 'Hasaki KPI System',
+    summary: 'End-to-end KPI system for 300+ cosmetics retail stores — from raw Excel files through automated calculation and automated recording to an interactive monthly dashboard. Tracks 50+ KPIs across 100+ data fields, flags anomalies (negative KPIs, formula source mismatches), and cut reporting time from 3 days to ~30 minutes.',
     image: 'projects/kpi-dashboard.svg',
     initial: 'K',
-    tags: ['Excel', 'JavaScript', 'Chart.js', 'Anomaly detection'],
+    tags: ['Excel', 'JavaScript', 'Chart.js', 'Automation', 'Anomaly detection'],
     // metrics show as 3 stat boxes on the Featured Project card. Only added to projects[0].
     metrics: [
-      { value: '300+',         label: 'Retail stores' },
-      { value: '3d → 30m',    label: 'Reporting time' },
-      { value: '12+ KPIs',    label: 'Tracked monthly' }
+      { value: '300+',        label: 'Retail stores' },
+      { value: '50+ KPIs',    label: '100+ data fields' },
+      { value: '3d → 30m',    label: 'Reporting time' }
     ],
     links: { live: '', github: '', caseStudy: '' }
   },
@@ -186,17 +199,25 @@ const projects = [
 // ---------- 4) EDUCATION ----------
 const education = [
   {
+    school: 'University of Social Sciences and Humanities (USSH — VNU-HCM)',
+    degree: 'Bachelor of Arts — English Language',
+    year: '2020 — 2023'
+  },
+  {
     school: 'Ho Chi Minh City University of Technology (HCMUT — Bách Khoa)',
-    degree: 'Bachelor of Engineering — Engineering/Industrial Management',
+    degree: 'Bachelor of Engineering — Industrial Management · Quality management focus (7 QC tools, JIT, Lean)',
     year: '2008 — 2013'
+  },
+  {
+    school: 'Certification',
+    degree: 'Quality Auditor — Controller (QA/QC)',
+    year: '2016'
+  },
+  {
+    school: 'Certification',
+    degree: 'Six Sigma Green Belt',
+    year: '2012'
   }
-  // [TODO] Add certifications or online courses by copying this object.
-  // Example:
-  // ,{
-  //   school: 'Coursera · Online',
-  //   degree: 'Google Data Analytics Professional Certificate',
-  //   year: '2022'
-  // }
 ];
 
 // ===========================================
