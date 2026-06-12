@@ -104,9 +104,9 @@
     function setActive(link) {
       activeLink = link;
       nav.querySelectorAll('a').forEach(a => a.classList.toggle('active-link', a === link));
-      // mirror to the left sidebar rail (visible ≥1280px)
+      // mirror to the left dot rail (visible ≥1100px)
       const hash = link.getAttribute('href');
-      document.querySelectorAll('.side-nav a').forEach(a =>
+      document.querySelectorAll('.dot-nav a').forEach(a =>
         a.classList.toggle('active', a.getAttribute('href') === hash));
       placePill(link);
     }

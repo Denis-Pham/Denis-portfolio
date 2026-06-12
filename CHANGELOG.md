@@ -55,6 +55,18 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Sidebar v2: thay panel 232px bằng dot nav tối giản (theo ý Denis)
+**Agent/Người thực hiện:** Claude Code (Denis: "sidebar làm sai ý anh rồi, làm đơn giản là những dấu chấm kéo to" — tham khảo dennis95.netlify.app, link đã chết 404)
+**Files thay đổi:** index.html, script.js, scroll-fx.js, style.css, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- **Bỏ hẳn** `<aside class="sidebar">` 232px (identity + nav chữ + social) và `body padding-left` — layout về full-center với wrap 1240px
+- **Thêm `.dot-nav`** (≥1100px): cột 6 chấm tròn 9px cố định bên trái (left 22px, giữa màn hình theo chiều dọc). Hover: chấm phóng 1.35× + tooltip tên section trượt ra (nền tối, dịch theo ngôn ngữ qua attr `data-label`). **Active: chấm kéo dài thành pill dọc 30px gradient xanh→tím** — đúng kiểu "dấu chấm kéo to"
+- scroll-fx.js: mirror active từ scrollspy sang `.dot-nav a` (đổi từ `.side-nav`)
+- UI_I18N: applyUI hỗ trợ field `attr` để dịch attribute (tooltip không phải textContent); 2 nút lang toggle giờ chỉ còn ở header
+- Print: ẩn `.dot-nav`
+- **Bẫy debug đáng nhớ:** trong preview env (tab nền), CSS transition KHÔNG tiến triển → getComputedStyle trả mãi giá trị đầu transition (height kẹt 9px dù rule 30px đúng). Muốn verify giá trị cuối phải `el.style.transition='none'` trước khi đo. Đã mất ~5 vòng debug vì tưởng cascade hỏng
+**Lý do / ghi chú:** Sidebar panel to chiếm chỗ và trùng chức năng topnav; dot rail giữ được wow-factor mà không tranh không gian. Code thật chạy đúng — trên trình duyệt thật chấm stretch mượt với cubic-bezier.
+
 ## [2026-06-12] — Sidebar trái + title header + nới layout 1240px + chuyển ngữ EN/VI
 **Agent/Người thực hiện:** Claude Code (Denis yêu cầu: title ngắn trên đầu trang, sidebar trái, trang rộng ra, chuyển đổi EN/VI)
 **Files thay đổi:** index.html, script.js, scroll-fx.js, style.css, cv.pdf (tạo lại), CHANGELOG.md

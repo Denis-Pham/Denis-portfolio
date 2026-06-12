@@ -458,13 +458,20 @@ function renderEducation() {
 // ---------- i18n: static page chrome (selector → translation) ----------
 // `html: true` entries may contain markup (strong/spans); the rest set textContent.
 const UI_I18N = [
-  // top nav + sidebar nav share labels
-  { sel: 'nav.links a[href="#about"], .side-nav a[href="#about"]',           en: 'About',      vi: 'Giới thiệu' },
-  { sel: 'nav.links a[href="#skills"], .side-nav a[href="#skills"]',         en: 'Skills',     vi: 'Kỹ năng' },
-  { sel: 'nav.links a[href="#experience"], .side-nav a[href="#experience"]', en: 'Experience', vi: 'Kinh nghiệm' },
-  { sel: 'nav.links a[href="#projects"], .side-nav a[href="#projects"]',     en: 'Projects',   vi: 'Dự án' },
-  { sel: 'nav.links a[href="#education"], .side-nav a[href="#education"]',   en: 'Education',  vi: 'Học vấn' },
-  { sel: 'nav.links a[href="#contact"], .side-nav a[href="#contact"]',       en: 'Contact',    vi: 'Liên hệ' },
+  // top nav labels
+  { sel: 'nav.links a[href="#about"]',      en: 'About',      vi: 'Giới thiệu' },
+  { sel: 'nav.links a[href="#skills"]',     en: 'Skills',     vi: 'Kỹ năng' },
+  { sel: 'nav.links a[href="#experience"]', en: 'Experience', vi: 'Kinh nghiệm' },
+  { sel: 'nav.links a[href="#projects"]',   en: 'Projects',   vi: 'Dự án' },
+  { sel: 'nav.links a[href="#education"]',  en: 'Education',  vi: 'Học vấn' },
+  { sel: 'nav.links a[href="#contact"]',    en: 'Contact',    vi: 'Liên hệ' },
+  // dot-nav hover tooltips (attribute, not text)
+  { sel: '.dot-nav a[href="#about"]',      attr: 'data-label', en: 'About',      vi: 'Giới thiệu' },
+  { sel: '.dot-nav a[href="#skills"]',     attr: 'data-label', en: 'Skills',     vi: 'Kỹ năng' },
+  { sel: '.dot-nav a[href="#experience"]', attr: 'data-label', en: 'Experience', vi: 'Kinh nghiệm' },
+  { sel: '.dot-nav a[href="#projects"]',   attr: 'data-label', en: 'Projects',   vi: 'Dự án' },
+  { sel: '.dot-nav a[href="#education"]',  attr: 'data-label', en: 'Education',  vi: 'Học vấn' },
+  { sel: '.dot-nav a[href="#contact"]',    attr: 'data-label', en: 'Contact',    vi: 'Liên hệ' },
   // hero
   { sel: '.hero .eyebrow', en: 'Open to new opportunities', vi: 'Sẵn sàng cho cơ hội mới' },
   { sel: '.hero .tagline', html: true,
@@ -537,7 +544,8 @@ function applyUI() {
   if (LANG === 'en') return; // page ships in English; only rewrite for VI
   UI_I18N.forEach(item => {
     document.querySelectorAll(item.sel).forEach(el => {
-      if (item.html) el.innerHTML = item.vi;
+      if (item.attr) el.setAttribute(item.attr, item.vi);
+      else if (item.html) el.innerHTML = item.vi;
       else el.textContent = item.vi;
     });
   });
