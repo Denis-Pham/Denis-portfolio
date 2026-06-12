@@ -78,6 +78,9 @@ const experience = [
     period: 'Aug 2023 — Present',
     role: 'Operations Performance Specialist',
     company: 'Hasaki.vn · Ho Chi Minh City',
+    // brand = monogram badge in the timeline, painted with the company's real brand color.
+    // Swap to a real logo file later by adding brand.logo = 'logos/<file>.png' (renderer prefers it).
+    brand: { mark: 'H', color: '#2e7d52' },
     bullets: [
       // Wrap numbers/key metrics in **double asterisks** — they render in accent color
       'Own the end-to-end performance system for the Cosmetics division: **SOP design → task workflows → KPI scoring** for **300+** retail stores',
@@ -93,6 +96,7 @@ const experience = [
     period: 'Nov 2021 — Jan 2023',
     role: 'Project Manager',
     company: 'SIPHER · Ho Chi Minh City',
+    brand: { mark: 'S', color: '#1c1a33' },
     bullets: [
       'Defined project scope, goals and deliverables with Animation & VFX leads; built and maintained project plans, timelines and budgets',
       'Managed outsourced vendors end-to-end — contract signing, cost and delivery negotiation, and production progress tracking to keep assets on schedule',
@@ -103,6 +107,7 @@ const experience = [
     period: 'Nov 2019 — Nov 2021',
     role: 'Quality Assurance Engineer',
     company: 'Allied Technologies · Ho Chi Minh City',
+    brand: { mark: 'A', color: '#1e5aa8' },
     bullets: [
       'Led root-cause investigations of product defects and customer complaints using **5 Whys, 8D, fishbone and 4M-change** analysis',
       'Identified manufacturing-process risks, analyzed data trends and implemented preventive measures to minimize defects',
@@ -114,6 +119,7 @@ const experience = [
     period: 'Apr 2019 — Oct 2019',
     role: 'Quality Assurance Inspector',
     company: 'VinMart+ (VinCommerce) · Vietnam',
+    brand: { mark: 'V', color: '#d8232a' },
     bullets: [
       'Inspected stores against checklists covering hygiene, goods display, brand identity, service quality and process compliance',
       'Supported stores on food-safety and hygiene incidents — direct inspection, complaint handling and removal of non-compliant products',
@@ -125,6 +131,7 @@ const experience = [
     period: 'Mar 2017 — Apr 2019',
     role: 'Quality Assurance Leader',
     company: 'FPT Academic International · Ho Chi Minh City',
+    brand: { mark: 'F', color: '#f37021' },
     bullets: [
       'Implemented the university-wide **KPI plan** for quality data collection and monitored alignment on the **BSC strategy system**',
       'Built the annual internal-audit plan, assigned and led the QA team, and reported audit results and countermeasures to directors',
@@ -136,6 +143,7 @@ const experience = [
     period: 'Nov 2015 — Nov 2016',
     role: 'Quality Control Inspector',
     company: 'KIMDUC Co., Ltd · Ho Chi Minh City',
+    brand: { mark: 'K', color: '#0e7490' },
     bullets: [
       'Inspected raw materials (PP fabrics, films, threads, straps) and semi-finished goods across spinning, weaving, cutting and coating stages',
       'Reported material and work-in-progress quality to management; partnered with purchasing and production to resolve quality issues'
@@ -152,10 +160,11 @@ const projects = [
     initial: 'K',
     tags: ['Excel', 'JavaScript', 'Chart.js', 'Automation', 'Anomaly detection'],
     // metrics show as 3 stat boxes on the Featured Project card. Only added to projects[0].
+    // `was` renders as a struck-through old value above the new one — before/after at a glance
     metrics: [
-      { value: '5d → live',   label: 'KPI: Excel to realtime' },
-      { value: '3d → 30m',    label: 'Monthly report time' },
-      { value: '50+ KPIs',    label: '100+ data fields' }
+      { was: '5 days',  value: 'live',    label: 'KPI refresh (was Excel batch)' },
+      { was: '3 days',  value: '30 min',  label: 'To build the monthly report' },
+      { value: '50+ KPIs', label: 'Across 100+ data fields' }
     ],
     links: { live: '', github: '', caseStudy: '' }
   },
@@ -278,6 +287,13 @@ function renderSkills() {
   `).join('');
 }
 
+// Company badge: real logo file if provided (brand.logo), else a monogram in the brand color
+function brandBadgeHTML(brand) {
+  if (!brand) return '';
+  if (brand.logo) return `<img class="co-badge" src="${brand.logo}" alt="" loading="lazy">`;
+  return `<span class="co-badge" style="background:${brand.color}">${brand.mark}</span>`;
+}
+
 function renderTimeline() {
   const timeline = document.getElementById('timeline');
   if (!timeline) return;
@@ -285,7 +301,7 @@ function renderTimeline() {
     <div class="timeline-item">
       <p class="period">${job.period}</p>
       <h3>${job.role}</h3>
-      <p class="company">${job.company}</p>
+      <p class="company">${brandBadgeHTML(job.brand)}${job.company}</p>
       <ul>${job.bullets.map(b => `<li>${highlight(b)}</li>`).join('')}</ul>
     </div>
   `).join('');
@@ -312,7 +328,7 @@ function renderFeaturedProject() {
     <div class="featured-metrics">
       ${p.metrics.map(m => `
         <div class="metric-block">
-          <div class="metric-value">${m.value}</div>
+          <div class="metric-value">${m.was ? `<s class="was">${m.was}</s>` : ''}${m.value}</div>
           <div class="metric-label">${m.label}</div>
         </div>
       `).join('')}

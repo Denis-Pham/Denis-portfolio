@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Favicon + brand badge công ty + làm rõ stat "5d → live"
+**Agent/Người thực hiện:** Claude Code (Denis yêu cầu: favicon, brand icon công ty cũ, và "5d - live" người xem không hiểu)
+**Files thay đổi:** favicon.svg (mới), index.html, script.js, style.css, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- **favicon.svg:** monogram "DP" trắng trên nền gradient xanh→tím (đồng bộ CTA), bo góc 14px; link rel=icon + theme-color #2563eb
+- **Brand badges trong Experience:** mỗi entry trong `experience` (script.js) có thêm `brand: { mark, color }` — monogram 26px theo màu thương hiệu thật: Hasaki xanh lá #2e7d52, SIPHER đen tím #1c1a33, Allied xanh dương #1e5aa8, VinMart+ đỏ #d8232a, FPT cam #f37021, KIMDUC teal #0e7490. Renderer `brandBadgeHTML()` ưu tiên `brand.logo` (file trong /logos/) nếu có — **không hotlink logo từ web** (Google s2 favicons chỉ trả icon quả cầu generic, hasaki.vn/fpt.edu.vn chặn curl trả HTML). Denis cung cấp file logo thật thì gắn `brand.logo` là xong
+- **Stats trước/sau dễ hiểu:** "5d → live" đổi thành dòng cũ gạch ngang ~~5 days~~ phía trên + giá trị mới to **live**, label "KPI refresh — Excel batch → realtime"; tương tự ~~3 days~~ **30 min** "To build the monthly report". Áp dụng cả hero stats lẫn featured metrics (renderer hỗ trợ `m.was`); `.featured-metrics` thêm `align-items: end` để block không có "was" vẫn thẳng hàng
+- Print CSS: ẩn `.co-badge` (in không có background → chữ trắng vô hình)
+- Lưu ý kỹ thuật: Chrome headless ghi PDF thẳng vào Google Drive path có thể bị sync lag — file "tàng hình" vài chục giây rồi mới hiện; kiểm tra bằng `git hash-object` thay vì `Get-Item`
+**Lý do / ghi chú:** Gạch-ngang-trước/sau là cách kể "đã làm được gì" không cần lời; format mũi tên cũ "5d → live" bắt người xem tự giải mã.
+
 ## [2026-06-12] — Tái định vị chức danh: Operations Excellence & Performance Management
 **Agent/Người thực hiện:** Claude Code (Denis chốt sau khi bàn định vị nghề nghiệp)
 **Files thay đổi:** index.html, cv.pdf (tạo lại), CHANGELOG.md
