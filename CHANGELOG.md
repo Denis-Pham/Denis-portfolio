@@ -55,6 +55,18 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — About v2: hết "chữ mờ" + loop card SOP→Task→KPI làm điểm nhấn
+**Agent/Người thực hiện:** Claude Code (Denis góp ý: trang không đẹp, chữ mờ, không điểm nhấn, quá đơn điệu)
+**Files thay đổi:** index.html, style.css, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- **Fix "chữ mờ":** bỏ rule `.about-text p:last-child { color: var(--muted) }` — di sản từ thời có đoạn hobby cuối; sau khi rút còn 2 đoạn thì đoạn QA/QC quan trọng thành last-child và bị xám. Giờ cả 2 đoạn đều màu chữ chính
+- **Thay avatar "DP" placeholder bằng `.loop-card`:** sơ đồ vòng lặp công việc — ① Write the SOP → ② Dispatch the tasks → ③ Score the KPI (realtime, 300+ stores) → "↻ scores sharpen the next SOP". Card trắng + shadow, badge số màu blue/violet/teal, connector kẻ đứt — đúng signature nghề của Denis, vừa là điểm nhấn thị giác vừa kể chuyện
+- about-grid 240px → 290px; mobile loop-card max-width 380px
+- Print CSS: ẩn `.loop-card` (trang trí, không cần trong CV) + `.about-grid` về 1 cột để không chừa track rỗng
+- Lưu ý kỹ thuật: chọn step 2/3 phải dùng `:nth-child(4)/(6)` vì các div `.loop-link` xen giữa làm nth-of-type đếm sai
+- Verify preview: 2 đoạn đều rgb(28,27,26), 3 badge đúng 3 màu, avatar đã bỏ
+**Lý do / ghi chú:** Điểm nhấn phải kể đúng câu chuyện nghề nghiệp thay vì khối chữ cái vô nghĩa.
+
 ## [2026-06-12] — Hero "numbers-first": số liệu lên đầu trang cho HR quét 10 giây
 **Agent/Người thực hiện:** Claude Code (Denis góp ý: trang nhiều chữ không điểm nhấn, HR phải thấy con số ấn tượng trước tiên)
 **Files thay đổi:** index.html, scroll-fx.js, cv.pdf (tạo lại), CHANGELOG.md

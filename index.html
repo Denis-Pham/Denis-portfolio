@@ -320,22 +320,48 @@
     /* ===== ABOUT ===== */
     .about-grid {
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 290px 1fr;
       gap: 48px;
       align-items: start;
     }
-    .avatar {
-      width: 240px; height: 240px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--accent-soft), var(--surface-2));
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Crimson Pro', serif;
-      font-size: 72px; font-weight: 600;
-      color: var(--accent);
+    /* The loop card — SOP → tasks → KPI as a vertical stepper */
+    .loop-card {
+      background: var(--surface-glass);
       border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 22px 16px;
+      box-shadow: var(--shadow-2);
+    }
+    .loop-card .loop-label {
+      display: block;
+      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .loop-step { display: flex; gap: 13px; align-items: flex-start; }
+    .loop-num {
+      flex: none;
+      width: 30px; height: 30px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px;
+      background: var(--accent-soft); color: var(--accent-dark);
+    }
+    /* children: label(1) step(2) link(3) step(4) link(5) step(6) return(7) */
+    .loop-step:nth-child(4) .loop-num { background: var(--accent-2-soft); color: var(--accent-2-dark); }
+    .loop-step:nth-child(6) .loop-num { background: var(--accent-3-soft); color: var(--accent-3); }
+    .loop-body strong { display: block; font-size: 15.5px; letter-spacing: -0.01em; }
+    .loop-body small { color: var(--muted); font-size: 13px; line-height: 1.45; display: block; margin-top: 2px; }
+    .loop-link {
+      width: 2px; height: 18px;
+      margin: 4px 0 4px 14px;
+      background: repeating-linear-gradient(180deg, var(--border) 0 4px, transparent 4px 8px);
+    }
+    .loop-return {
+      margin-top: 16px; padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      font-size: 12.5px; color: var(--muted);
     }
     .about-text p { margin: 0 0 16px; color: var(--fg); font-size: 17px; line-height: 1.75; }
-    .about-text p:last-child { color: var(--muted); }
 
     /* ===== SKILLS ===== */
     .skills-grid {
@@ -545,7 +571,7 @@
       section { padding: 70px 0; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .about-grid { grid-template-columns: 1fr; gap: 28px; }
-      .avatar { width: 160px; height: 160px; font-size: 56px; }
+      .loop-card { max-width: 380px; }
       .featured-project-card { grid-template-columns: 1fr; gap: 28px; }
       nav.links a { margin-left: 18px; font-size: 13px; }
     }
@@ -659,7 +685,25 @@
         into numbers people can act on.
       </p>
       <div class="about-grid">
-        <div class="avatar">DP</div>
+        <!-- The loop card — Denis's job as a diagram, the section's focal point -->
+        <div class="loop-card">
+          <span class="loop-label">The loop I own</span>
+          <div class="loop-step">
+            <span class="loop-num">1</span>
+            <div class="loop-body"><strong>Write the SOP</strong><small>the standards stores run on</small></div>
+          </div>
+          <div class="loop-link"></div>
+          <div class="loop-step">
+            <span class="loop-num">2</span>
+            <div class="loop-body"><strong>Dispatch the tasks</strong><small>daily work, assigned &amp; tracked</small></div>
+          </div>
+          <div class="loop-link"></div>
+          <div class="loop-step">
+            <span class="loop-num">3</span>
+            <div class="loop-body"><strong>Score the KPI</strong><small>realtime, across 300+ stores</small></div>
+          </div>
+          <div class="loop-return">↻ scores sharpen the next SOP</div>
+        </div>
         <div class="about-text">
           <p>
             I run the performance system for Hasaki Vietnam's Cosmetics division,
