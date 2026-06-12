@@ -71,6 +71,62 @@
     });
   });
 
+  // ---------- nav scrollspy: pill slides under the section in view ----------
+  const nav = document.querySelector('nav.links');
+  const contactBtn = document.querySelector('nav.links a.btn-primary');
+  if (nav) {
+    const pill = document.createElement('span');
+    pill.className = 'nav-pill';
+    nav.prepend(pill);
+
+    const linkFor = href => document.querySelector(`nav.links a[href="${href}"]:not(.btn)`);
+    // section id -> nav link (featured/education roll into their nearest nav item)
+    const SPY = [
+      ['#about', linkFor('#about')],
+      ['#skills', linkFor('#skills')],
+      ['#experience', linkFor('#experience')],
+      ['#featured-project', linkFor('#projects')],
+      ['#projects', linkFor('#projects')],
+      ['#education', linkFor('#projects')],
+      ['#contact', 'cta']
+    ];
+    let activeLink = null;
+
+    function placePill(link) {
+      pill.style.left = (link.offsetLeft - 12) + 'px';
+      pill.style.width = (link.offsetWidth + 24) + 'px';
+      pill.style.opacity = '1';
+    }
+    function setActive(target) {
+      const links = nav.querySelectorAll('a:not(.btn)');
+      links.forEach(a => a.classList.remove('active-link'));
+      contactBtn && contactBtn.classList.remove('cta-glow');
+      if (target === 'cta') {
+        activeLink = null;
+        pill.style.opacity = '0';
+        contactBtn && contactBtn.classList.add('cta-glow');
+      } else if (target) {
+        activeLink = target;
+        target.classList.add('active-link');
+        placePill(target);
+      } else {
+        activeLink = null;
+        pill.style.opacity = '0';
+      }
+    }
+
+    SPY.forEach(([sel, link]) => {
+      const el = document.querySelector(sel);
+      if (!el || !link) return;
+      ScrollTrigger.create({
+        trigger: el, start: 'top 45%', end: 'bottom 45%',
+        onToggle: self => { if (self.isActive) setActive(link); },
+        onLeaveBack: sel === '#about' ? () => setActive(null) : undefined // back at hero: nothing active
+      });
+    });
+    window.addEventListener('resize', () => { if (activeLink) placePill(activeLink); });
+  }
+
   // re-measure triggers once data-driven sections (script.js) have laid out
   window.addEventListener('load', () => ScrollTrigger.refresh());
 })();

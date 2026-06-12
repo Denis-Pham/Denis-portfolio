@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Nav scrollspy: pill trượt theo mục đang xem
+**Agent/Người thực hiện:** Claude Code (Denis báo nav không di chuyển theo section)
+**Files thay đổi:** index.html, scroll-fx.js, CHANGELOG.md
+**Nội dung:**
+- Thêm scrollspy cho topnav: **pill xanh nhạt (`.nav-pill`) trượt mượt** (cubic-bezier 0.35s) dưới nav link của section đang xem; link active đổi màu `--accent-dark`
+- Mapping: about→About, skills→Skills, experience→Experience, featured-project/projects/education→Projects, **contact→nút Contact phát sáng viền** (`.cta-glow`, pill ẩn); ở hero không mục nào active
+- Driven bằng ScrollTrigger (window 45%-45% viewport), reposition pill khi resize; ẩn pill ở ≤600px (nav links đã ẩn trên mobile)
+- Verify bằng instant-scroll: Skills/Contact/hero đều active đúng. Lưu ý test: `scrollIntoView` smooth + dispatch event giả sẽ cho kết quả lệch — phải dùng `scrollTo({behavior:'instant'})` rồi dispatch
+**Lý do / ghi chú:** Denis tưởng nút Contact xanh là indicator nên thấy "nó ở hoài mục contact" — giờ có indicator thật sự di chuyển theo scroll.
+
 ## [2026-06-12] — Nâng cấp 3D: thế giới wireframe toàn trang (học từ file mẫu v3)
 **Agent/Người thực hiện:** Claude Code (tham khảo "index (3).html" — chỉ học kỹ thuật, không copy nội dung)
 **Files thay đổi:** bg-3d.js (mới, thay hero-3d.js — đã xóa), index.html, style.css, CHANGELOG.md

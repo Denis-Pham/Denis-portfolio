@@ -108,11 +108,27 @@
       color: var(--fg);
     }
     .logo .dot { color: var(--accent); }
+    nav.links { position: relative; display: flex; align-items: center; }
     nav.links a {
       color: var(--muted); margin-left: 28px; font-size: 14px;
       font-weight: 500;
+      position: relative; z-index: 1; /* text above the scrollspy pill */
     }
     nav.links a:hover { color: var(--fg); }
+    /* scrollspy: soft pill slides under the section currently in view */
+    nav.links .nav-pill {
+      position: absolute; top: 50%; height: 30px;
+      transform: translateY(-50%);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      left: 0; width: 0; opacity: 0;
+      transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
+      pointer-events: none;
+      z-index: 0;
+    }
+    nav.links a.active-link { color: var(--accent-dark); }
+    /* when the Contact section itself is in view, the CTA glows instead */
+    nav.links a.btn-primary.cta-glow { box-shadow: 0 0 0 3px var(--accent-soft); }
     /* Fix: nav.links a (specificity 0,1,2) overrides .btn-primary's white text,
        leaving "Contact" muted-gray on a blue button — restore white explicitly */
     nav.links a.btn-primary, nav.links a.btn-primary:hover { color: #fff; }
@@ -504,6 +520,7 @@
       .hero-stats { grid-template-columns: 1fr; gap: 16px; padding-top: 22px; }
       .featured-metrics { grid-template-columns: 1fr; gap: 12px; }
       nav.links a:not(.btn) { display: none; }
+      nav.links .nav-pill { display: none; } /* spy targets are hidden here */
       .timeline { padding-left: 22px; }
       .timeline-item::before { left: -22px; }
       .education-item { flex-direction: column; gap: 4px; }
