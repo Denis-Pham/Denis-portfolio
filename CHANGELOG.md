@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Scrollspy v2: nút xanh CTA tự di chuyển theo mục + thêm Education vào nav
+**Agent/Người thực hiện:** Claude Code (Denis góp ý: nút xanh phải đi theo từng mục, và nav thiếu Education)
+**Files thay đổi:** index.html, scroll-fx.js, CHANGELOG.md
+**Nội dung:**
+- Nav thêm link **Education** (giờ đủ: About / Skills / Experience / Projects / Education / Contact); section education map vào đúng mục Education (trước gộp vào Projects)
+- **Thiết kế lại indicator:** thay pill xanh nhạt phụ bằng **chính nút gradient xanh→tím** — nghỉ ở Contact khi ở đầu trang (vẫn là CTA), cuộn tới đâu nút trượt tới mục đó (chữ active chuyển trắng), tới section Contact thì về lại Contact
+- Contact đổi từ `.btn-primary` sang `.contact-link`: CSS mặc định giữ nguyên dáng nút gradient (fallback khi không có JS/reduced-motion/mobile); khi spy chạy (`body.spy-on`, chỉ ≥601px) thì pill JS tiếp quản phần nền
+- Fix: đặt vị trí nghỉ ban đầu bằng gọi trực tiếp `setActive(restLink)` — `requestAnimationFrame` không chạy được trong môi trường preview; cờ `?force3d` giờ dùng chung để force spy khi test cửa sổ hẹp
+- Verify đủ: load → nghỉ ở Contact; Skills/Education/Contact active đúng; về hero → nghỉ lại ở Contact
+**Lý do / ghi chú:** Mobile (≤600px) chỉ hiện nút Contact CTA tĩnh — spy vô nghĩa khi các link đã ẩn.
+
 ## [2026-06-12] — Nav scrollspy: pill trượt theo mục đang xem
 **Agent/Người thực hiện:** Claude Code (Denis báo nav không di chuyển theo section)
 **Files thay đổi:** index.html, scroll-fx.js, CHANGELOG.md

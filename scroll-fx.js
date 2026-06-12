@@ -71,48 +71,40 @@
     });
   });
 
-  // ---------- nav scrollspy: pill slides under the section in view ----------
+  // ---------- nav scrollspy: THE blue pill travels with the reader ----------
+  // Rest position (hero) = Contact, so it keeps reading as the CTA;
+  // scrolling moves it across About → Skills → … → Education → Contact.
   const nav = document.querySelector('nav.links');
-  const contactBtn = document.querySelector('nav.links a.btn-primary');
-  if (nav) {
+  const forceSpy = new URLSearchParams(location.search).has('force3d'); // shared debug flag for narrow previews
+  if (nav && (window.matchMedia('(min-width: 601px)').matches || forceSpy)) {
     const pill = document.createElement('span');
     pill.className = 'nav-pill';
     nav.prepend(pill);
+    document.body.classList.add('spy-on'); // hands the CTA paint over to the pill
 
-    const linkFor = href => document.querySelector(`nav.links a[href="${href}"]:not(.btn)`);
-    // section id -> nav link (featured/education roll into their nearest nav item)
+    const linkFor = href => document.querySelector(`nav.links a[href="${href}"]`);
+    const restLink = linkFor('#contact');
+    // section id -> nav link (featured rolls into Projects)
     const SPY = [
       ['#about', linkFor('#about')],
       ['#skills', linkFor('#skills')],
       ['#experience', linkFor('#experience')],
       ['#featured-project', linkFor('#projects')],
       ['#projects', linkFor('#projects')],
-      ['#education', linkFor('#projects')],
-      ['#contact', 'cta']
+      ['#education', linkFor('#education')],
+      ['#contact', restLink]
     ];
     let activeLink = null;
 
     function placePill(link) {
-      pill.style.left = (link.offsetLeft - 12) + 'px';
-      pill.style.width = (link.offsetWidth + 24) + 'px';
+      pill.style.left = (link.offsetLeft - 14) + 'px';
+      pill.style.width = (link.offsetWidth + 28) + 'px';
       pill.style.opacity = '1';
     }
-    function setActive(target) {
-      const links = nav.querySelectorAll('a:not(.btn)');
-      links.forEach(a => a.classList.remove('active-link'));
-      contactBtn && contactBtn.classList.remove('cta-glow');
-      if (target === 'cta') {
-        activeLink = null;
-        pill.style.opacity = '0';
-        contactBtn && contactBtn.classList.add('cta-glow');
-      } else if (target) {
-        activeLink = target;
-        target.classList.add('active-link');
-        placePill(target);
-      } else {
-        activeLink = null;
-        pill.style.opacity = '0';
-      }
+    function setActive(link) {
+      activeLink = link;
+      nav.querySelectorAll('a').forEach(a => a.classList.toggle('active-link', a === link));
+      placePill(link);
     }
 
     SPY.forEach(([sel, link]) => {
@@ -121,10 +113,13 @@
       ScrollTrigger.create({
         trigger: el, start: 'top 45%', end: 'bottom 45%',
         onToggle: self => { if (self.isActive) setActive(link); },
-        onLeaveBack: sel === '#about' ? () => setActive(null) : undefined // back at hero: nothing active
+        onLeaveBack: sel === '#about' ? () => setActive(restLink) : undefined // back at hero: pill rests on Contact
       });
     });
     window.addEventListener('resize', () => { if (activeLink) placePill(activeLink); });
+    // rest position immediately, then re-measure once fonts/layout settle
+    setActive(restLink);
+    window.addEventListener('load', () => { if (activeLink) placePill(activeLink); });
   }
 
   // re-measure triggers once data-driven sections (script.js) have laid out
