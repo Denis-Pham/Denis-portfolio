@@ -55,6 +55,15 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Fix tag bị xé đôi chữ / tràn mép card trong projects grid
+**Agent/Người thực hiện:** Claude Code (Denis báo: tag bị xé đôi hoặc mất chữ, ví dụ "Cross-analytics")
+**Files thay đổi:** index.html, CHANGELOG.md
+**Nội dung:**
+- Root cause: `.project-body .tags` thiếu `display: flex` (chỉ featured có) → tag là span inline, chữ bẻ dòng giữa chừng và `gap` không tác dụng; tag cuối ("Automation") tràn mép card
+- Fix: `.project-body .tags` thêm `display: flex; flex-wrap: wrap`; `.tag` thêm `white-space: nowrap` — tag không bao giờ gãy chữ, cả hàng tag wrap xuống dòng thay thế
+- Verify preview: 15/15 tag trong projects grid đều 1 dòng, không tràn mép card
+**Lý do / ghi chú:** Bài học: rule `.tags` ở featured và projects grid là 2 selector riêng — sửa layout tag phải sửa cả hai.
+
 ## [2026-06-12] — Tô màu tech tags trong projects + chỉnh căn hàng card
 **Agent/Người thực hiện:** Claude Code (Denis góp ý: tag Excel... không màu, căn chỉnh chưa đẹp)
 **Files thay đổi:** script.js, index.html, cv.pdf (tạo lại), CHANGELOG.md

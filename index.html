@@ -409,6 +409,7 @@
       background: var(--surface-2); color: var(--muted); /* fallback — JS paints per-tech colors */
       border-radius: 999px; border: 1px solid var(--border);
       line-height: 1.5;
+      white-space: nowrap; /* a tag never breaks across lines — the row wraps instead */
     }
     .featured-project-content .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
@@ -470,7 +471,7 @@
     .project-body h3 { font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 600; margin: 0 0 8px; }
     .project-body p { color: var(--muted); font-size: 14px; margin: 0 0 16px; flex: 1; line-height: 1.65; }
     /* tags pinned to the card bottom so rows line up across cards */
-    .project-body .tags { margin-top: auto; gap: 7px; }
+    .project-body .tags { display: flex; flex-wrap: wrap; margin-top: auto; gap: 7px; }
     .project-body .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
     .project-body .actions a { font-size: 13px; padding: 0; }
 
