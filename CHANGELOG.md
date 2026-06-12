@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Đính chính số liệu: tách 2 thành tích KPI realtime vs report time
+**Agent/Người thực hiện:** Claude Code (Denis đính chính)
+**Files thay đổi:** index.html, script.js, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- "3d → 30m / Reporting time saved" trước đây gộp sai 2 thành tích. Đúng là: (1) **KPI từ tính Excel 5 ngày → live realtime**, (2) **report từ 3 ngày → 30 phút**
+- Hero stats mở rộng 3 → 4 ô: 300+ stores | **5d → live** (KPI: Excel runs to realtime) | **3d → 30m** (Monthly report time) | 5+ tools; grid 4 cột, 2 cột ở ≤900px, 1 cột ở ≤600px
+- Experience bullet tách thành câu riêng; featured project summary + metrics cập nhật tương ứng (metrics: 5d→live | 3d→30m | 50+ KPIs)
+- Tạo lại cv.pdf; verify render đúng trên preview
+**Lý do / ghi chú:** Số liệu impact là thứ recruiter đọc đầu tiên — phải chính xác tuyệt đối. "5d → live" thực ra còn ấn tượng hơn bản cũ.
+
 ## [2026-06-10] — Hero 3D "KPI Skyline" (Three.js, sau khi benchmark các 3D portfolio)
 **Agent/Người thực hiện:** Claude Code (benchmark: Bruno Simon, Henry Heffernan, Jesse Zhou, GitHub Skyline...)
 **Files thay đổi:** hero-3d.js (mới), index.html, style.css, CHANGELOG.md

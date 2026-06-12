@@ -83,7 +83,8 @@ const experience = [
       'Own the end-to-end performance system for the Cosmetics division: **SOP design → task workflows → KPI scoring** for **300+** retail stores',
       'Author operating SOPs for store teams and convert them into daily task workflows assigned and tracked per store',
       'Designed the KPI framework that scores store staff against those workflows — the numbers behind monthly performance reviews',
-      'Built the Hasaki KPI System end-to-end — raw Excel files → automated calculation → automated recording → monthly dashboard covering **300+** stores, **50+ KPIs** and **100+** data fields — cutting reporting time from **3 days** to **~30 minutes**',
+      'Built the Hasaki KPI System end-to-end — raw Excel files → automated calculation → automated recording → monthly dashboard covering **300+** stores, **50+ KPIs** and **100+** data fields',
+      'Took KPI tracking from **5-day** Excel calculation runs to a **live, realtime** KPI view — and cut monthly report preparation from **3 days** to **~30 minutes**',
       'Created combined sales × KPI cross-analytics and anomaly-detection logic flagging underperforming stores and suspected system errors',
       'Authored an automated PowerPoint redesign pipeline (pptxgenjs) for **5+** company policy documents'
     ]
@@ -146,15 +147,15 @@ const experience = [
 const projects = [
   {
     title: 'Hasaki KPI System',
-    summary: 'End-to-end KPI system for 300+ cosmetics retail stores — from raw Excel files through automated calculation and automated recording to an interactive monthly dashboard. Tracks 50+ KPIs across 100+ data fields, flags anomalies (negative KPIs, formula source mismatches), and cut reporting time from 3 days to ~30 minutes.',
+    summary: 'End-to-end KPI system for 300+ cosmetics retail stores — from raw Excel files through automated calculation and automated recording to an interactive monthly dashboard. Tracks 50+ KPIs across 100+ data fields and flags anomalies (negative KPIs, formula source mismatches). Took KPIs from 5-day Excel runs to live realtime, and monthly reports from 3 days to ~30 minutes.',
     image: 'projects/kpi-dashboard.svg',
     initial: 'K',
     tags: ['Excel', 'JavaScript', 'Chart.js', 'Automation', 'Anomaly detection'],
     // metrics show as 3 stat boxes on the Featured Project card. Only added to projects[0].
     metrics: [
-      { value: '300+',        label: 'Retail stores' },
-      { value: '50+ KPIs',    label: '100+ data fields' },
-      { value: '3d → 30m',    label: 'Reporting time' }
+      { value: '5d → live',   label: 'KPI: Excel to realtime' },
+      { value: '3d → 30m',    label: 'Monthly report time' },
+      { value: '50+ KPIs',    label: '100+ data fields' }
     ],
     links: { live: '', github: '', caseStudy: '' }
   },
