@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Tô màu tech tags trong projects + chỉnh căn hàng card
+**Agent/Người thực hiện:** Claude Code (Denis góp ý: tag Excel... không màu, căn chỉnh chưa đẹp)
+**Files thay đổi:** script.js, index.html, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- `script.js`: thêm `TAG_COLORS` map màu đặc trưng từng công nghệ (Excel xanh lá, Python/CSS xanh dương, SQL/FastAPI teal, JS vàng hổ phách, Chart.js/Automation tím, pptxgenjs/HTML cam, Anomaly detection đỏ nhạt...) + 5 cặp màu fallback hash ổn định cho tag lạ → **cùng tag = cùng màu ở mọi nơi**; helper `tagHTML()` dùng cho cả featured + projects grid
+- Bỏ render `<div class="actions">` rỗng khi project không có link (hết khoảng trống thừa đáy card)
+- CSS: `.tag` font-weight 500, line-height đều; `.tags` ghim đáy card (`margin-top: auto`) để hàng tag thẳng nhau giữa các card; `.actions` có border-top phân tách + gap 14px
+- Verify: 20/20 tags có màu, Excel nhất quán, chỉ còn 1 actions div (Vivi Soul); tạo lại cv.pdf (7 trang)
+**Lý do / ghi chú:** Đồng bộ ngôn ngữ màu với tech chips ở hero — đúng triết lý DESIGN.md: màu sticker chỉ trang trí, không sơn cấu trúc.
+
 ## [2026-06-12] — Scrollspy v2: nút xanh CTA tự di chuyển theo mục + thêm Education vào nav
 **Agent/Người thực hiện:** Claude Code (Denis góp ý: nút xanh phải đi theo từng mục, và nav thiếu Education)
 **Files thay đổi:** index.html, scroll-fx.js, CHANGELOG.md

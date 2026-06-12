@@ -231,6 +231,41 @@ function highlight(text) {
   return text.replace(/\*\*([^*]+)\*\*/g, '<strong class="metric">$1</strong>');
 }
 
+// ---------- colored tech tags ----------
+// Known technologies get their signature color (Excel = green, Python = blue…);
+// anything else gets a stable color from a soft 5-color rotation, so the same
+// tag is always the same color everywhere on the page.
+const TAG_COLORS = {
+  'excel':             ['#dcfce7', '#15803d'],
+  'python':            ['#dbeafe', '#1d4ed8'],
+  'sql':               ['#ccfbf1', '#0f766e'],
+  'javascript':        ['#fef3c7', '#b45309'],
+  'js':                ['#fef3c7', '#b45309'],
+  'html':              ['#ffedd5', '#c2410c'],
+  'css':               ['#dbeafe', '#1d4ed8'],
+  'chart.js':          ['#ede9fe', '#6d28d9'],
+  'fastapi':           ['#ccfbf1', '#0f766e'],
+  'pptxgenjs':         ['#ffedd5', '#c2410c'],
+  'node.js':           ['#dcfce7', '#15803d'],
+  'automation':        ['#ede9fe', '#6d28d9'],
+  'anomaly detection': ['#fee2e2', '#b91c1c'],
+  'github pages':      ['#f3e8ff', '#7e22ce']
+};
+const TAG_FALLBACK = [
+  ['#dbeafe', '#1d4ed8'], ['#ede9fe', '#6d28d9'], ['#ccfbf1', '#0f766e'],
+  ['#fef3c7', '#b45309'], ['#fce7f3', '#be185d']
+];
+function tagHTML(name) {
+  const key = name.toLowerCase();
+  let pair = TAG_COLORS[key];
+  if (!pair) {
+    let h = 0;
+    for (let i = 0; i < key.length; i++) h = (h + key.charCodeAt(i) * 7) % 997;
+    pair = TAG_FALLBACK[h % TAG_FALLBACK.length];
+  }
+  return `<span class="tag" style="background:${pair[0]};color:${pair[1]};border-color:transparent">${name}</span>`;
+}
+
 function renderSkills() {
   const grid = document.getElementById('skills-grid');
   if (!grid) return;
@@ -290,7 +325,7 @@ function renderFeaturedProject() {
       <h3>${p.title}</h3>
       <p>${p.summary}</p>
       ${metricsHTML}
-      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="tags">${p.tags.map(tagHTML).join('')}</div>
       <div class="actions">${renderProjectActions(p)}</div>
     </div>
   `;
@@ -309,8 +344,8 @@ function renderProjects() {
         <div class="project-body">
           <h3>${p.title}</h3>
           <p>${p.summary}</p>
-          <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-          <div class="actions">${renderProjectActions(p)}</div>
+          <div class="tags">${p.tags.map(tagHTML).join('')}</div>
+          ${renderProjectActions(p) ? `<div class="actions">${renderProjectActions(p)}</div>` : ''}
         </div>
       </div>
     `;
