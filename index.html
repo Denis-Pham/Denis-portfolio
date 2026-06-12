@@ -35,6 +35,9 @@
       --accent-3-soft: #ccfbf1;
       --accent-4: #d97706;          /* amber — warm */
       --accent-4-soft: #fef3c7;
+      /* glass surfaces — translucent so the 3D wireframe world shows through */
+      --surface-glass: rgba(255, 255, 255, 0.84);
+      --bg-glass: rgba(246, 245, 244, 0.62);
     }
 
     /* ===== Base ===== */
@@ -115,7 +118,7 @@
     nav.links a.btn-primary, nav.links a.btn-primary:hover { color: #fff; }
 
     /* ===== Sections ===== */
-    section { padding: 90px 0; }
+    section { padding: 90px 0; position: relative; z-index: 1; } /* above #stage */
     section h2 {
       font-size: clamp(28px, 3.5vw, 38px);
       margin: 0 0 12px;
@@ -150,7 +153,7 @@
         radial-gradient(circle at top right, rgba(37, 99, 235, 0.07) 0%, transparent 50%),
         radial-gradient(circle at 12% 85%, rgba(124, 58, 237, 0.06) 0%, transparent 45%),
         radial-gradient(circle at 70% 100%, rgba(13, 148, 136, 0.05) 0%, transparent 40%),
-        linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, var(--bg-glass) 100%);
       position: relative;
     }
     /* Subtle dot grid texture in hero — barely visible but adds depth */
@@ -165,18 +168,13 @@
     }
     .hero > .wrap { position: relative; z-index: 1; }
 
-    /* ===== HERO 3D — KPI Skyline canvas (right side, behind text) ===== */
-    #hero-3d {
-      position: absolute; top: 0; right: 0; bottom: 0;
-      width: 54%;
+    /* ===== Full-page 3D wireframe world (bg-3d.js) ===== */
+    #stage {
+      position: fixed; inset: 0;
       z-index: 0;
-      pointer-events: none; /* text/CTAs stay fully clickable */
-      /* fade the scene out under the headline so copy always wins */
-      mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 30%, black 60%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.55) 30%, black 60%);
+      pointer-events: none; /* content stays fully interactive */
     }
-    #hero-3d canvas { width: 100%; height: 100%; display: block; }
-    @media (max-width: 900px) { #hero-3d { display: none; } } /* mobile gets the 2D hero */
+    @media (max-width: 900px) { #stage { display: none; } } /* mobile keeps the 2D page */
 
     /* Hero stats row — 3 big numbers below the meta */
     .hero-stats {
@@ -355,7 +353,7 @@
     .timeline-item li { padding: 3px 0; font-size: 15px; line-height: 1.7; }
 
     /* ===== FEATURED PROJECT ===== */
-    .featured-project { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .featured-project { background: var(--surface-glass); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .featured-project-card {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
@@ -468,7 +466,7 @@
       background:
         radial-gradient(circle at 18% 25%, rgba(37, 99, 235, 0.06), transparent 45%),
         radial-gradient(circle at 82% 70%, rgba(124, 58, 237, 0.06), transparent 45%),
-        var(--surface);
+        var(--surface-glass);
       border-top: 1px solid var(--border);
     }
     .contact h2 { font-size: clamp(32px, 4vw, 48px); margin: 0 0 14px; }
@@ -514,6 +512,9 @@
 </head>
 <body>
 
+  <!-- Full-page 3D wireframe world (bg-3d.js) — fixed behind all content -->
+  <canvas id="stage" aria-hidden="true"></canvas>
+
   <!-- Reading progress bar (scroll-fx.js drives scaleX) -->
   <div id="progress" aria-hidden="true"></div>
 
@@ -533,7 +534,6 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <div id="hero-3d" aria-hidden="true"></div>
     <div class="wrap">
       <span class="eyebrow">Open to new opportunities</span>
       <h1>Denis Pham</h1>
@@ -632,7 +632,7 @@
   </section>
 
   <!-- ===== SKILLS ===== -->
-  <section id="skills" style="background: var(--surface);">
+  <section id="skills" style="background: var(--surface-glass);">
     <div class="wrap">
       <p class="section-kicker">Skills</p>
       <h2>What I bring</h2>
@@ -671,7 +671,7 @@
   </section>
 
   <!-- ===== EDUCATION ===== -->
-  <section id="education" style="background: var(--surface);">
+  <section id="education" style="background: var(--surface-glass);">
     <div class="wrap">
       <p class="section-kicker">Education</p>
       <h2>Background</h2>
@@ -714,7 +714,7 @@
     }
   }
   </script>
-  <script type="module" src="hero-3d.js"></script>
+  <script type="module" src="bg-3d.js"></script>
   <!-- Scroll choreography — GSAP + ScrollTrigger via CDN, graceful no-op if blocked -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>

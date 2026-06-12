@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Nâng cấp 3D: thế giới wireframe toàn trang (học từ file mẫu v3)
+**Agent/Người thực hiện:** Claude Code (tham khảo "index (3).html" — chỉ học kỹ thuật, không copy nội dung)
+**Files thay đổi:** bg-3d.js (mới, thay hero-3d.js — đã xóa), index.html, style.css, CHANGELOG.md
+**Nội dung:**
+- Kiến trúc mới từ file mẫu: **canvas cố định toàn trang** sau nội dung; **camera Y trôi theo scroll** (lerp); **mỗi section một set piece 3D** đặt đúng vị trí chương; **fade theo khoảng cách** (chỉ rõ trong chương của mình, material clone riêng từng nhóm); **bụi 320 hạt** rải suốt hành trình; **vận tốc cuộn → spin** vật thể; mouse parallax camera
+- Set pieces wireframe mực (ink monochrome — chuyên nghiệp) theo chủ đề data/operations: hero = KPI skyline màu (giữ chữ ký cũ), about = 3 trang SOP nối mũi tên (SOP→task→KPI), skills = icosahedron + octahedra quay quanh, experience = cầu thang 6 bậc + đường tăng trưởng (6 vị trí sự nghiệp), **featured = cubes bay hỗn loạn RÁP thành bar chart khi cuộn tới** (điểm nhấn), projects = cửa sổ browser bay, education = sách mở, contact = torus xoay chậm
+- Nền sections chuyển **bán trong suốt** (`--surface-glass` 0.84, `--bg-glass` 0.62) để thế giới wireframe lộ ra phía sau; sections z-index 1 trên canvas
+- Giữ nguyên gates: ≥900px + WebGL (`?force3d` bypass), reduced-motion (camera nhanh, không spin), print ẩn #stage, pause khi tab ẩn
+- Verify: 8 pieces dựng đủ, frustum culling tự nhiên (5 draws ở hero → 21 ở featured), 0 lỗi console
+**Lý do / ghi chú:** Denis muốn background 3D ấn tượng + chuyên nghiệp hơn. File mẫu theme thời trang/mỹ phẩm → đổi hoàn toàn sang data/operations cho đúng người. hero-3d.js đã xóa khỏi repo (bg-3d.js thay thế).
+
 ## [2026-06-12] — Scroll choreography: GSAP + ScrollTrigger (học từ file mẫu Denis cung cấp)
 **Agent/Người thực hiện:** Claude Code (tham khảo file "index (1).html" — portfolio scroll mẫu)
 **Files thay đổi:** scroll-fx.js (mới), index.html, style.css, hero-3d.js, cv.pdf (tạo lại), CHANGELOG.md
