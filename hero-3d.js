@@ -194,6 +194,13 @@ async function init() {
     if (!document.hidden && visible && raf === null) loop();
   });
 
+  // scroll scrub: as the hero scrolls away the skyline rotates, sinks and shrinks
+  const heroEl = document.querySelector('.hero');
+  function scrollProgress() {
+    const h = (heroEl && heroEl.offsetHeight) || window.innerHeight;
+    return Math.min(Math.max(window.scrollY / h, 0), 1);
+  }
+
   function loop() {
     if (!visible || document.hidden) { raf = null; return; }
     raf = requestAnimationFrame(loop);
@@ -205,8 +212,12 @@ async function init() {
       f.mesh.rotation.y += 0.004;
       f.mesh.rotation.x += 0.002;
     }
-    group.rotation.y += (targetRY - group.rotation.y) * 0.05;
-    group.rotation.x += (targetRX - group.rotation.x) * 0.05;
+    const sp = scrollProgress();
+    group.rotation.y += (targetRY + sp * 0.55 - group.rotation.y) * 0.05;
+    group.rotation.x += (targetRX + sp * 0.12 - group.rotation.x) * 0.05;
+    group.position.y += (-sp * 1.6 - group.position.y) * 0.08;
+    const s = 1 - sp * 0.18;
+    group.scale.setScalar(s);
     renderer.render(scene, camera);
   }
   loop();

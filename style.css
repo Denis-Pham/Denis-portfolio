@@ -8,12 +8,24 @@
 
 .skill-card:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* Smooth section-into-view animation (optional) */
-section { animation: fadeIn 0.6s ease-out backwards; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Scroll choreography support (scroll-fx.js)
+   — the old load-once section fadeIn was replaced by per-element
+   GSAP ScrollTrigger reveals. */
+
+/* reading progress bar */
+#progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 100%;
+  z-index: 200;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  pointer-events: none;
 }
+
+/* word-reveal wrappers for section headings */
+.w { display: inline-block; overflow: hidden; vertical-align: bottom; }
+.w > span { display: inline-block; will-change: transform; }
 
 /* Optional: subtle gradient text for hero h1 */
 .hero h1 {
@@ -27,7 +39,10 @@ section { animation: fadeIn 0.6s ease-out backwards; }
    NOTE: the inline <style> in index.html loads AFTER this file, so at equal
    specificity it wins the cascade — print overrides need !important. */
 @media print {
-  header.topnav, .contact { display: none !important; }
+  header.topnav, .contact, #progress { display: none !important; }
+  /* GSAP reveals leave below-fold elements at opacity 0 / translated —
+     force everything visible so the printed CV is always complete */
+  section, section *, .w > span { opacity: 1 !important; transform: none !important; }
   /* visual-only blocks that bloat the PDF — hide for a compact CV */
   .project-thumb, .featured-project-thumb, .hero-tech, .eyebrow,
   .avatar, .hero .cta, .section-lede, #hero-3d { display: none !important; }

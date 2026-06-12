@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-12] — Scroll choreography: GSAP + ScrollTrigger (học từ file mẫu Denis cung cấp)
+**Agent/Người thực hiện:** Claude Code (tham khảo file "index (1).html" — portfolio scroll mẫu)
+**Files thay đổi:** scroll-fx.js (mới), index.html, style.css, hero-3d.js, cv.pdf (tạo lại), CHANGELOG.md
+**Nội dung:**
+- Kỹ thuật học từ file mẫu: **progress bar** scrub theo scroll (gradient accent, 3px, top); **word-reveal** từng chữ cho section h2 (bỏ qua hero h1 vì gradient text); **reveal có đảo chiều** (toggleActions play/reverse) cho kicker/lede/cards/timeline/education — thay animation fadeIn load-một-lần cũ; **counter đếm số** cho hero stats (chỉ số nguyên: 300+, 5+); **hero intro stagger** khi load
+- `hero-3d.js`: thêm scroll scrub — skyline xoay (+0.55 rad), chìm (-1.6) và thu nhỏ (0.82×) dần khi cuộn qua hero
+- GSAP 3.12.5 + ScrollTrigger qua jsDelivr CDN; `scroll-fx.js` tự no-op nếu CDN fail hoặc `prefers-reduced-motion` — nội dung không bao giờ bị ẩn vĩnh viễn
+- **Print-proof:** thêm `section * { opacity: 1 !important; transform: none !important }` vào print CSS — GSAP để element dưới fold ở opacity 0, không có rule này CV in ra sẽ trắng trang
+- Verify: 46 ScrollTriggers active, reveal/word-split/progress bar/counter chạy đúng, 0 lỗi console, cv.pdf in đủ nội dung (KIMDUC + education có mặt)
+**Lý do / ghi chú:** Denis gửi file portfolio mẫu (của Đông Nguyễn) yêu cầu học phần cuộn trang. KHÔNG copy nội dung/branding của file mẫu — chỉ học kỹ thuật animation. Quirk khi test: `scrollIntoView` qua console không phát scroll event nên scrub không nhúc nhích — cuộn thật thì chạy bình thường.
+
 ## [2026-06-12] — Đính chính số liệu: tách 2 thành tích KPI realtime vs report time
 **Agent/Người thực hiện:** Claude Code (Denis đính chính)
 **Files thay đổi:** index.html, script.js, cv.pdf (tạo lại), CHANGELOG.md
