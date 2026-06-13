@@ -55,6 +55,13 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-13] — Rút gọn footer
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** index.html
+**Nội dung:**
+- Footer rút gọn còn "© [year] Denis Pham · About · Contact"; bỏ đoạn "Built with HTML, CSS, JS · Hosted on GitHub Pages"
+**Lý do / ghi chú:** Denis thấy footer viết nhiều, muốn đơn giản.
+
 ## [2026-06-12] — Sidebar v2: thay panel 232px bằng dot nav tối giản (theo ý Denis)
 **Agent/Người thực hiện:** Claude Code (Denis: "sidebar làm sai ý anh rồi, làm đơn giản là những dấu chấm kéo to" — tham khảo dennis95.netlify.app, link đã chết 404)
 **Files thay đổi:** index.html, script.js, scroll-fx.js, style.css, cv.pdf (tạo lại), CHANGELOG.md
