@@ -561,6 +561,25 @@ document.querySelectorAll('.lang-toggle button').forEach(btn => {
   });
 });
 
+// Dark-mode toggle: <head> already applied the saved/OS theme before paint.
+// Here we just sync the icon and flip live on click (pure CSS-var swap, no reload).
+const themeToggle = document.querySelector('.theme-toggle');
+if (themeToggle) {
+  const syncIcon = () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeToggle.textContent = dark ? '☀️' : '🌙';
+    themeToggle.setAttribute('aria-pressed', String(dark));
+  };
+  syncIcon();
+  themeToggle.addEventListener('click', () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (dark) document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', dark ? 'light' : 'dark');
+    syncIcon();
+  });
+}
+
 // Auto-update footer year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();

@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-13] — Thêm chế độ màn hình tối (dark mode)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** index.html, script.js
+**Nội dung:**
+- Thêm khối `:root[data-theme="dark"]` override toàn bộ palette (bg/surface/fg/border/shadow + accent sáng hơn cho contrast) — lật biến là toàn site đổi màu, không phải sửa từng rule
+- Đưa 3 chỗ hardcode màu sáng sang biến để dark mode tự theo: topnav bg → `--nav-bg`, `.btn-secondary` bg trắng → `--surface`, hero gradient top → `--hero-top`
+- Override riêng `.dot-nav a::after` trong dark (tooltip trước đó nền = `--fg` → trắng-trên-trắng)
+- Nút toggle 🌙/☀️ trong header (cạnh lang-toggle); inline script trong `<head>` apply theme TRƯỚC khi paint (no-flash); chọn theme lưu `localStorage('theme')`, mặc định theo OS `prefers-color-scheme`
+- Print: nút tự ẩn vì print stylesheet đã ẩn cả `header.topnav`
+**Lý do / ghi chú:** Verify trên preview: toggle lật body/nav/card/button + accent đúng, lưu localStorage, không lỗi console. (Screenshot timeout do hero 3D WebGL — verify bằng DOM.)
+
 ## [2026-06-13] — Rút gọn footer
 **Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
 **Files thay đổi:** index.html

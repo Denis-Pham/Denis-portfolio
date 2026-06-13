@@ -3,6 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Apply saved theme before paint to avoid a flash of the wrong mode.
+       Stored choice wins; otherwise follow the OS preference. -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var dark = saved ? saved === 'dark'
+        : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
   <title>Denis Pham — Operations Excellence &amp; Performance Management</title>
   <meta name="description" content="Denis Pham — Operations Excellence & Performance Management. I design how 300+ Hasaki retail stores run, then build the systems that measure it: SOPs, task workflows, and realtime KPI scoring.">
   <meta property="og:title" content="Denis Pham — Operations Excellence & Performance Management">
@@ -40,6 +50,41 @@
       /* glass surfaces — translucent so the 3D wireframe world shows through */
       --surface-glass: rgba(255, 255, 255, 0.84);
       --bg-glass: rgba(246, 245, 244, 0.62);
+      --nav-bg: rgba(246, 245, 244, 0.85);  /* sticky header backdrop */
+      --hero-top: rgba(255, 255, 255, 0.7);  /* hero gradient top stop */
+    }
+
+    /* ===== Dark theme — flips the palette, every var-driven surface follows ===== */
+    :root[data-theme="dark"] {
+      --bg: #1a1a18;
+      --surface: #242321;
+      --surface-2: #2c2b28;
+      --shadow-1: rgba(0,0,0,0.20) 0 0.2px 1px, rgba(0,0,0,0.24) 0 0.8px 3px, rgba(0,0,0,0.30) 0 2px 8px, rgba(0,0,0,0.36) 0 4px 18px;
+      --shadow-2: rgba(0,0,0,0.30) 0 1px 2px, rgba(0,0,0,0.36) 0 4px 8px, rgba(0,0,0,0.44) 0 10px 24px, rgba(0,0,0,0.55) 0 23px 52px;
+      --fg: #ededeb;
+      --muted: #a4a09a;
+      --soft: #6f6c66;
+      --border: #36342f;
+      --border-strong: #4a4742;
+      --accent: #60a5fa;            /* brighter blue for contrast on dark */
+      --accent-soft: rgba(96, 165, 250, 0.16);
+      --accent-dark: #3b82f6;
+      --accent-2: #a78bfa;          /* violet */
+      --accent-2-soft: rgba(167, 139, 250, 0.16);
+      --accent-2-dark: #8b5cf6;
+      --accent-3: #2dd4bf;          /* teal */
+      --accent-3-soft: rgba(45, 212, 191, 0.16);
+      --accent-4: #fbbf24;          /* amber */
+      --accent-4-soft: rgba(251, 191, 36, 0.16);
+      --surface-glass: rgba(36, 35, 33, 0.84);
+      --bg-glass: rgba(26, 26, 24, 0.62);
+      --nav-bg: rgba(26, 26, 24, 0.85);
+      --hero-top: rgba(255, 255, 255, 0.03);
+    }
+    /* dark: dot-nav tooltip would be white-on-white via --fg — re-anchor it */
+    :root[data-theme="dark"] .dot-nav a::after {
+      background: var(--surface-2); color: var(--fg);
+      border: 1px solid var(--border);
     }
 
     /* ===== Base ===== */
@@ -82,7 +127,7 @@
       box-shadow: var(--shadow-2);
     }
     .btn-secondary {
-      background: white; color: var(--fg);
+      background: var(--surface); color: var(--fg);
       border: 1px solid var(--border);
       box-shadow: var(--shadow-1);
     }
@@ -96,7 +141,7 @@
     /* ===== Nav ===== */
     header.topnav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(246, 245, 244, 0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 16px 0;
@@ -138,6 +183,17 @@
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: #fff;
     }
+    /* Dark-mode toggle — sun/moon icon button, icon swapped via JS */
+    .theme-toggle {
+      margin-left: 22px;
+      width: 34px; height: 34px; padding: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border); border-radius: 999px;
+      background: var(--surface); color: var(--muted);
+      font-size: 15px; line-height: 1; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
     nav.links .lang-toggle { margin-left: 22px; }
     nav.links { position: relative; display: flex; align-items: center; }
     nav.links a {
@@ -259,7 +315,7 @@
         radial-gradient(circle at top right, rgba(37, 99, 235, 0.07) 0%, transparent 50%),
         radial-gradient(circle at 12% 85%, rgba(124, 58, 237, 0.06) 0%, transparent 45%),
         radial-gradient(circle at 70% 100%, rgba(13, 148, 136, 0.05) 0%, transparent 40%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, var(--bg-glass) 100%);
+        linear-gradient(180deg, var(--hero-top) 0%, var(--bg-glass) 100%);
       position: relative;
     }
     /* Subtle dot grid texture in hero — barely visible but adds depth */
@@ -715,6 +771,7 @@
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#contact" class="contact-link">Contact</a>
+        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         <div class="lang-toggle" role="group" aria-label="Language">
           <button type="button" data-lang="en">EN</button>
           <button type="button" data-lang="vi">VI</button>
