@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Đồng bộ lại cv.pdf với portfolio + fix 2 lỗi khi in CV
+**Agent/Người thực hiện:** Claude Code (Denis: "check bản CV down từ portfolio với trang portfolio xem có lệch không")
+**Files thay đổi:** style.css, scroll-fx.js, cv.pdf (in lại)
+**Bối cảnh:** `cv.pdf` (nút Download CV) lệch nội dung so với portfolio vì in trước đợt sửa 13/06. So `cv.pdf` cũ ↔ portfolio hiện tại thấy 6 điểm lệch: số store hero (cũ in ra số count-up dở), tiêu đề About ("Numbers tell stories…" → "I turn operating data…"), About đoạn 1 ("write the SOPs/always agree" → "manage the SOP system/aligned"), bằng HCMUT (Engineering → degree), bullet+skill pptxgenjs (đã bỏ), realtime → real-time. (File topcv gốc `PHAM-MANH-DUC-Project Manager.pdf` đã outdated — bỏ qua; `cv-new.pdf` thực ra là bản in portfolio cũ, không phải CV riêng.)
+**Nội dung:**
+- **In lại cv.pdf** từ portfolio hiện tại → khớp đủ 6 điểm trên.
+- **Fix lỗi CV in ra nền tối:** từ 13/06 thêm dark mode mặc định theo OS; Chrome headless trên máy đang ở dark nên CV in ra nền đen chữ mờ. Print stylesheet (`style.css`) thêm khối ép sáng trong `@media print`: override các biến `:root[data-theme="dark"]` về giá trị sáng bằng `!important` (custom property có `!important` mới thắng được khối dark inline load sau). → CV **luôn in nền trắng** dù người xem đang bật dark mode.
+- **Fix lỗi count-up nhảy số:** ô "RETAIL STORES TRACKED" in ra số ngẫu nhiên (70/106/111…) vì Chrome chụp PDF giữa lúc animation đếm 0→300 đang chạy. `scroll-fx.js` thêm cờ `?print=1`: gộp vào guard đầu file để **bỏ qua toàn bộ animation** (count-up, word-reveal, intro, scrollspy). Lệnh in CV giờ trỏ `http://localhost:5173/?print=1`. → stat in ra đúng **300+**.
+**Lệnh in lại CV:** `chrome --headless=new --disable-gpu --no-pdf-header-footer --user-data-dir=<tmp trống> --print-to-pdf="cv.pdf" --virtual-time-budget=12000 "http://localhost:5173/?print=1"` rồi `Start-Sleep 18` (Drive sync lag), verify bằng `git hash-object`. **Nhớ dùng `?print=1` và profile tạm trống** (localStorage rỗng → ra bản EN, không dính dark mode của profile thật).
+**Lý do / ghi chú:** Đã verify đọc lại cv.pdf 6 trang: nền trắng, 300+ đúng, nội dung khớp portfolio. Số điện thoại/địa chỉ trong topcv gốc vẫn KHÔNG đưa lên CV/portfolio public.
+
 ## [2026-06-15] — Sửa câu chữ dòng email dự phòng (VI)
 **Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
 

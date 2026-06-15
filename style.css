@@ -39,6 +39,21 @@
    NOTE: the inline <style> in index.html loads AFTER this file, so at equal
    specificity it wins the cascade — print overrides need !important. */
 @media print {
+  /* CV always prints on white — neutralize dark mode no matter the on-screen theme.
+     !important on the custom properties beats the non-important dark block in the
+     inline <style> (which loads after this file, so it'd otherwise win on source order). */
+  :root[data-theme="dark"] {
+    --bg: #ffffff !important; --surface: #ffffff !important; --surface-2: #f5f5f4 !important;
+    --fg: #1c1b1a !important; --muted: #4a4843 !important; --soft: #a8a5a0 !important;
+    --border: #e6e4e0 !important; --border-strong: #d6d4d0 !important;
+    --accent: #2563eb !important; --accent-soft: #dbeafe !important;
+    --accent-2: #7c3aed !important; --accent-2-soft: #ede9fe !important;
+    --accent-3: #0d9488 !important; --accent-3-soft: #ccfbf1 !important;
+    --accent-4: #d97706 !important; --accent-4-soft: #fef3c7 !important;
+    --surface-glass: #ffffff !important; --bg-glass: #ffffff !important;
+    --nav-bg: #ffffff !important; --hero-top: #ffffff !important;
+    --shadow-1: none !important; --shadow-2: none !important;
+  }
   header.topnav, .contact, #progress { display: none !important; }
   /* GSAP reveals leave below-fold elements at opacity 0 / translated —
      force everything visible so the printed CV is always complete */

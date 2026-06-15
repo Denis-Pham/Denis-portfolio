@@ -9,7 +9,11 @@
 
 (function () {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  // ?print=1 (used by the headless-Chrome CV export) bails out of ALL animation so the
+  // PDF captures the authored values — e.g. the count-up stat stays "300+" instead of a
+  // mid-tween number. Content is rendered by script.js, so skipping fx breaks nothing.
+  const printMode = new URLSearchParams(location.search).has('print');
+  if (reduced || printMode || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
   // ---------- reading progress bar ----------
