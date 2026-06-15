@@ -55,6 +55,34 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Sửa câu chữ dòng email dự phòng (VI)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+
+- `script.js` — sửa bản dịch VI của `.email-plain`: "Hoặc viết thẳng cho tôi qua …" → **"Hoặc trao đổi trực tiếp với tôi qua email: …"** (câu cũ đọc kỳ).
+- Bản EN giữ nguyên ("Or write to me directly at …").
+
+**Lý do / ghi chú:** Denis báo câu VI viết kỳ. Đã verify trên preview (lang=vi): dòng hiển thị đúng câu mới.
+
+## [2026-06-13] — Sửa nội dung theo đính chính của Denis (SOP, pptxgenjs, bằng cấp)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** index.html, script.js
+**Nội dung:**
+- **SOP — quản lý chứ không viết:** mọi chỗ "write/author/design SOP" → "manage the SOP system" (VI: "viết/soạn/thiết kế SOP" → "quản lý hệ thống SOP"). Gồm: loop card bước 1, bullet Hasaki 1–2, mục kỹ năng, đoạn About p1
+- **Bỏ pptxgenjs/PowerPoint redesign:** xóa bullet kinh nghiệm Hasaki, mục kỹ năng "pptxgenjs (PowerPoint automation)" và chip "pptxgenjs" ở hero. **Giữ** project card "Quy Định Shop PPTX Redesign" (dự án thật) — chờ xác nhận nếu muốn bỏ luôn
+- **Bằng cấp HCMUT:** "Kỹ sư" → "Cử nhân" (EN: "Bachelor of Engineering" → "Bachelor's degree") — Quản lý Công nghiệp
+**Lý do / ghi chú:** Verify preview EN+VI: 0 "write/viết SOP", 0 "Kỹ sư", bullet Hasaki còn 6, chip pptxgenjs đã bỏ, degree đúng, không lỗi console.
+
+## [2026-06-13] — Rà soát & sửa câu chữ theo audit của Hermes (EN + VI)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis, nguồn: portfolio-language-audit-denis.md)
+**Files thay đổi:** index.html, script.js
+**Nội dung:**
+- **Lỗi khách quan (áp toàn bộ):** `realtime` → `real-time` (EN) / `thời gian thực` (VI) ở mọi chỗ user-facing (hero stat, loop card, bullet Hasaki, featured project); bỏ slang nội bộ "Bắn task" → "Chuyển thành công việc" (EN: "Dispatch the tasks" → "Translate into tasks"); làm dịu overclaim "scores always agree with each other" → "keeps ... aligned" / "được giữ nhất quán"; "↻ scores sharpen the next SOP" → "↻ KPI results improve the next SOP"
+- **Giảm trộn Anh-Việt ở bản VI:** "performance" → "hiệu suất" (hero meta, experience intro, about, skill title, bullet); "trong quality" → "trong chất lượng"; "retail performance" → "mảng hiệu suất bán lẻ"; "task workflow" → "workflow công việc hằng ngày"; "tool nội bộ trong một buổi" (casual/overclaim) → "xây nhanh công cụ nội bộ"
+- **Đổi giọng About sang trực diện (theo lựa chọn của Denis):** headline "Numbers tell stories. I help people listen." → "I turn operating data into decisions teams can act on."; section-lede bớt thơ, nêu rõ 10+ năm
+- **Footer VI:** thêm i18n cho link footer → "Giới thiệu / Liên hệ" (trước đó vẫn là About/Contact tiếng Anh ở chế độ VI)
+- Featured project + contact: viết lại gọn theo audit; cập nhật cả field `en` lẫn `vi` trong UI_I18N cho đồng bộ với HTML
+**Lý do / ghi chú:** Verify trên preview cả EN và VI: 0 "realtime", 0 "performance"/"Bắn task" sót trong bản VI, footer dịch đúng, không lỗi console. **Giữ nguyên** các đề xuất chỉ mang tính tùy chọn (tách câu dài, đổi "Write the SOP"→"Define"...) để bám voice gốc. cv.pdf chưa in lại — copy đã đổi nên cần tạo lại nếu muốn nút Download CV khớp.
+
 ## [2026-06-13] — Thêm chế độ màn hình tối (dark mode)
 **Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
 **Files thay đổi:** index.html, script.js

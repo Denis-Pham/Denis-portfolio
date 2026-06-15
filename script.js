@@ -21,12 +21,12 @@ const t = v => (v && typeof v === 'object' && !Array.isArray(v)) ? v[LANG] : v;
 const skills = [
   {
     icon: '⚙️',
-    category: { en: 'Operations & Performance Systems', vi: 'Hệ thống vận hành & Performance' },
+    category: { en: 'Operations & Performance Systems', vi: 'Hệ thống vận hành & hiệu suất' },
     items: [
-      { en: 'End-to-end performance loop: SOP → task workflow → KPI scoring',
-        vi: 'Vòng lặp performance trọn gói: SOP → task workflow → chấm KPI' },
-      { en: 'SOP authoring & rollout for retail store operations',
-        vi: 'Soạn & triển khai SOP vận hành cho cửa hàng bán lẻ' },
+      { en: 'End-to-end performance loop: SOP → daily workflow → KPI scoring',
+        vi: 'Vòng lặp hiệu suất trọn gói: SOP → workflow công việc hằng ngày → chấm điểm KPI' },
+      { en: 'SOP system management & rollout for retail store operations',
+        vi: 'Quản lý & triển khai hệ thống SOP vận hành cho cửa hàng bán lẻ' },
       { en: 'Task workflow design, assignment & tracking per store',
         vi: 'Thiết kế task workflow, giao việc & theo dõi từng cửa hàng' },
       { en: 'KPI framework design for store-staff performance reviews',
@@ -66,8 +66,6 @@ const skills = [
       { en: 'Claude Code (daily — building internal tools)',
         vi: 'Claude Code (hằng ngày — xây tool nội bộ)' },
       'Git / GitHub',
-      { en: 'pptxgenjs (PowerPoint automation)',
-        vi: 'pptxgenjs (tự động hóa PowerPoint)' },
       { en: 'FastAPI (Python web APIs)',
         vi: 'FastAPI (web API bằng Python)' }
     ]
@@ -112,20 +110,18 @@ const experience = [
     brand: { mark: 'H', color: '#2e7d52' },
     bullets: [
       // Wrap numbers/key metrics in **double asterisks** — they render in accent color
-      { en: 'Own the end-to-end performance system for the Cosmetics division: **SOP design → task workflows → KPI scoring** for **300+** retail stores',
-        vi: 'Làm chủ toàn bộ hệ thống performance của khối Cosmetics: **thiết kế SOP → task workflow → chấm KPI** cho **300+** cửa hàng bán lẻ' },
-      { en: 'Author operating SOPs for store teams and convert them into daily task workflows assigned and tracked per store',
-        vi: 'Soạn SOP vận hành cho đội cửa hàng và chuyển thành task workflow hằng ngày, giao việc & theo dõi theo từng cửa hàng' },
+      { en: 'Own the end-to-end performance system for the Cosmetics division: **SOP system → daily task workflows → KPI scoring** across **300+** retail stores',
+        vi: 'Phụ trách toàn bộ hệ thống hiệu suất của khối Cosmetics: **hệ thống SOP → workflow công việc hằng ngày → chấm điểm KPI** cho **300+** cửa hàng bán lẻ' },
+      { en: 'Manage the store operating SOP system and turn it into daily task workflows assigned and tracked per store',
+        vi: 'Quản lý hệ thống SOP vận hành cho đội cửa hàng và chuyển thành workflow công việc hằng ngày, giao việc & theo dõi theo từng cửa hàng' },
       { en: 'Designed the KPI framework that scores store staff against those workflows — the numbers behind monthly performance reviews',
         vi: 'Thiết kế khung KPI chấm điểm nhân viên cửa hàng theo chính các workflow đó — con số đứng sau đánh giá hiệu suất hằng tháng' },
       { en: 'Built the Hasaki KPI System end-to-end — raw Excel files → automated calculation → automated recording → monthly dashboard covering **300+** stores, **50+ KPIs** and **100+** data fields',
         vi: 'Xây Hasaki KPI System trọn gói — file Excel thô → tính toán tự động → ghi nhận tự động → dashboard hằng tháng phủ **300+** cửa hàng, **50+ KPI** và **100+** trường dữ liệu' },
-      { en: 'Took KPI tracking from **5-day** Excel calculation runs to a **live, realtime** KPI view — and cut monthly report preparation from **3 days** to **~30 minutes**',
-        vi: 'Đưa KPI từ **5 ngày** chạy Excel thành màn hình KPI **live, realtime** — và rút thời gian làm báo cáo tháng từ **3 ngày** xuống **~30 phút**' },
+      { en: 'Moved KPI tracking from **5-day** Excel batch calculations to a **real-time** KPI view — and cut monthly report preparation from **3 days** to **~30 minutes**',
+        vi: 'Chuyển việc theo dõi KPI từ **5 ngày** chạy Excel sang màn hình KPI **thời gian thực** — và rút thời gian làm báo cáo hằng tháng từ **3 ngày** xuống **~30 phút**' },
       { en: 'Created combined sales × KPI cross-analytics and anomaly-detection logic flagging underperforming stores and suspected system errors',
-        vi: 'Tạo phân tích chéo doanh số × KPI và logic phát hiện bất thường, cảnh báo cửa hàng kém hiệu suất và nghi vấn lỗi hệ thống' },
-      { en: 'Authored an automated PowerPoint redesign pipeline (pptxgenjs) for **5+** company policy documents',
-        vi: 'Viết pipeline tự động redesign PowerPoint (pptxgenjs) cho **5+** tài liệu quy định công ty' }
+        vi: 'Tạo phân tích chéo doanh số × KPI và logic phát hiện bất thường, cảnh báo cửa hàng kém hiệu suất và nghi vấn lỗi hệ thống' }
     ]
   },
   {
@@ -209,8 +205,8 @@ const projects = [
   {
     title: 'Hasaki KPI System',
     summary: {
-      en: 'End-to-end KPI system for 300+ cosmetics retail stores — from raw Excel files through automated calculation and automated recording to an interactive monthly dashboard. Tracks 50+ KPIs across 100+ data fields and flags anomalies (negative KPIs, formula source mismatches). Took KPIs from 5-day Excel runs to live realtime, and monthly reports from 3 days to ~30 minutes.',
-      vi: 'Hệ thống KPI trọn gói cho 300+ cửa hàng mỹ phẩm — từ file Excel thô qua tính toán & ghi nhận tự động đến dashboard tương tác hằng tháng. Theo dõi 50+ KPI trên 100+ trường dữ liệu, cảnh báo bất thường (KPI âm, lệch nguồn công thức). Đưa KPI từ 5 ngày chạy Excel thành realtime, báo cáo tháng từ 3 ngày xuống ~30 phút.'
+      en: 'End-to-end KPI system for 300+ cosmetics retail stores: raw Excel files → automated calculations → automated recording → interactive monthly dashboard. Tracks 50+ KPIs across 100+ data fields and flags anomalies such as negative KPI values and formula-source mismatches. It moved KPI tracking from 5-day Excel batch runs to a real-time view, and cut monthly report preparation from 3 days to ~30 minutes.',
+      vi: 'Hệ thống KPI trọn gói cho 300+ cửa hàng mỹ phẩm: file Excel thô → tính toán tự động → ghi nhận tự động → dashboard tương tác hằng tháng. Theo dõi 50+ KPI trên 100+ trường dữ liệu và cảnh báo các bất thường như KPI âm hoặc lệch nguồn công thức. Hệ thống chuyển việc theo dõi KPI từ 5 ngày chạy Excel sang thời gian thực, và rút thời gian làm báo cáo hằng tháng từ 3 ngày xuống ~30 phút.'
     },
     image: 'projects/kpi-dashboard.svg',
     initial: 'K',
@@ -287,8 +283,8 @@ const education = [
   {
     school: { en: 'Ho Chi Minh City University of Technology (HCMUT — Bách Khoa)',
               vi: 'ĐH Bách Khoa TP.HCM (HCMUT)' },
-    degree: { en: 'Bachelor of Engineering — Industrial Management · Quality management focus (7 QC tools, JIT, Lean)',
-              vi: 'Kỹ sư — Quản lý Công nghiệp · Chuyên sâu quản lý chất lượng (7 công cụ QC, JIT, Lean)' },
+    degree: { en: 'Bachelor\'s degree — Industrial Management · Quality management focus (7 QC tools, JIT, Lean)',
+              vi: 'Cử nhân — Quản lý Công nghiệp · Chuyên sâu quản lý chất lượng (7 công cụ QC, JIT, Lean)' },
     year: '2008 — 2013'
   },
   {
@@ -476,42 +472,42 @@ const UI_I18N = [
   { sel: '.hero .eyebrow', en: 'Open to new opportunities', vi: 'Sẵn sàng cho cơ hội mới' },
   { sel: '.hero .tagline', html: true,
     en: 'I design how <strong>300+ stores</strong> run — then build the systems that measure it. <strong>SOP → daily tasks → KPI scoring</strong>: one loop, one owner.',
-    vi: 'Tôi thiết kế cách <strong>300+ cửa hàng</strong> vận hành — rồi tự xây hệ thống đo lường nó. <strong>SOP → task hằng ngày → chấm KPI</strong>: một vòng lặp, một người làm chủ.' },
+    vi: 'Tôi thiết kế cách <strong>300+ cửa hàng</strong> vận hành — rồi tự xây hệ thống đo lường. <strong>SOP → công việc hằng ngày → chấm điểm KPI</strong>: một vòng lặp, một người làm chủ.' },
   { sel: '.hero .cta .btn-primary',   en: 'Get in touch →', vi: 'Liên hệ ngay →' },
   { sel: '.hero .cta .btn-secondary', en: 'Download CV (PDF)', vi: 'Tải CV (PDF)' },
   { sel: '.hero-meta .meta-item:nth-child(1)', html: true, en: '📍 <strong>Ho Chi Minh City</strong>', vi: '📍 <strong>TP. Hồ Chí Minh</strong>' },
   { sel: '.hero-meta .meta-item:nth-child(3)', html: true,
     en: '⏱ <strong>10+ years</strong> in quality, operations &amp; performance',
-    vi: '⏱ <strong>10+ năm</strong> trong quality, vận hành &amp; performance' },
+    vi: '⏱ <strong>10+ năm</strong> trong chất lượng, vận hành &amp; hiệu suất' },
   { sel: '.hero-stats .stat:nth-child(1) .stat-label', en: 'Retail stores tracked', vi: 'Cửa hàng đang theo dõi' },
   { sel: '.hero-stats .stat:nth-child(2) .stat-value .was', en: '5 days', vi: '5 ngày' },
-  { sel: '.hero-stats .stat:nth-child(2) .stat-label', en: 'KPI refresh — Excel batch → realtime', vi: 'Cập nhật KPI — Excel → realtime' },
+  { sel: '.hero-stats .stat:nth-child(2) .stat-label', en: 'KPI refresh — Excel batch → real-time', vi: 'Cập nhật KPI — Excel → thời gian thực' },
   { sel: '.hero-stats .stat:nth-child(3) .stat-value .was', en: '3 days', vi: '3 ngày' },
   { sel: '.hero-stats .stat:nth-child(3) .stat-value .unit', en: ' min', vi: ' phút' },
-  { sel: '.hero-stats .stat:nth-child(3) .stat-label', en: 'To build the monthly report', vi: 'Thời gian làm báo cáo tháng' },
+  { sel: '.hero-stats .stat:nth-child(3) .stat-label', en: 'Monthly report prep time', vi: 'Thời gian làm báo cáo hằng tháng' },
   { sel: '.hero-stats .stat:nth-child(4) .stat-label', en: 'Internal tools shipped', vi: 'Tool nội bộ đã xây' },
   { sel: '.hero-tech .label', en: 'Daily tech stack', vi: 'Tech stack hằng ngày' },
   // about
   { sel: '#about .section-kicker', en: 'About', vi: 'Giới thiệu' },
-  { sel: '#about h2', en: 'Numbers tell stories. I help people listen.', vi: 'Những con số biết kể chuyện. Tôi giúp mọi người lắng nghe.' },
+  { sel: '#about h2', en: 'I turn operating data into decisions teams can act on.', vi: 'Tôi biến dữ liệu vận hành thành quyết định có thể hành động.' },
   { sel: '#about .section-lede',
-    en: 'Ten years in quality and operations, one obsession: turning messy reality into numbers people can act on.',
-    vi: 'Mười năm trong quality và vận hành, một đam mê: biến thực tế ngổn ngang thành những con số hành động được.' },
+    en: '10+ years in quality, operations, and performance management — turning messy field execution into clear metrics and practical decisions.',
+    vi: 'Hơn 10 năm trong chất lượng, vận hành và quản lý hiệu suất — biến thực tế vận hành nhiều biến động thành chỉ số rõ ràng và quyết định có thể triển khai.' },
   { sel: '.loop-card .loop-label', en: 'The loop I own', vi: 'Vòng lặp tôi làm chủ' },
   // loop-card children: label(1) step(2) link(3) step(4) link(5) step(6) return(7) — use nth-child
-  { sel: '.loop-card .loop-step:nth-child(2) strong', en: 'Write the SOP', vi: 'Viết SOP' },
+  { sel: '.loop-card .loop-step:nth-child(2) strong', en: 'Manage the SOPs', vi: 'Quản lý hệ thống SOP' },
   { sel: '.loop-card .loop-step:nth-child(2) small', en: 'the standards stores run on', vi: 'chuẩn vận hành của cửa hàng' },
-  { sel: '.loop-card .loop-step:nth-child(4) strong', en: 'Dispatch the tasks', vi: 'Bắn task' },
+  { sel: '.loop-card .loop-step:nth-child(4) strong', en: 'Translate into tasks', vi: 'Chuyển thành công việc' },
   { sel: '.loop-card .loop-step:nth-child(4) small', en: 'daily work, assigned & tracked', vi: 'việc hằng ngày, giao & theo dõi' },
   { sel: '.loop-card .loop-step:nth-child(6) strong', en: 'Score the KPI', vi: 'Chấm KPI' },
-  { sel: '.loop-card .loop-step:nth-child(6) small', en: 'realtime, across 300+ stores', vi: 'realtime, trên 300+ cửa hàng' },
-  { sel: '.loop-card .loop-return', en: '↻ scores sharpen the next SOP', vi: '↻ điểm số mài sắc SOP kế tiếp' },
+  { sel: '.loop-card .loop-step:nth-child(6) small', en: 'real-time, across 300+ stores', vi: 'thời gian thực, trên 300+ cửa hàng' },
+  { sel: '.loop-card .loop-return', en: '↻ KPI results improve the next SOP', vi: '↻ Kết quả KPI giúp cải tiến chu kỳ SOP tiếp theo' },
   { sel: '.about-text p:nth-of-type(1)', html: true,
-    en: 'I run the performance system for Hasaki Vietnam\'s Cosmetics division, end to end: I <span class="hl">write the SOPs</span> that define how stores operate, turn them into daily task workflows, then measure the results with the <span class="hl">KPI framework I designed</span> — the same numbers that drive monthly performance reviews. One owner for the whole loop means the standards, the tasks, and the scores always agree with each other.',
-    vi: 'Tôi vận hành hệ thống performance của khối Cosmetics Hasaki Việt Nam, từ đầu tới cuối: tôi <span class="hl">viết SOP</span> định nghĩa cách cửa hàng vận hành, chuyển thành task workflow hằng ngày, rồi đo kết quả bằng <span class="hl">khung KPI tôi thiết kế</span> — chính những con số đứng sau đánh giá hiệu suất hằng tháng. Một người làm chủ cả vòng lặp nghĩa là chuẩn mực, công việc và điểm số luôn khớp nhau.' },
+    en: 'I run the performance system for Hasaki Vietnam\'s Cosmetics division, end to end: I <span class="hl">manage the SOP system</span> that defines how stores operate, turn it into daily task workflows, then measure the results with the <span class="hl">KPI framework I designed</span> — the same numbers that drive monthly performance reviews. One owner for the whole loop keeps the standards, the tasks, and the scores aligned.',
+    vi: 'Tại khối Cosmetics của Hasaki Việt Nam, tôi vận hành hệ thống đo lường hiệu suất từ đầu đến cuối: tôi <span class="hl">quản lý hệ thống SOP</span> xác định cách cửa hàng vận hành, chuyển thành workflow công việc hằng ngày, rồi đo mức độ thực thi bằng <span class="hl">khung KPI tôi thiết kế</span> — chính dữ liệu phục vụ đánh giá hiệu suất hằng tháng. Khi một người nắm toàn bộ vòng lặp, tiêu chuẩn, công việc và điểm số được giữ nhất quán với nhau.' },
   { sel: '.about-text p:nth-of-type(2)', html: true,
-    en: 'That system thinking comes from <span class="hl">six years of QA/QC</span> across manufacturing, retail and education, then project management at a game studio before moving into retail performance. My toolbox: Excel (deeply), Python pandas, and <span class="hl">Claude Code</span> for shipping internal tools in a single sitting.',
-    vi: 'Tư duy hệ thống đó đến từ <span class="hl">sáu năm QA/QC</span> qua sản xuất, bán lẻ và giáo dục, rồi quản lý dự án ở studio game trước khi chuyển sang retail performance. Bộ đồ nghề: Excel (chuyên sâu), Python pandas, và <span class="hl">Claude Code</span> để xây tool nội bộ trong một buổi.' },
+    en: 'That system thinking comes from <span class="hl">six years of QA/QC</span> across manufacturing, retail and education, then project management at a game studio before moving into retail performance. My toolbox: advanced Excel, Python pandas, and <span class="hl">Claude Code</span> for building practical internal tools quickly.',
+    vi: 'Tư duy hệ thống đó đến từ <span class="hl">sáu năm QA/QC</span> trong sản xuất, bán lẻ và giáo dục, rồi quản lý dự án ở một studio game trước khi chuyển sang mảng hiệu suất bán lẻ. Bộ công cụ hằng ngày: Excel nâng cao, Python pandas và <span class="hl">Claude Code</span> để xây nhanh các công cụ nội bộ phục vụ công việc.' },
   // section headers
   { sel: '#skills .section-kicker', en: 'Skills', vi: 'Kỹ năng' },
   { sel: '#skills h2', en: 'What I bring', vi: 'Tôi mang lại gì' },
@@ -520,7 +516,7 @@ const UI_I18N = [
   { sel: '#experience h2', en: "Where I've worked", vi: 'Nơi tôi đã làm việc' },
   { sel: '#experience .section-lede',
     en: "A decade across quality systems, project management and retail operations — now running the performance system for Hasaki's Cosmetics division.",
-    vi: 'Một thập kỷ qua hệ thống chất lượng, quản lý dự án và vận hành bán lẻ — hiện vận hành hệ thống performance cho khối Cosmetics của Hasaki.' },
+    vi: 'Một thập kỷ qua hệ thống chất lượng, quản lý dự án và vận hành bán lẻ — hiện phụ trách hệ thống hiệu suất cho khối Cosmetics của Hasaki.' },
   { sel: '#featured-project .section-kicker', en: 'Featured Project', vi: 'Dự án nổi bật' },
   { sel: '#featured-project h2', en: "The work I'm proudest of right now", vi: 'Sản phẩm tôi tự hào nhất hiện tại' },
   { sel: '#projects .section-kicker', en: 'Projects', vi: 'Dự án' },
@@ -532,12 +528,15 @@ const UI_I18N = [
   { sel: '#contact .section-kicker', en: 'Contact', vi: 'Liên hệ' },
   { sel: '#contact h2', en: "Let's talk.", vi: 'Cùng trò chuyện nhé.' },
   { sel: '#contact .wrap > p:not(.section-kicker):not(.email-plain)',
-    en: 'Always open to interesting analytics work, freelance projects, or just a coffee chat.',
-    vi: 'Luôn sẵn lòng với công việc phân tích thú vị, dự án freelance, hay đơn giản là một buổi cà phê.' },
+    en: 'Open to analytics work, operations-performance projects, internal-tool builds, freelance work, or a coffee chat.',
+    vi: 'Tôi luôn sẵn sàng trao đổi về công việc phân tích dữ liệu, dự án tối ưu hiệu suất vận hành, xây công cụ nội bộ, freelance hoặc đơn giản là một buổi cà phê.' },
   { sel: '#contact .contact-buttons .btn-primary', en: 'Email me', vi: 'Gửi email cho tôi' },
   { sel: '.email-plain', html: true,
     en: 'Or write to me directly at <a href="mailto:manhduc1703@gmail.com">manhduc1703@gmail.com</a>',
-    vi: 'Hoặc viết thẳng cho tôi qua <a href="mailto:manhduc1703@gmail.com">manhduc1703@gmail.com</a>' }
+    vi: 'Hoặc trao đổi trực tiếp với tôi qua email: <a href="mailto:manhduc1703@gmail.com">manhduc1703@gmail.com</a>' },
+  // footer links (separate from top-nav links above)
+  { sel: 'footer.site a[href="#about"]',   en: 'About',   vi: 'Giới thiệu' },
+  { sel: 'footer.site a[href="#contact"]', en: 'Contact', vi: 'Liên hệ' }
 ];
 
 function applyUI() {
