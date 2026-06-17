@@ -256,6 +256,50 @@ const projects = [
     links: { live: '', github: '', caseStudy: '' }
   },
   {
+    title: { en: 'New Store Opening Workflow', vi: 'Quy Trình Khai Trương Chi Nhánh Mới' },
+    summary: {
+      en: 'Standardized end-to-end workflow for opening a new retail branch — from site readiness and fit-out to a pre-opening checklist and grand-opening sign-off. Each phase breaks into assigned, tracked tasks, so every store opens to the same standard.',
+      vi: 'Quy trình chuẩn hóa trọn gói để khai trương chi nhánh mới — từ chuẩn bị mặt bằng, set-up, checklist trước khai trương đến xác nhận mở cửa. Mỗi giai đoạn chia thành các đầu việc có người phụ trách và theo dõi, để mọi cửa hàng mở ra cùng một chuẩn.'
+    },
+    image: 'projects/store-opening.svg',
+    initial: 'O',
+    tags: ['Workflow', 'SOP', 'Retail ops', 'Task tracking'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: { en: 'Store Closure & Liquidation Workflow', vi: 'Quy Trình Thanh Lý Mặt Bằng Kinh Doanh' },
+    summary: {
+      en: 'Controlled, auditable process for closing and liquidating a retail premises — inventory count, asset liquidation, handover, and final close-out — protecting against loss and leaving a clean paper trail.',
+      vi: 'Quy trình đóng và thanh lý mặt bằng kinh doanh một cách kiểm soát, có thể truy vết — kiểm kê tồn kho, thanh lý tài sản, bàn giao và chốt đóng cửa — chống thất thoát và để lại hồ sơ rõ ràng.'
+    },
+    image: 'projects/store-closure.svg',
+    initial: 'L',
+    tags: ['Workflow', 'SOP', 'Asset control', 'Compliance'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: { en: 'Admin Procurement Workflow', vi: 'Quy Trình Mua Hàng Hành Chánh' },
+    summary: {
+      en: 'Request-to-receipt workflow for administrative and operational purchasing — request, approval routing, purchase, and goods-receipt logging — so admin spend stays approved, tracked, and reconcilable.',
+      vi: 'Quy trình mua hàng phục vụ hành chánh/vận hành từ đề xuất đến nhận hàng — tạo yêu cầu, định tuyến phê duyệt, mua và ghi nhận nhập hàng — để chi phí hành chánh luôn được duyệt, theo dõi và đối soát được.'
+    },
+    image: 'projects/admin-procurement.svg',
+    initial: 'P',
+    tags: ['Workflow', 'Procurement', 'Approval flow'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: { en: 'Vendor Evaluation Template & Skill', vi: 'Template & Skill Đánh Giá Nhà Cung Cấp' },
+    summary: {
+      en: 'Reusable template plus an AI skill for scoring suppliers from multiple quotes — weighted criteria (price, quality, lead time, terms), automatic scoring, and a recommended winner. Turns ad-hoc vendor picks into a consistent, defensible decision.',
+      vi: 'Template tái sử dụng kèm một skill AI để chấm điểm nhà cung cấp từ nhiều báo giá — tiêu chí có trọng số (giá, chất lượng, thời gian giao, điều khoản), tự động tính điểm và đề xuất NCC trúng. Biến việc chọn nhà cung cấp cảm tính thành quyết định nhất quán, có căn cứ.'
+    },
+    image: 'projects/vendor-evaluation.svg',
+    initial: 'E',
+    tags: ['Template', 'AI skill', 'Vendor scoring', 'Decision support'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
     title: 'Vivi Soul Landing Page',
     summary: {
       en: 'Dark cinematic landing page for an AI music YouTube channel. Data-driven track cards rendered via JavaScript, fully responsive, deployed to GitHub Pages.',
@@ -389,7 +433,7 @@ function renderFeaturedProject() {
   if (!container) return;
   const p = projects[0];
   const thumb = p.image
-    ? `<img src="${p.image}" alt="${p.title}" loading="lazy">`
+    ? `<img src="${p.image}" alt="${t(p.title)}" loading="lazy">`
     : p.initial;
 
   // Render metrics row if the project has one
@@ -407,7 +451,7 @@ function renderFeaturedProject() {
   container.innerHTML = `
     <div class="featured-project-thumb">${thumb}</div>
     <div class="featured-project-content">
-      <h3>${p.title}</h3>
+      <h3>${t(p.title)}</h3>
       <p>${t(p.summary)}</p>
       ${metricsHTML}
       <div class="tags">${p.tags.map(tagHTML).join('')}</div>
@@ -421,13 +465,13 @@ function renderProjects() {
   if (!grid) return;
   grid.innerHTML = projects.slice(1).map(p => {
     const thumb = p.image
-      ? `<img src="${p.image}" alt="${p.title}" loading="lazy">`
+      ? `<img src="${p.image}" alt="${t(p.title)}" loading="lazy">`
       : p.initial;
     return `
       <div class="project-card">
         <div class="project-thumb">${thumb}</div>
         <div class="project-body">
-          <h3>${p.title}</h3>
+          <h3>${t(p.title)}</h3>
           <p>${t(p.summary)}</p>
           <div class="tags">${p.tags.map(tagHTML).join('')}</div>
           ${renderProjectActions(p) ? `<div class="actions">${renderProjectActions(p)}</div>` : ''}

@@ -55,6 +55,19 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Thêm 4 workflow vận hành vào mục Projects
+**Agent/Người thực hiện:** Claude Code (Denis yêu cầu: bổ sung các workflow đã xây thành công)
+**Files thay đổi:** script.js, projects/store-opening.svg + store-closure.svg + admin-procurement.svg + vendor-evaluation.svg (mới), cv.pdf (in lại)
+**Nội dung:**
+- Thêm 4 project card (đặt trước Vivi Soul để gom nhóm công việc vận hành, project cá nhân ở cuối):
+  1. **New Store Opening Workflow** — Quy trình khai trương chi nhánh mới
+  2. **Store Closure & Liquidation Workflow** — Quy trình thanh lý mặt bằng kinh doanh
+  3. **Admin Procurement Workflow** — Quy trình mua hàng hành chánh
+  4. **Vendor Evaluation Template & Skill** — Template & skill mẫu đánh giá nhà cung cấp
+- Mỗi card có `summary {en, vi}`, tags, và 1 SVG thumbnail minh họa cùng phong cách bộ SVG cũ (viewBox 640×400, header bar + dot màu, dùng palette brand; 3 cái đầu là stepper 4 bước, vendor-evaluation là bảng so sánh có cột NCC trúng tô xanh + huy hiệu sao). Không có live/github (đây là quy trình nội bộ, không phải web app).
+- **`title` giờ hỗ trợ song ngữ:** các project mới dùng `title: {en, vi}`. Renderer (`renderProjects`, `renderFeaturedProject`) đổi `${p.title}` → `${t(p.title)}` ở cả `<h3>` lẫn `alt` ảnh — chuỗi thường đi qua `t()` không đổi nên các card cũ (title tiếng Anh) giữ nguyên, card mới dịch EN/VI.
+**Lý do / ghi chú:** Verify trên preview: 8 card trong grid (slice(1)), 4 SVG mới load OK (naturalWidth 240), title EN↔VI dịch đúng, console sạch. cv.pdf in lại đã có đủ 4 card. (Screenshot timeout do hero 3D WebGL — verify bằng DOM như thường lệ.)
+
 ## [2026-06-15] — Đồng bộ lại cv.pdf với portfolio + fix 2 lỗi khi in CV
 **Agent/Người thực hiện:** Claude Code (Denis: "check bản CV down từ portfolio với trang portfolio xem có lệch không")
 **Files thay đổi:** style.css, scroll-fx.js, cv.pdf (in lại)
