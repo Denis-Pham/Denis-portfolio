@@ -13,7 +13,12 @@
 // current language. Plain strings (tool names, dates, titles) pass through.
 // Switching language stores the choice and reloads — scroll-fx splits
 // headings into spans at load, so a clean reload beats live re-rendering.
-const LANG = localStorage.getItem('lang') === 'vi' ? 'vi' : 'en';
+// ?lang=vi|en wins (used by the headless-Chrome CV export to print each language);
+// otherwise fall back to the saved choice, default English.
+const urlLang = new URLSearchParams(location.search).get('lang');
+const LANG = (urlLang === 'en' || urlLang === 'vi')
+  ? urlLang
+  : (localStorage.getItem('lang') === 'vi' ? 'vi' : 'en');
 document.documentElement.lang = LANG;
 const t = v => (v && typeof v === 'object' && !Array.isArray(v)) ? v[LANG] : v;
 
@@ -523,6 +528,8 @@ const UI_I18N = [
     vi: 'Tôi thiết kế cách <strong>300+ cửa hàng</strong> vận hành — rồi tự xây hệ thống đo lường. <strong>SOP → công việc hằng ngày → chấm điểm KPI</strong>: một vòng lặp, một người làm chủ.' },
   { sel: '.hero .cta .btn-primary',   en: 'Get in touch →', vi: 'Liên hệ ngay →' },
   { sel: '.hero .cta .btn-secondary', en: 'Download CV (PDF)', vi: 'Tải CV (PDF)' },
+  // CV download points to the language-matched PDF (EN ships as cv.pdf; VI swaps to cv-vi.pdf)
+  { sel: '.hero .cta .btn-secondary', attr: 'href', en: 'cv.pdf', vi: 'cv-vi.pdf' },
   { sel: '.hero-meta .meta-item:nth-child(1)', html: true, en: '📍 <strong>Ho Chi Minh City</strong>', vi: '📍 <strong>TP. Hồ Chí Minh</strong>' },
   { sel: '.hero-meta .meta-item:nth-child(3)', html: true,
     en: '⏱ <strong>10+ years</strong> in quality, operations &amp; performance',

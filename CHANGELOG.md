@@ -55,6 +55,19 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — CV tải về theo ngôn ngữ: EN → cv.pdf, VI → cv-vi.pdf
+**Agent/Người thực hiện:** Claude Code (Denis: "chọn tiếng anh thì down tiếng anh, chọn tiếng việt thì down bản tiếng việt")
+**Files thay đổi:** script.js, cv-vi.pdf (mới)
+**Nội dung:**
+- **`?lang=vi|en` ưu tiên hơn localStorage** khi khởi tạo `LANG` (script.js) — để lệnh in headless ép được từng ngôn ngữ. Không có param thì vẫn theo localStorage, mặc định EN.
+- **Nút Download CV trỏ file theo ngôn ngữ:** thêm 1 entry UI_I18N `{ sel: '.hero .cta .btn-secondary', attr: 'href', en: 'cv.pdf', vi: 'cv-vi.pdf' }`. EN ship sẵn href=cv.pdf trong HTML; VI thì applyUI đổi sang cv-vi.pdf.
+- **Tạo cv-vi.pdf** — bản CV tiếng Việt hoàn chỉnh (tên "Phạm Mạnh Đức", toàn bộ section + tiêu đề mục dịch sang VI; tiêu đề chức danh trong Experience + tên project tiếng Anh giữ nguyên như trên web).
+**Lệnh in CV (cập nhật — giờ có 2 bản):**
+- EN: `... --print-to-pdf="cv.pdf" ... "http://localhost:5173/?print=1"`
+- VI: `... --print-to-pdf="cv-vi.pdf" ... "http://localhost:5173/?print=1&lang=vi"`
+- Mỗi lần đổi nội dung portfolio phải in lại **CẢ HAI** file. Dùng profile tạm trống + `Start-Sleep 18` (Drive sync) như cũ.
+**Lý do / ghi chú:** Verify preview: EN → nút "Download CV (PDF)" href=cv.pdf; VI → "Tải CV (PDF)" href=cv-vi.pdf; console sạch. Đọc lại cv-vi.pdf 7 trang: nền trắng, 300+ đúng, tiếng Việt đầy đủ.
+
 ## [2026-06-15] — Dịch tên theo ngôn ngữ: EN "Denis Pham" ↔ VI "Phạm Mạnh Đức"
 **Agent/Người thực hiện:** Claude Code (Denis: "chuyển qua tiếng việt mà tên Denis Pham không chuyển thành Phạm Mạnh Đức")
 **Files thay đổi:** index.html, script.js
