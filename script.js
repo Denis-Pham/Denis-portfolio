@@ -512,6 +512,10 @@ const UI_I18N = [
   { sel: '.dot-nav a[href="#projects"]',   attr: 'data-label', en: 'Projects',   vi: 'Dự án' },
   { sel: '.dot-nav a[href="#education"]',  attr: 'data-label', en: 'Education',  vi: 'Học vấn' },
   { sel: '.dot-nav a[href="#contact"]',    attr: 'data-label', en: 'Contact',    vi: 'Liên hệ' },
+  // name — brand name in EN, real Vietnamese name in VI (logo, hero, footer)
+  { sel: '.logo-name',   en: 'Denis Pham', vi: 'Phạm Mạnh Đức' },
+  { sel: '.hero h1',     en: 'Denis Pham', vi: 'Phạm Mạnh Đức' },
+  { sel: '.footer-name', en: 'Denis Pham', vi: 'Phạm Mạnh Đức' },
   // hero
   { sel: '.hero .eyebrow', en: 'Open to new opportunities', vi: 'Sẵn sàng cho cơ hội mới' },
   { sel: '.hero .tagline', html: true,

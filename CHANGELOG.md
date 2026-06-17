@@ -55,6 +55,15 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Dịch tên theo ngôn ngữ: EN "Denis Pham" ↔ VI "Phạm Mạnh Đức"
+**Agent/Người thực hiện:** Claude Code (Denis: "chuyển qua tiếng việt mà tên Denis Pham không chuyển thành Phạm Mạnh Đức")
+**Files thay đổi:** index.html, script.js
+**Nội dung:**
+- Tên hiện ở 3 chỗ nhìn thấy: logo header, hero `<h1>`, footer. Trước đây cứng "Denis Pham" cả 2 ngôn ngữ.
+- Logo và footer có span con (`.dot`, `.logo-role`, `#year`) nên KHÔNG set textContent thẳng được → bọc tên vào span riêng: `.logo-name` và `.footer-name`. Hero h1 là text thuần nên dùng selector `.hero h1` trực tiếp.
+- Thêm 3 entry vào `UI_I18N`: `.logo-name`, `.hero h1`, `.footer-name` → EN "Denis Pham", VI "Phạm Mạnh Đức".
+**Lý do / ghi chú:** Verify preview: VI cả 3 chỗ thành "Phạm Mạnh Đức" (dấu chấm + "Operations Excellence" còn nguyên), EN vẫn "Denis Pham", console sạch. cv.pdf KHÔNG cần in lại — CV xuất bản EN nên giữ "Denis Pham", việc bọc span không đổi text hiển thị.
+
 ## [2026-06-15] — Thêm 4 workflow vận hành vào mục Projects
 **Agent/Người thực hiện:** Claude Code (Denis yêu cầu: bổ sung các workflow đã xây thành công)
 **Files thay đổi:** script.js, projects/store-opening.svg + store-closure.svg + admin-procurement.svg + vendor-evaluation.svg (mới), cv.pdf (in lại)
