@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Thêm project Hermes (agent AI tự host Docker), đặt đầu nhóm Projects
+**Agent/Người thực hiện:** Claude Code (Denis: "AI agent Hermes đang xây thành trợ lý AI… tự xây cài riêng trên Docker")
+**Files thay đổi:** script.js, projects/hermes-agent.svg (mới), cv.pdf + cv-vi.pdf (in lại)
+**Nội dung:**
+- Thêm card **"Hermes — Personal AI Agent"** làm card ĐẦU TIÊN sau Featured (projects[1]) để nổi chất AI-forward.
+- Mô tả EN/VI: agent AI Denis tự xây & tự host trên Docker, làm trợ lý cá nhân (review/soạn nội dung, sắp xếp việc, tác vụ vận hành), đang mở rộng. Có ghi proof point thật: chính Hermes đã chạy bản audit câu chữ cho trang này (đúng theo entry 2026-06-13).
+- Tags: AI agent · Docker · Self-hosted · Claude. Không có live/github (self-host nội bộ).
+- SVG `hermes-agent.svg`: hub agent trung tâm (spark tím) nối tới 4 node năng lực (review/tasks/data/chat) + stack "container layers" gợi ý self-host Docker.
+**Lý do / ghi chú:** Verify preview EN: grid 9 card, Hermes đứng đầu, SVG fetch/parse OK (preview tab nền throttle nên naturalWidth=0 — bình thường, headless print render đúng). Đọc lại cv.pdf: Hermes là project đầu, nền trắng. Đã in lại CẢ HAI CV. **Cần Denis xác nhận:** model (đang để tag "Claude" theo hệ sinh thái của anh) và mô tả năng lực cho khớp thực tế Hermes.
+
 ## [2026-06-15] — CV tải về theo ngôn ngữ: EN → cv.pdf, VI → cv-vi.pdf
 **Agent/Người thực hiện:** Claude Code (Denis: "chọn tiếng anh thì down tiếng anh, chọn tiếng việt thì down bản tiếng việt")
 **Files thay đổi:** script.js, cv-vi.pdf (mới)

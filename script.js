@@ -228,6 +228,17 @@ const projects = [
     links: { live: '', github: '', caseStudy: '' }
   },
   {
+    title: { en: 'Hermes — Personal AI Agent', vi: 'Hermes — Agent AI Cá Nhân' },
+    summary: {
+      en: 'A self-hosted AI agent I built and run on Docker — my own personal assistant. It helps review and draft content, organize work, and handle day-to-day operations tasks, and is being actively expanded. (Hermes ran the copy review behind this very site.)',
+      vi: 'Một agent AI tôi tự xây và tự host trên Docker — trợ lý cá nhân của riêng tôi. Nó hỗ trợ review & soạn nội dung, sắp xếp công việc và xử lý các tác vụ vận hành hằng ngày, và đang được mở rộng tích cực. (Chính Hermes đã rà soát câu chữ cho trang này.)'
+    },
+    image: 'projects/hermes-agent.svg',
+    initial: 'H',
+    tags: ['AI agent', 'Docker', 'Self-hosted', 'Claude'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
     title: 'Combined Sales × KPI Dashboard',
     summary: {
       en: 'Joins two separate dashboards (Sales + KPI) to surface a key insight: which stores have low sales but suspiciously high KPI — a flag for performance reviews.',
