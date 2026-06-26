@@ -239,6 +239,28 @@ const projects = [
     links: { live: '', github: '', caseStudy: '' }
   },
   {
+    title: { en: 'Claude Code Telegram Bot', vi: 'Bot Telegram điều khiển Claude Code' },
+    summary: {
+      en: 'A Telegram bot that drives Claude Code headless on my machine — I send a command from my phone, it reads/edits files and runs tasks, then replies with the result. Locked down with a user allowlist and an optional sandbox so only I can use it.',
+      vi: 'Bot Telegram điều khiển Claude Code chạy headless trên máy — tôi nhắn lệnh từ điện thoại, nó đọc/sửa file và chạy tác vụ rồi trả kết quả về. Khóa bằng whitelist người dùng và chế độ sandbox tùy chọn để chỉ mình tôi dùng được.'
+    },
+    image: 'projects/telegram-claude-bot.svg',
+    initial: 'T',
+    tags: ['Python', 'Telegram Bot', 'Claude Code', 'Automation'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: { en: 'Lark Task Manager', vi: 'Lark Task Manager' },
+    summary: {
+      en: 'A Python toolkit over Lark (Feishu) Bitable that builds and maintains a multi-table planning system — objectives, action plans, schedules and Gantt — with linked records and deadline formulas. Being grown into a Claude-driven agent that manages tasks for me.',
+      vi: 'Bộ công cụ Python trên Lark (Feishu) Bitable, dựng và duy trì hệ thống lập kế hoạch đa bảng — mục tiêu, kế hoạch hành động, lịch & Gantt — có liên kết bản ghi và công thức deadline. Đang phát triển thành agent Claude tự quản lý task cho tôi.'
+    },
+    image: 'projects/lark-task-manager.svg',
+    initial: 'K',
+    tags: ['Python', 'Lark / Bitable API', 'Automation', 'AI agent'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
     title: 'Combined Sales × KPI Dashboard',
     summary: {
       en: 'Joins two separate dashboards (Sales + KPI) to surface a key insight: which stores have low sales but suspiciously high KPI — a flag for performance reviews.',

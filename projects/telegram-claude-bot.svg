@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="640" height="400" fill="#fafaf9"/>
+  <rect width="640" height="48" fill="#ffffff"/>
+  <line x1="0" y1="48" x2="640" y2="48" stroke="#e6e4e0" stroke-width="2"/>
+  <circle cx="28" cy="24" r="10" fill="#2563eb"/>
+  <rect x="48" y="17" width="220" height="14" rx="4" fill="#1c1b1a" opacity="0.85"/>
+
+  <!-- phone with chat (left) -->
+  <rect x="70" y="92" width="150" height="248" rx="18" fill="#ffffff" stroke="#d6d4d0" stroke-width="2"/>
+  <rect x="82" y="108" width="126" height="216" rx="8" fill="#f5f8ff"/>
+  <!-- incoming bubble -->
+  <rect x="94" y="124" width="84" height="30" rx="9" fill="#e6e4e0"/>
+  <!-- outgoing (command) bubbles, telegram blue -->
+  <rect x="112" y="166" width="84" height="30" rx="9" fill="#2563eb"/>
+  <rect x="120" y="208" width="76" height="26" rx="9" fill="#2563eb" opacity="0.85"/>
+  <rect x="94" y="246" width="70" height="26" rx="9" fill="#e6e4e0"/>
+  <rect x="94" y="284" width="92" height="26" rx="9" fill="#dbeafe"/>
+
+  <!-- arrow phone → machine -->
+  <g stroke="#7c3aed" stroke-width="3" fill="none">
+    <line x1="232" y1="216" x2="288" y2="216" stroke-dasharray="7 6"/>
+    <path d="M280 208 l10 8 l-10 8"/>
+  </g>
+
+  <!-- terminal = Claude Code headless on the machine (right) -->
+  <rect x="306" y="120" width="300" height="192" rx="12" fill="#1f1e1c" stroke="#36342f"/>
+  <rect x="306" y="120" width="300" height="30" rx="12" fill="#2c2b28"/>
+  <circle cx="326" cy="135" r="5" fill="#ff5f57"/><circle cx="344" cy="135" r="5" fill="#febc2e"/><circle cx="362" cy="135" r="5" fill="#28c840"/>
+  <g font-family="Consolas, monospace" font-size="13">
+    <text x="322" y="180" fill="#7c3aed">$ claude</text>
+    <text x="322" y="204" fill="#9aa0a6">› reading files…</text>
+    <text x="322" y="228" fill="#2dd4bf">✓ edited report.py</text>
+    <text x="322" y="252" fill="#9aa0a6">› running task…</text>
+    <text x="322" y="276" fill="#60a5fa">✓ done — sent to phone</text>
+  </g>
+  <rect x="322" y="288" width="10" height="16" fill="#ededeb" opacity="0.85"/>
+</svg>

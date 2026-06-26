@@ -55,6 +55,15 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Thêm 2 project: Claude Telegram Bot + Lark Task Manager
+**Agent/Người thực hiện:** Claude Code (Denis: "bổ sung thêm các project tôi đã làm")
+**Files thay đổi:** script.js, projects/telegram-claude-bot.svg + lark-task-manager.svg (mới), cv.pdf + cv-vi.pdf (in lại)
+**Nội dung:** Thêm 2 card vào cụm AI/automation (ngay sau Hermes, trước Combined Sales×KPI). Nguồn từ chính workspace của Denis (`claude-telegram-bot/`, `lark-task-manager/`):
+  - **Claude Code Telegram Bot** — bot Telegram điều khiển Claude Code headless trên máy (whitelist user + sandbox). Tags: Python · Telegram Bot · Claude Code · Automation. SVG: điện thoại chat → terminal Claude Code làm việc.
+  - **Lark Task Manager** — toolkit Python trên Lark Bitable, dựng hệ thống lập kế hoạch đa bảng (objectives/action plan/Gantt, liên kết bản ghi, công thức deadline), đang phát triển thành agent Claude. Tags: Python · Lark/Bitable API · Automation · AI agent. SVG: 2 bảng Bitable liên kết + dải Gantt.
+**Cụm Projects giờ (11 card grid + 1 featured):** Hermes → Claude Telegram Bot → Lark Task Manager → Combined Sales×KPI → Bills → PPTX Redesign → 4 workflow → Vivi Soul.
+**Lý do / ghi chú:** Verify preview: 11 card đúng thứ tự, 2 SVG parse OK, console sạch. In lại CẢ HAI CV. **Chưa thêm `yuvomi`** — maintainer GitHub là `ulsklyc`, chưa rõ là project của Denis hay anh chỉ self-host/đóng góp → chờ Denis xác nhận. Nếu Denis có project khác (vd english-levelup) ở ngoài workspace này thì gửi chi tiết.
+
 ## [2026-06-15] — Thêm project Hermes (agent AI tự host Docker), đặt đầu nhóm Projects
 **Agent/Người thực hiện:** Claude Code (Denis: "AI agent Hermes đang xây thành trợ lý AI… tự xây cài riêng trên Docker")
 **Files thay đổi:** script.js, projects/hermes-agent.svg (mới), cv.pdf + cv-vi.pdf (in lại)
