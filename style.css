@@ -8,6 +8,13 @@
 
 .skill-card:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+/* compact sub-item list inside a project card (used by the consolidated
+   "Operations Workflows" card to list several workflows in one place) */
+.project-items { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.project-items li { position: relative; padding-left: 18px; font-size: 14px; line-height: 1.45; color: var(--muted); }
+.project-items li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 6px; height: 6px; border-radius: 999px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); }
+.project-items li strong { color: var(--fg); font-weight: 600; }
+
 /* Scroll choreography support (scroll-fx.js)
    — the old load-once section fadeIn was replaced by per-element
    GSAP ScrollTrigger reveals. */

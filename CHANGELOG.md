@@ -55,6 +55,17 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Gộp 4 workflow vận hành thành 1 card "Operations Workflows"
+**Agent/Người thực hiện:** Claude Code (Denis: "gộp lại đi")
+**Files thay đổi:** script.js, style.css, projects/operations-workflows.svg (mới); XÓA store-opening/store-closure/admin-procurement/vendor-evaluation.svg; cv.pdf + cv-vi.pdf (in lại)
+**Nội dung:**
+- Thay 4 card workflow riêng (Khai trương / Thanh lý / Mua hàng HC / Đánh giá NCC) bằng **1 card "Operations Workflows"** (VI: "Bộ Quy trình Vận hành") — câu intro ngắn + danh sách 4 quy trình con bên trong.
+- **Cơ chế mới `items`:** project object có thể kèm `items: [{en,vi}]`; `renderProjects` render thành `<ul class="project-items">` (chèn HTML nên `<strong>` in đậm tên quy trình). CSS `.project-items` trong style.css: list gọn, chấm gradient accent, tên đậm màu fg.
+- SVG tổng `operations-workflows.svg`: lưới 2×2 mini-icon (cửa hàng/awning, building+check, cart, bars+sao) màu amber/teal/blue/violet.
+- Xóa 4 SVG cũ (giờ thành rác sau khi gộp) — surgical cleanup.
+**Lưới Projects giờ gọn còn 9 card grid + 1 featured:** Task Workflow System → Hermes → Telegram Bot → Lark → Combined Sales×KPI → Bills → PPTX → **Operations Workflows** → Vivi Soul.
+**Lý do / ghi chú:** Denis thấy 13 dự án quá dài cho cú quét 10-15s của HR. Verify preview: 9 card, Operations Workflows liệt kê đủ 4 item (EN), SVG parse OK, console sạch. In lại CẢ HAI CV (danh sách item hiển thị trong CV vì print không ẩn `.project-items`).
+
 ## [2026-06-15] — Thêm project flagship: Company-Wide Task Workflow System
 **Agent/Người thực hiện:** Claude Code (Denis: "project kiểm soát task workflow toàn công ty thì sao không đưa vào")
 **Files thay đổi:** script.js, projects/task-workflow-system.svg (mới), cv.pdf + cv-vi.pdf (in lại)

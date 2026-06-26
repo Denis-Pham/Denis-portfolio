@@ -305,47 +305,24 @@ const projects = [
     links: { live: '', github: '', caseStudy: '' }
   },
   {
-    title: { en: 'New Store Opening Workflow', vi: 'Quy Trình Khai Trương Chi Nhánh Mới' },
+    title: { en: 'Operations Workflows', vi: 'Bộ Quy trình Vận hành' },
     summary: {
-      en: 'Standardized end-to-end workflow for opening a new retail branch — from site readiness and fit-out to a pre-opening checklist and grand-opening sign-off. Each phase breaks into assigned, tracked tasks, so every store opens to the same standard.',
-      vi: 'Quy trình chuẩn hóa trọn gói để khai trương chi nhánh mới — từ chuẩn bị mặt bằng, set-up, checklist trước khai trương đến xác nhận mở cửa. Mỗi giai đoạn chia thành các đầu việc có người phụ trách và theo dõi, để mọi cửa hàng mở ra cùng một chuẩn.'
+      en: 'Standardized, auditable workflows I built for recurring retail-operations events — each breaks into assigned, tracked tasks so every site runs to the same standard:',
+      vi: 'Bộ quy trình chuẩn hóa, có thể truy vết tôi xây cho các sự kiện vận hành bán lẻ lặp lại — mỗi quy trình chia thành đầu việc có người phụ trách và theo dõi, để mọi nơi chạy cùng một chuẩn:'
     },
-    image: 'projects/store-opening.svg',
-    initial: 'O',
-    tags: ['Workflow', 'SOP', 'Retail ops', 'Task tracking'],
-    links: { live: '', github: '', caseStudy: '' }
-  },
-  {
-    title: { en: 'Store Closure & Liquidation Workflow', vi: 'Quy Trình Thanh Lý Mặt Bằng Kinh Doanh' },
-    summary: {
-      en: 'Controlled, auditable process for closing and liquidating a retail premises — inventory count, asset liquidation, handover, and final close-out — protecting against loss and leaving a clean paper trail.',
-      vi: 'Quy trình đóng và thanh lý mặt bằng kinh doanh một cách kiểm soát, có thể truy vết — kiểm kê tồn kho, thanh lý tài sản, bàn giao và chốt đóng cửa — chống thất thoát và để lại hồ sơ rõ ràng.'
-    },
-    image: 'projects/store-closure.svg',
-    initial: 'L',
-    tags: ['Workflow', 'SOP', 'Asset control', 'Compliance'],
-    links: { live: '', github: '', caseStudy: '' }
-  },
-  {
-    title: { en: 'Admin Procurement Workflow', vi: 'Quy Trình Mua Hàng Hành Chánh' },
-    summary: {
-      en: 'Request-to-receipt workflow for administrative and operational purchasing — request, approval routing, purchase, and goods-receipt logging — so admin spend stays approved, tracked, and reconcilable.',
-      vi: 'Quy trình mua hàng phục vụ hành chánh/vận hành từ đề xuất đến nhận hàng — tạo yêu cầu, định tuyến phê duyệt, mua và ghi nhận nhập hàng — để chi phí hành chánh luôn được duyệt, theo dõi và đối soát được.'
-    },
-    image: 'projects/admin-procurement.svg',
-    initial: 'P',
-    tags: ['Workflow', 'Procurement', 'Approval flow'],
-    links: { live: '', github: '', caseStudy: '' }
-  },
-  {
-    title: { en: 'Vendor Evaluation Template & Skill', vi: 'Template & Skill Đánh Giá Nhà Cung Cấp' },
-    summary: {
-      en: 'Reusable template plus an AI skill for scoring suppliers from multiple quotes — weighted criteria (price, quality, lead time, terms), automatic scoring, and a recommended winner. Turns ad-hoc vendor picks into a consistent, defensible decision.',
-      vi: 'Template tái sử dụng kèm một skill AI để chấm điểm nhà cung cấp từ nhiều báo giá — tiêu chí có trọng số (giá, chất lượng, thời gian giao, điều khoản), tự động tính điểm và đề xuất NCC trúng. Biến việc chọn nhà cung cấp cảm tính thành quyết định nhất quán, có căn cứ.'
-    },
-    image: 'projects/vendor-evaluation.svg',
-    initial: 'E',
-    tags: ['Template', 'AI skill', 'Vendor scoring', 'Decision support'],
+    items: [
+      { en: '<strong>New store opening</strong> — site readiness, fit-out, pre-opening checklist, grand-opening sign-off',
+        vi: '<strong>Khai trương chi nhánh</strong> — chuẩn bị mặt bằng, set-up, checklist trước khai trương, xác nhận mở cửa' },
+      { en: '<strong>Store closure &amp; liquidation</strong> — inventory count, asset liquidation, handover, close-out',
+        vi: '<strong>Thanh lý mặt bằng</strong> — kiểm kê tồn kho, thanh lý tài sản, bàn giao, chốt đóng cửa' },
+      { en: '<strong>Admin procurement</strong> — request → approval → purchase → goods-receipt logging',
+        vi: '<strong>Mua hàng hành chánh</strong> — đề xuất → phê duyệt → mua → ghi nhận nhập hàng' },
+      { en: '<strong>Vendor evaluation</strong> — weighted scoring of suppliers from multiple quotes (template + AI skill)',
+        vi: '<strong>Đánh giá nhà cung cấp</strong> — chấm điểm NCC có trọng số từ nhiều báo giá (template + skill AI)' }
+    ],
+    image: 'projects/operations-workflows.svg',
+    initial: 'W',
+    tags: ['Workflow', 'SOP', 'Compliance', 'Operations'],
     links: { live: '', github: '', caseStudy: '' }
   },
   {
@@ -522,6 +499,7 @@ function renderProjects() {
         <div class="project-body">
           <h3>${t(p.title)}</h3>
           <p>${t(p.summary)}</p>
+          ${p.items ? `<ul class="project-items">${p.items.map(it => `<li>${t(it)}</li>`).join('')}</ul>` : ''}
           <div class="tags">${p.tags.map(tagHTML).join('')}</div>
           ${renderProjectActions(p) ? `<div class="actions">${renderProjectActions(p)}</div>` : ''}
         </div>
