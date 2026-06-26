@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Thêm project flagship: Company-Wide Task Workflow System
+**Agent/Người thực hiện:** Claude Code (Denis: "project kiểm soát task workflow toàn công ty thì sao không đưa vào")
+**Files thay đổi:** script.js, projects/task-workflow-system.svg (mới), cv.pdf + cv-vi.pdf (in lại)
+**Nội dung:**
+- Thêm card **"Company-Wide Task Workflow System"** làm card ĐẦU lưới (projects[1], ngay sau Featured Hasaki KPI) — đây là lớp "task" giữa SOP → KPI, một trong các việc lớn nhất của Denis, trước đây chỉ nằm trong Experience/Featured chứ chưa có card riêng.
+- Mô tả EN/VI: biến SOP thành workflow công việc hằng ngày, giao & theo dõi hoàn thành/tuân thủ trên 300+ cửa hàng, dữ liệu chảy thẳng vào chấm điểm KPI. Tags: Workflow system · Task tracking · 300+ stores · Compliance.
+- SVG `task-workflow-system.svg`: bảng giám sát tuân thủ — nhiều dòng cửa hàng, progress bar mức hoàn thành task + chấm trạng thái xanh/cam/đỏ.
+**Cụm Projects giờ:** 1 Featured + 12 card grid (Task Workflow → Hermes → Telegram → Lark → Combined Sales×KPI → Bills → PPTX → 4 workflow → Vivi Soul).
+**Lý do / ghi chú:** Verify preview: 12 card, Task Workflow đứng đầu, SVG OK, console sạch. In lại CẢ HAI CV. **Số liệu giữ ở mức 300+ stores (đã có căn cứ); chờ Denis xác nhận scope "toàn công ty" có rộng hơn 300+ store Cosmetics không, và có metric ấn tượng nào (vd % tuân thủ, số task/ngày) để gắn thêm.** Lưới đang dài (13 dự án) — đã gợi ý Denis cân nhắc gộp 4 workflow vận hành thành 1 card.
+
 ## [2026-06-15] — Thêm 2 project: Claude Telegram Bot + Lark Task Manager
 **Agent/Người thực hiện:** Claude Code (Denis: "bổ sung thêm các project tôi đã làm")
 **Files thay đổi:** script.js, projects/telegram-claude-bot.svg + lark-task-manager.svg (mới), cv.pdf + cv-vi.pdf (in lại)

@@ -228,6 +228,17 @@ const projects = [
     links: { live: '', github: '', caseStudy: '' }
   },
   {
+    title: { en: 'Company-Wide Task Workflow System', vi: 'Hệ thống Kiểm soát Task Workflow Toàn công ty' },
+    summary: {
+      en: 'The execution layer of the operating loop I run — it turns SOPs into daily task workflows, assigns them to store teams, and tracks completion and compliance across 300+ stores. Head office sees, in one place, whether every store is doing what the standards require — and the results feed straight into KPI scoring.',
+      vi: 'Lớp thực thi của vòng lặp vận hành tôi phụ trách — biến SOP thành workflow công việc hằng ngày, giao cho đội cửa hàng và theo dõi mức độ hoàn thành & tuân thủ trên 300+ cửa hàng. Văn phòng nhìn ở một nơi duy nhất biết từng cửa hàng có làm đúng chuẩn không — và kết quả chảy thẳng vào chấm điểm KPI.'
+    },
+    image: 'projects/task-workflow-system.svg',
+    initial: 'W',
+    tags: ['Workflow system', 'Task tracking', '300+ stores', 'Compliance'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
     title: { en: 'Hermes — Personal AI Agent', vi: 'Hermes — Agent AI Cá Nhân' },
     summary: {
       en: 'A self-hosted AI agent I built and run on Docker — my own personal assistant. It helps review and draft content, organize work, and handle day-to-day operations tasks, and is being actively expanded. (Hermes ran the copy review behind this very site.)',
