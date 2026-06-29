@@ -55,6 +55,14 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Bỏ 3 project khỏi portfolio
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
+**Files thay đổi:** script.js
+**Nội dung:**
+- Xóa 3 project khỏi `projects` array: "Quy Định Shop PPTX Redesign", "Lark Task Manager", "Claude Code Telegram Bot" (Bot Telegram điều khiển Claude Code)
+- Còn lại 7 project: Hasaki KPI System (featured) + 6 trong grid (Company-Wide Task Workflow System, Hermes, Combined Sales × KPI, Bills Dashboard, Operations Workflows, Vivi Soul)
+**Lý do / ghi chú:** Verify preview: grid còn 6, 3 project đã bỏ không còn dấu vết, không lỗi console. Còn 3 file SVG thumbnail mồ côi (`projects/pptx-redesign.svg`, `lark-task-manager.svg`, `telegram-claude-bot.svg`) — chưa xóa, chờ xác nhận.
+
 ## [2026-06-15] — Gộp 4 workflow vận hành thành 1 card "Operations Workflows"
 **Agent/Người thực hiện:** Claude Code (Denis: "gộp lại đi")
 **Files thay đổi:** script.js, style.css, projects/operations-workflows.svg (mới); XÓA store-opening/store-closure/admin-procurement/vendor-evaluation.svg; cv.pdf + cv-vi.pdf (in lại)
