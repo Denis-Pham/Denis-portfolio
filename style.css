@@ -86,7 +86,23 @@
   .hero-stats { margin-top: 16px !important; padding-top: 14px !important; }
   .about-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
   .featured-project-card { grid-template-columns: 1fr !important; gap: 12px !important; }
-  .timeline-item, .project-card, .skill-card, .education-item { break-inside: avoid; }
+  /* Keep each block whole — never split a card/item across a page break */
+  .timeline-item, .project-card, .skill-card, .education-item,
+  .featured-project-card, .stat, .project-items li {
+    break-inside: avoid !important; page-break-inside: avoid !important;
+  }
+  /* Keep a section heading with the content that follows it — no stranded
+     title at the bottom of a page (kicker → h2 → first block stay together) */
+  .section-kicker, section h2,
+  .timeline-item h3, .skill-card h3, .project-card h3 {
+    break-after: avoid !important; page-break-after: avoid !important;
+  }
+  /* Each major section starts at the TOP of a fresh page — no section
+     header (kicker/title) stranded alone at the bottom of a page.
+     #about is left to flow under the hero on page 1. */
+  #skills, #experience, #featured-project, #projects, #education {
+    break-before: page !important; page-break-before: always !important;
+  }
   .timeline-item { padding-bottom: 18px !important; }
   a { color: black !important; text-decoration: underline; }
 }
