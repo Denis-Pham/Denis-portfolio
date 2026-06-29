@@ -55,6 +55,15 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-06-15] — Sửa page-break khi in CV (mỗi section sang trang mới)
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis: "cv xấu quá phần lớn bị cắt đôi, để phần lớn ở đầu trang")
+**Files thay đổi:** style.css, cv.pdf, cv-vi.pdf (in lại)
+**Nội dung:**
+- `@media print`: thêm `break-before: page` cho `#skills, #experience, #featured-project, #projects, #education` → mỗi section lớn bắt đầu ở ĐẦU trang mới (kicker không còn kẹt lẻ loi cuối trang). `#about` vẫn flow dưới hero ở trang 1
+- Mở rộng `break-inside: avoid` cho `.featured-project-card, .stat, .project-items li` (trước chỉ có timeline/project/skill/education); thêm `break-after: avoid` cho kicker + h2 + h3 trong card (giữ tiêu đề dính nội dung)
+- In lại cv.pdf (EN, 9 trang) + cv-vi.pdf (VI, 9 trang) — verify từng trang: section ở đầu trang, không card bị cắt đôi
+**Lý do / ghi chú:** Trade-off: CV dài hơn (7→9 trang) và có khoảng trắng cuối vài trang, đổi lại bố cục sạch đúng yêu cầu. Lệnh in: xem entry CV trước (`?print=1` / `?print=1&lang=vi`, profile tạm trống).
+
 ## [2026-06-15] — Bỏ 3 project khỏi portfolio
 **Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis)
 **Files thay đổi:** script.js
