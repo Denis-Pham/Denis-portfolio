@@ -456,12 +456,14 @@ function renderFeaturedProject() {
 function renderProjects() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
-  grid.innerHTML = projects.slice(1).map(p => {
+  // card 0 = lead (full-width horizontal); items[] cards go double-width —
+  // both are bento emphasis applied ≥1000px only (see index.html media block)
+  grid.innerHTML = projects.slice(1).map((p, i) => {
     const thumb = p.image
       ? `<img src="${p.image}" alt="${t(p.title)}" loading="lazy">`
       : p.initial;
     return `
-      <div class="project-card">
+      <div class="project-card${i === 0 ? ' project-card--lead' : ''}${p.items ? ' project-card--wide' : ''}">
         <div class="project-thumb">${thumb}</div>
         <div class="project-body">
           <h3>${t(p.title)}</h3>

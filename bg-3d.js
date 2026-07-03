@@ -15,7 +15,8 @@
 //   education — open wireframe book
 //   contact   — slow torus behind the closing words
 // Progressive enhancement: desktop + WebGL only (?force3d bypasses),
-// reduced-motion = fast camera, no spin; bails out clean otherwise.
+// reduced-motion = static set pieces, fast camera, no spin; bails out clean otherwise.
+// Theme-aware: ink lines + skyline ground re-color on data-theme changes (dark mode).
 // ===========================================
 
 const canvas = document.getElementById('stage');
@@ -30,16 +31,34 @@ function webglAvailable() {
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const force3d = new URLSearchParams(location.search).has('force3d');
 
-if (canvas && (window.innerWidth >= 900 || force3d) && webglAvailable()) {
-  init().catch(err => { canvas.style.display = 'none'; console.warn('bg-3d disabled:', err); });
-} else if (canvas) {
-  canvas.style.display = 'none';
+// The width gate must re-check on resize: preview panels / background tabs can
+// load the page at innerWidth 0, which used to disable the 3D world permanently.
+let booted = false;
+function maybeBoot() {
+  if (booted || !canvas) return;
+  if ((window.innerWidth >= 900 || force3d) && webglAvailable()) {
+    booted = true;
+    canvas.style.display = '';
+    init().catch(err => { canvas.style.display = 'none'; console.warn('bg-3d disabled:', err); });
+  } else {
+    canvas.style.display = 'none'; // hidden until the window grows past the gate
+  }
 }
+maybeBoot();
+window.addEventListener('resize', maybeBoot);
+// background/pre-rendered tabs can get sized without a resize event —
+// re-check when the tab becomes visible or the page is shown from bfcache
+document.addEventListener('visibilitychange', maybeBoot);
+window.addEventListener('pageshow', maybeBoot);
 
 async function init() {
   const THREE = await import('three');
 
-  const INK = 0x1c1b1a; // --fg
+  // ink follows the theme: near-black on paper, warm light-grey on the dark bg
+  // (hardcoded dark ink used to render the whole wireframe invisible on #1a1a18)
+  const INK_LIGHT = 0x1c1b1a, INK_DARK = 0xbfbcb6;
+  const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+  const INK = isDark() ? INK_DARK : INK_LIGHT;
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -48,7 +67,8 @@ async function init() {
   camera.position.z = 10;
 
   // lights only matter for the lambert skyline; lines ignore them
-  scene.add(new THREE.HemisphereLight(0xffffff, 0xe6e4e0, 1.05));
+  const hemi = new THREE.HemisphereLight(0xffffff, 0xe6e4e0, 1.05);
+  scene.add(hemi);
   const sun = new THREE.DirectionalLight(0xffffff, 1.3);
   sun.position.set(6, 12, 8);
   scene.add(sun);
@@ -77,6 +97,7 @@ async function init() {
       new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true })
     );
     ground.position.y = -0.14;
+    ground.userData.themed = 'ground'; // applyTheme() re-colors it in dark mode
     g.add(ground);
 
     const heights = [];
@@ -134,7 +155,8 @@ async function init() {
       setHeights(Math.min(t / GROW, 1), t);
       floaters.forEach(f => {
         f.mesh.position.y = f.baseY + Math.sin(t * 0.8 + f.phase) * 0.18;
-        f.mesh.rotation.y += 0.004; f.mesh.rotation.x += 0.002;
+        // frame-relative increments — must gate on reduce (frozen t alone won't stop them)
+        if (!reduced) { f.mesh.rotation.y += 0.004; f.mesh.rotation.x += 0.002; }
       });
       g.rotation.y = -0.35 + spin * 0.8;
     };
@@ -175,7 +197,8 @@ async function init() {
     });
     g.userData.update = t => {
       items.forEach(p => {
-        p.position.y += Math.sin(t * 0.6 + p.userData.seed) * 0.0012;
+        // += accumulates per frame — gate on reduce or frozen t turns it into drift
+        if (!reduced) p.position.y += Math.sin(t * 0.6 + p.userData.seed) * 0.0012;
         p.rotation.y = Math.sin(t * 0.25 + p.userData.seed) * 0.3;
       });
     };
@@ -290,7 +313,8 @@ async function init() {
     });
     g.userData.update = t => {
       items.forEach(w => {
-        w.position.y += Math.sin(t * 0.55 + w.userData.seed) * 0.0012;
+        // += accumulates per frame — gate on reduce or frozen t turns it into drift
+        if (!reduced) w.position.y += Math.sin(t * 0.55 + w.userData.seed) * 0.0012;
         w.rotation.y = Math.sin(t * 0.22 + w.userData.seed) * 0.33;
       });
     };
@@ -369,6 +393,19 @@ async function init() {
   dustGeo.setAttribute('position', new THREE.BufferAttribute(dustArr, 3));
   scene.add(new THREE.Points(dustGeo, new THREE.PointsMaterial({ color: INK, size: 0.022, transparent: true, opacity: 0.3 })));
 
+  // theme re-color — runs AFTER the per-group clone pass above so colors land
+  // on the live materials. Color only; opacity belongs to the distance-fade.
+  function applyTheme() {
+    const ink = isDark() ? INK_DARK : INK_LIGHT;
+    scene.traverse(o => {
+      if ((o.isLine || o.isLineSegments || o.isPoints) && o.material) o.material.color.setHex(ink);
+      if (o.userData.themed === 'ground') o.material.color.setHex(isDark() ? 0x2c2b28 : 0xffffff);
+    });
+    hemi.groundColor.setHex(isDark() ? 0x36342f : 0xe6e4e0);
+  }
+  new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  applyTheme();
+
   let SCALE = 1, VISH = 9.3;
   function sync() {
     const visible = 2 * camera.position.z * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
@@ -418,7 +455,9 @@ async function init() {
   function frame() {
     if (!running) return;
     requestAnimationFrame(frame);
-    const t = clock.getElapsedTime();
+    // reduce: freeze time at a large constant — skyline resolves fully grown
+    // (t/GROW clamps to 1) and every Math.sin(t…) pose becomes a static value
+    const t = reduced ? 1000 : clock.getElapsedTime();
 
     const camYT = -(window.scrollY + window.innerHeight / 2) * SCALE;
     camY = THREE.MathUtils.lerp(camY, camYT, reduced ? 0.3 : 0.085);

@@ -7,7 +7,10 @@
        Stored choice wins; otherwise follow the OS preference. -->
   <script>
     (function () {
-      var saved = localStorage.getItem('theme');
+      // ?theme=dark|light wins (headless screenshot/print tooling, shareable links),
+      // then the saved choice, then the OS preference — same pattern as ?lang.
+      var qs = new URLSearchParams(location.search).get('theme');
+      var saved = (qs === 'dark' || qs === 'light') ? qs : localStorage.getItem('theme');
       var dark = saved ? saved === 'dark'
         : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (dark) document.documentElement.setAttribute('data-theme', 'dark');
@@ -20,7 +23,9 @@
   <meta property="og:type" content="website">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#2563eb">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Pro:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ===== Theme tokens (Light Professional) ===== */
@@ -52,6 +57,17 @@
       --bg-glass: rgba(246, 245, 244, 0.62);
       --nav-bg: rgba(246, 245, 244, 0.85);  /* sticky header backdrop */
       --hero-top: rgba(255, 255, 255, 0.7);  /* hero gradient top stop */
+      /* gradient FILLS get their own tokens so dark mode can keep saturated,
+         AA-contrast fills while text accents go pastel (--accent) */
+      --grad-a: #2563eb; --grad-b: #7c3aed;
+      --grad-a-strong: #1d4ed8; --grad-b-strong: #6d28d9; /* hover: light darkens */
+      --cta-glow: 0 0 0 rgba(0,0,0,0);
+      --pill-glow: 0 2px 10px rgba(99, 70, 235, 0.25);
+      --num-glow: none;
+      --dot-idle: #c8c5bf;      /* dot-nav idle */
+      /* two-tier micro-label tracking (em so it scales with font-size) */
+      --track-kicker: 0.2em;    /* uppercase eyebrows/kickers */
+      --track-label: 0.08em;    /* uppercase data labels */
     }
 
     /* ===== Dark theme — flips the palette, every var-driven surface follows ===== */
@@ -80,6 +96,14 @@
       --bg-glass: rgba(26, 26, 24, 0.62);
       --nav-bg: rgba(26, 26, 24, 0.85);
       --hero-top: rgba(255, 255, 255, 0.03);
+      /* dark = design language, not inversion: fills stay saturated (white text
+         keeps AA), hover BRIGHTENS instead of darkening, key elements glow */
+      --grad-a: #2563eb; --grad-b: #7c3aed;
+      --grad-a-strong: #3b82f6; --grad-b-strong: #8b5cf6;
+      --cta-glow: 0 0 18px rgba(59, 130, 246, 0.30), 0 0 40px rgba(139, 92, 246, 0.15);
+      --pill-glow: 0 2px 10px rgba(0, 0, 0, 0.45), 0 0 16px rgba(96, 165, 250, 0.40);
+      --num-glow: 0 0 18px color-mix(in srgb, currentColor 45%, transparent);
+      --dot-idle: #4a4742;
     }
     /* dark: dot-nav tooltip would be white-on-white via --fg — re-anchor it */
     :root[data-theme="dark"] .dot-nav a::after {
@@ -102,6 +126,8 @@
     /* Serif headings stay (portfolio signature) — tracking tightened per Notion's
        "more negative the larger the size" display principle */
     h1, h2, h3, h4 { font-family: 'Crimson Pro', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+    /* progressive enhancement — evens out 2-line wraps (VI headings run ~10-15% longer) */
+    h1, h2, h3 { text-wrap: balance; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { color: var(--accent-dark); }
     .wrap { max-width: 1240px; margin: 0 auto; padding: 0 36px; }
@@ -116,15 +142,29 @@
       display: inline-flex; align-items: center; gap: 8px;
       text-decoration: none;
     }
-    .btn:active { transform: scale(0.97); }
+    .btn:active { transform: translateY(0) scale(0.97); transition-duration: 60ms; }
+    /* quality floor: visible keyboard focus everywhere, never on mouse click */
+    :is(a, button, .btn):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+    .btn:focus-visible, .theme-toggle:focus-visible, .lang-toggle button:focus-visible { outline-offset: 2px; border-radius: 999px; }
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: white; border: 1px solid transparent;
+      background: linear-gradient(135deg, var(--grad-a), var(--grad-b)); color: white; border: 1px solid transparent;
+      position: relative; isolation: isolate; overflow: hidden;
+      box-shadow: var(--cta-glow);
     }
+    /* CSS can't interpolate gradients — cross-fade a hover layer instead of snapping */
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--grad-a-strong), var(--grad-b-strong));
+      opacity: 0;
+      transition: opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-primary:hover::before { opacity: 1; }
     .btn-primary:hover {
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent-2-dark)); border-color: transparent;
+      border-color: transparent;
       color: white;
       transform: translateY(-1px);
-      box-shadow: var(--shadow-2);
+      box-shadow: var(--shadow-2), var(--cta-glow);
     }
     .btn-secondary {
       background: var(--surface); color: var(--fg);
@@ -160,7 +200,7 @@
     .logo-role {
       font-family: 'Inter', sans-serif;
       font-size: 11px; font-weight: 600;
-      letter-spacing: 1.6px; text-transform: uppercase;
+      letter-spacing: 0.145em; text-transform: uppercase;
       color: var(--muted);
       margin-left: 12px; padding-left: 12px;
       border-left: 1px solid var(--border);
@@ -180,7 +220,7 @@
       color: var(--muted);
     }
     .lang-toggle button.active {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
       color: #fff;
     }
     /* Dark-mode toggle — sun/moon icon button, icon swapped via JS */
@@ -207,10 +247,10 @@
     nav.links .nav-pill {
       position: absolute; top: 50%; height: 32px;
       transform: translateY(-50%);
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
       border-radius: 999px;
       left: 0; width: 0; opacity: 0;
-      box-shadow: 0 2px 10px rgba(99, 70, 235, 0.25);
+      box-shadow: var(--pill-glow);
       transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s;
       pointer-events: none;
       z-index: 0;
@@ -218,7 +258,7 @@
     nav.links a.active-link, nav.links a.active-link:hover { color: #fff; }
     /* No-JS / reduced-motion fallback: Contact keeps its solid CTA look */
     nav.links a.contact-link {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
       color: #fff; border-radius: 999px; padding: 8px 18px;
     }
     nav.links a.contact-link:hover { color: #fff; }
@@ -246,7 +286,7 @@
       }
       .dot-nav .dot {
         width: 9px; height: 9px; border-radius: 999px;
-        background: #c8c5bf;
+        background: var(--dot-idle);
         transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s, transform 0.2s;
       }
       .dot-nav a:hover .dot { background: var(--muted); transform: scale(1.35); }
@@ -254,8 +294,8 @@
       .dot-nav a.active .dot {
         height: 30px;
         transform: none;
-        background: linear-gradient(180deg, var(--accent), var(--accent-2));
-        box-shadow: 0 2px 8px rgba(99, 70, 235, 0.3);
+        background: linear-gradient(180deg, var(--grad-a), var(--grad-b));
+        box-shadow: var(--pill-glow);
       }
       /* section label appears beside the dot on hover */
       .dot-nav a::after {
@@ -275,12 +315,13 @@
     /* ===== Sections ===== */
     section { padding: 90px 0; position: relative; z-index: 1; } /* above #stage */
     section h2 {
-      font-size: clamp(28px, 3.5vw, 38px);
+      font-size: clamp(32px, 4vw, 44px);
+      letter-spacing: -0.025em;
       margin: 0 0 12px;
     }
     .section-kicker {
       font-family: 'Inter', sans-serif;
-      font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+      font-size: 11px; letter-spacing: var(--track-kicker); text-transform: uppercase;
       color: var(--accent);
       margin: 0 0 14px; font-weight: 700;
       display: inline-flex; align-items: center; gap: 12px;
@@ -290,7 +331,7 @@
       content: '';
       display: inline-block;
       width: 28px; height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
     }
     .section-lede { color: var(--muted); font-size: 16px; max-width: 56ch; margin: 0 0 48px; }
 
@@ -338,26 +379,34 @@
     }
     @media (max-width: 900px) { #stage { display: none; } } /* mobile keeps the 2D page */
 
-    /* Hero stats — 4 big number cards, the first thing HR reads */
+    /* Hero stats — ONE divided evidence panel (was 4 separate glass cards) */
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 34px 0 30px;
-    }
-    .hero-stats .stat {
+      gap: 0;
+      margin: 30px 0 34px;
       background: var(--surface-glass);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 20px 16px;
+      border-radius: 16px;
       box-shadow: var(--shadow-1);
-      position: relative;
       overflow: hidden;
     }
-    /* Decorative colored top bar — one accent per card (sticker palette) */
+    .hero-stats .stat {
+      background: transparent;
+      border: 0;
+      border-left: 1px solid var(--border);
+      border-radius: 0;
+      box-shadow: none;
+      padding: 20px 22px 18px;
+      position: relative;
+    }
+    .hero-stats .stat:first-child { border-left: 0; }
+    /* In-flow accent tick — the sticker palette survives at a smaller dose */
     .hero-stats .stat::before {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      position: static; display: block;
+      width: 24px; height: 3px; border-radius: 2px;
+      margin-bottom: 10px;
       background: var(--accent);
     }
     .hero-stats .stat:nth-child(2)::before { background: var(--accent-2); }
@@ -371,15 +420,20 @@
       line-height: 1.1;
       letter-spacing: -0.02em;
       white-space: nowrap;
+      /* count-up (0→300) must not jitter the panel width */
+      font-variant-numeric: lining-nums tabular-nums;
     }
     .hero-stats .stat .stat-value .unit { color: var(--accent); }
     .hero-stats .stat:nth-child(2) .stat-value .unit { color: var(--accent-2); }
     .hero-stats .stat:nth-child(3) .stat-value .unit { color: var(--accent-3); }
     .hero-stats .stat:nth-child(4) .stat-value .unit { color: var(--accent-4); }
     .hero-stats .stat .stat-label {
-      font-size: 11.5px; letter-spacing: 0.8px; text-transform: uppercase;
+      font-size: 11.5px; letter-spacing: var(--track-label); text-transform: uppercase;
       color: var(--muted); margin-top: 7px; font-weight: 500;
     }
+    /* dark mode gives key numbers a soft self-colored glow (--num-glow: none in light) */
+    .hero-stats .stat .stat-value .unit,
+    .featured-metrics .metric-block .metric-value { text-shadow: var(--num-glow); }
     /* "was" line — the struck-through old number tells the before/after story */
     .stat-value .was, .metric-value .was {
       display: block;
@@ -395,7 +449,7 @@
       margin-top: 28px;
     }
     .hero-tech .label {
-      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      font-size: 11px; letter-spacing: var(--track-kicker); text-transform: uppercase;
       color: var(--muted); font-weight: 600;
       margin-bottom: 12px; display: block;
     }
@@ -430,22 +484,30 @@
       50%      { opacity: 1; transform: scale(1.2); }
     }
     .hero h1 {
-      font-size: clamp(40px, 6vw, 64px);
+      font-size: clamp(44px, 6.5vw, 76px);
+      line-height: 1.05;
       margin: 0 0 14px;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
     }
+    /* role demoted to an uppercase kicker — the serif thesis line carries the hero */
     .hero .role {
-      font-size: clamp(20px, 2.5vw, 26px);
-      color: var(--accent);
-      font-weight: 500;
-      margin: 0 0 20px;
       font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.17em; text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 18px;
     }
+    /* tagline promoted to the thesis: serif, near-display size, fg color */
     .hero .tagline {
-      font-size: 18px; color: var(--muted);
-      max-width: 56ch; margin: 0 0 36px;
-      line-height: 1.6;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: clamp(21px, 2.6vw, 30px);
+      line-height: 1.45;
+      letter-spacing: -0.015em;
+      color: var(--fg);
+      max-width: 44ch;
+      margin: 0 0 6px;
     }
+    .hero .tagline strong { color: var(--accent); font-weight: 600; }
     .hero .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
     .hero-meta {
       display: flex; flex-wrap: wrap; gap: 24px;
@@ -472,7 +534,7 @@
     }
     .loop-card .loop-label {
       display: block;
-      font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+      font-size: 11px; letter-spacing: var(--track-kicker); text-transform: uppercase;
       color: var(--accent); font-weight: 700;
       margin-bottom: 18px;
     }
@@ -499,7 +561,7 @@
       border-top: 1px dashed var(--border);
       font-size: 12.5px; color: var(--muted);
     }
-    .about-text p { margin: 0 0 16px; color: var(--fg); font-size: 17px; line-height: 1.75; }
+    .about-text p { margin: 0 0 16px; color: var(--fg); font-size: 17px; line-height: 1.75; max-width: 62ch; }
 
     /* ===== SKILLS ===== */
     .skills-grid {
@@ -532,6 +594,19 @@
     .skill-card:nth-child(4n+2):hover { border-color: var(--accent-2); }
     .skill-card:nth-child(4n+3):hover { border-color: var(--accent-3); }
     .skill-card:nth-child(4n):hover   { border-color: var(--accent-4); }
+    /* Skills bento (6 cards → 3 clean rows): the thesis category leads at 4/6
+       width with a two-column list; sizes now encode priority, not decoration.
+       'screen and' keeps the print CV export on the base auto-fit grid. */
+    @media screen and (min-width: 901px) {
+      .skills-grid { grid-template-columns: repeat(6, 1fr); }
+      .skill-card { grid-column: span 3; }
+      .skill-card:first-child { grid-column: span 4; }
+      .skill-card:nth-child(2) { grid-column: span 2; }
+      .skill-card:first-child ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+      .skill-card:first-child li:nth-child(-n+2) { border-top: none; }
+      .skill-card:first-child h3 { font-size: 19px; }
+      .skill-card:first-child .skill-icon { width: 44px; height: 44px; font-size: 22px; }
+    }
 
     /* ===== EXPERIENCE TIMELINE ===== */
     .timeline { position: relative; padding-left: 28px; }
@@ -553,7 +628,7 @@
       border: 3px solid var(--accent);
     }
     .timeline-item .period {
-      font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+      font-size: 12px; letter-spacing: 0.125em; text-transform: uppercase;
       color: var(--accent); font-weight: 600;
       margin-bottom: 6px;
     }
@@ -573,7 +648,7 @@
       box-shadow: var(--shadow-1);
     }
     img.co-badge { object-fit: contain; background: var(--surface); border: 1px solid var(--border); }
-    .timeline-item ul { padding-left: 18px; margin: 0; color: var(--fg); }
+    .timeline-item ul { padding-left: 18px; margin: 0; color: var(--fg); max-width: 72ch; }
     .timeline-item li { padding: 3px 0; font-size: 15px; line-height: 1.7; }
 
     /* ===== FEATURED PROJECT ===== */
@@ -583,6 +658,13 @@
       grid-template-columns: 1.2fr 1fr;
       gap: 48px;
       align-items: center;
+      /* the page's anchor artifact gets a true Notion white card — opaque
+         --surface stays solid above the 3D wireframe while the band is glass */
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: var(--shadow-2);
     }
     .featured-project-thumb {
       aspect-ratio: 16 / 10;
@@ -599,7 +681,7 @@
       font-size: clamp(26px, 3vw, 34px);
       margin: 8px 0 14px;
     }
-    .featured-project-content p { color: var(--muted); font-size: 16px; margin: 0 0 22px; line-height: 1.7; }
+    .featured-project-content p { color: var(--muted); font-size: 16px; margin: 0 0 22px; line-height: 1.7; max-width: 60ch; }
     .featured-project-content .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
     .tag {
       font-size: 12px; padding: 4px 11px;
@@ -611,14 +693,20 @@
     }
     .featured-project-content .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
-    /* Featured project metrics row — 3 stat boxes */
+    /* Featured project metrics — bento tiles inside the white card */
     .featured-metrics {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      align-items: end; /* blocks without a "was" line stay baseline-aligned with those that have one */
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      align-items: stretch;
       margin: 20px 0 24px;
-      padding: 18px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      padding: 0;
+    }
+    .featured-metrics .metric-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px 12px;
+      /* flex-end keeps blocks without a "was" line baseline-aligned with those that have one */
+      display: flex; flex-direction: column; justify-content: flex-end;
     }
     .featured-metrics .metric-block .metric-value {
       font-family: 'Crimson Pro', serif;
@@ -628,7 +716,7 @@
     .featured-metrics .metric-block:nth-child(2) .metric-value { color: var(--accent-2); }
     .featured-metrics .metric-block:nth-child(3) .metric-value { color: var(--accent-3); }
     .featured-metrics .metric-block .metric-label {
-      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      font-size: 11px; letter-spacing: var(--track-label); text-transform: uppercase;
       color: var(--muted); margin-top: 4px; font-weight: 500;
     }
 
@@ -673,6 +761,19 @@
     .project-body .tags { display: flex; flex-wrap: wrap; margin-top: auto; gap: 7px; }
     .project-body .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
     .project-body .actions a { font-size: 13px; padding: 0; }
+    /* Projects bento: card 0 leads full-width & horizontal, items[]-cards go
+       double-width (classes set data-driven in script.js renderProjects).
+       'screen and' keeps the printed CV grid untouched. */
+    @media screen and (min-width: 1000px) {
+      .projects-grid { grid-template-columns: repeat(3, 1fr); }
+      .project-card--lead { grid-column: 1 / -1; flex-direction: row; }
+      .project-card--lead .project-thumb { width: 38%; flex: none; aspect-ratio: auto; border-bottom: none; border-right: 1px solid var(--border); }
+      .project-card--lead .project-body { padding: 26px 30px; }
+      .project-card--lead .project-body h3 { font-size: 20px; }
+      .project-card--lead .project-body p { font-size: 15px; max-width: 62ch; }
+      .project-card--wide { grid-column: span 2; }
+      .project-card--wide .project-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; }
+    }
 
     /* ===== EDUCATION ===== */
     .education-list { display: grid; gap: 14px; }
@@ -687,7 +788,7 @@
     }
     .education-item .school { font-weight: 600; color: var(--fg); }
     .education-item .degree { color: var(--muted); font-size: 14.5px; }
-    .education-item .year { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 1px; }
+    .education-item .year { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: var(--track-label); }
 
     /* ===== CONTACT CTA ===== */
     .contact {
@@ -698,8 +799,11 @@
         var(--surface-glass);
       border-top: 1px solid var(--border);
     }
-    .contact h2 { font-size: clamp(32px, 4vw, 48px); margin: 0 0 14px; }
-    .contact p { color: var(--muted); font-size: 17px; margin: 0 0 36px; }
+    .contact h2 { font-size: clamp(36px, 4.5vw, 54px); margin: 0 0 14px; }
+    /* :not() keeps this from beating .section-kicker on specificity —
+       without it the Contact kicker rendered as 17px grey body text */
+    .contact p:not(.section-kicker) { color: var(--muted); font-size: 17px; margin: 0 0 36px; }
+    .contact .wrap > p:not(.section-kicker):not(.email-plain) { max-width: 54ch; margin-left: auto; margin-right: auto; }
     .contact-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .contact .email-plain { margin: 22px 0 0; font-size: 15px; color: var(--muted); }
     .contact .email-plain a { font-weight: 600; }
@@ -719,6 +823,9 @@
       .wrap { padding: 0 24px; }
       section { padding: 70px 0; }
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      /* 2-col fold of the divided panel: reset left hairlines per row, add row divider */
+      .hero-stats .stat:nth-child(odd) { border-left: 0; }
+      .hero-stats .stat:nth-child(n+3) { border-top: 1px solid var(--border); }
       .about-grid { grid-template-columns: 1fr; gap: 28px; }
       .loop-card { max-width: 380px; }
       .featured-project-card { grid-template-columns: 1fr; gap: 28px; }
@@ -730,8 +837,9 @@
       .hero { padding: 60px 0 56px; }
       .hero .cta .btn { width: 100%; justify-content: center; }
       .hero-meta { flex-direction: column; gap: 10px; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); } /* gap stays 0 — hairline dividers, not gaps */
       .hero-stats .stat { padding: 14px 14px 12px; }
+      .featured-project-card { padding: 22px 18px; }
       .hero-stats .stat .stat-value { font-size: 27px; } /* "3d → 30m" must fit a half-width card */
       .featured-metrics { grid-template-columns: 1fr; gap: 12px; }
       nav.links a:not(.contact-link) { display: none; } /* mobile: only the Contact CTA */
@@ -739,6 +847,19 @@
       .timeline { padding-left: 22px; }
       .timeline-item::before { left: -22px; }
       .education-item { flex-direction: column; gap: 4px; }
+    }
+
+    /* ===== Reduced motion — quality floor ===== */
+    /* scroll-fx.js and bg-3d.js gate their own animation; this covers the CSS side:
+       the infinite eyebrow pulse, smooth scroll, and every transition/keyframe. */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero .eyebrow::before { animation: none; opacity: 1; transform: none; }
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
@@ -787,7 +908,13 @@
       <h1>Denis Pham</h1>
       <p class="role">Operations Excellence &amp; Performance Management</p>
 
-      <!-- Numbers FIRST — the 10-second HR scan lands here -->
+      <!-- Thesis line FIRST (serif display), then the numbers that prove it -->
+      <p class="tagline">
+        I design how <strong>300+ stores</strong> run — then build the systems
+        that measure it. <strong>SOP → daily tasks → KPI scoring</strong>:
+        one loop, one owner.
+      </p>
+
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-value">300<span class="unit">+</span></div>
@@ -807,11 +934,6 @@
         </div>
       </div>
 
-      <p class="tagline">
-        I design how <strong>300+ stores</strong> run — then build the systems
-        that measure it. <strong>SOP → daily tasks → KPI scoring</strong>:
-        one loop, one owner.
-      </p>
       <div class="cta">
         <a class="btn btn-primary" href="#contact">Get in touch →</a>
         <a class="btn btn-secondary" href="cv.pdf" target="_blank">Download CV (PDF)</a>
@@ -961,7 +1083,8 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ?v= busts browser caches when these files change — bump on each deploy touching JS -->
+  <script src="script.js?v=20260703"></script>
   <!-- 3D KPI Skyline hero — Three.js via CDN import map, no build step.
        Loads lazily after first paint; skipped on mobile / no-WebGL. -->
   <script type="importmap">
@@ -971,10 +1094,10 @@
     }
   }
   </script>
-  <script type="module" src="bg-3d.js"></script>
+  <script type="module" src="bg-3d.js?v=20260703"></script>
   <!-- Scroll choreography — GSAP + ScrollTrigger via CDN, graceful no-op if blocked -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="scroll-fx.js"></script>
+  <script src="scroll-fx.js?v=20260703"></script>
 </body>
 </html>

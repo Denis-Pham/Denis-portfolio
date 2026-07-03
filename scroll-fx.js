@@ -22,12 +22,22 @@
     scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 }
   });
 
-  // ---------- hero intro (on load, not scroll) ----------
-  gsap.from(
-    ['.hero .eyebrow', '.hero h1', '.hero .role', '.hero-stats', '.hero .tagline',
-     '.hero .cta', '.hero-meta', '.hero-tech'],
-    { y: 28, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.09, clearProps: 'all' }
-  );
+  // ---------- hero intro: orchestrated timeline (on load, not scroll) ----------
+  // One continuous ~1.5s gesture, order matches the DOM: name → thesis → evidence → action.
+  const hi = gsap.timeline({ defaults: { ease: 'power3.out', opacity: 0, clearProps: 'all' } });
+  hi.from('.hero .eyebrow',    { y: 14, duration: 0.45 })
+    .from('.hero h1',          { y: 26, duration: 0.75 }, '-=0.2')
+    .from('.hero .role',       { y: 18, duration: 0.55 }, '-=0.45')
+    .from('.hero .tagline',    { y: 20, duration: 0.6 },  '-=0.3')
+    .from('.hero-stats .stat', { y: 22, duration: 0.55, stagger: 0.07 }, '-=0.3')
+    .from('.hero .cta',        { y: 18, duration: 0.5 },  '-=0.3')
+    .from(['.hero-meta', '.hero-tech'], { y: 14, duration: 0.45, stagger: 0.08 }, '-=0.3');
+  // h1 wipe — runs over the rise; clip-path animates the WHOLE h1 so the
+  // background-clip:text gradient (style.css) is untouched (why word-reveal skips h1).
+  // -5% top/bottom margins keep Crimson Pro descenders out of the clip edge.
+  gsap.fromTo('.hero h1',
+    { clipPath: 'inset(-5% 100% -5% 0)' },
+    { clipPath: 'inset(-5% -5% -5% 0)', duration: 0.9, ease: 'power3.out', delay: 0.12, clearProps: 'clipPath' });
 
   // ---------- word-reveal for section headings (skip hero h1 — gradient text) ----------
   document.querySelectorAll('section:not(.hero) h2').forEach(el => {

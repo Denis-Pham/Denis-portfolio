@@ -55,6 +55,34 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-07-03] — Fix 3D background không hiện: gate width chỉ check 1 lần lúc load
+**Agent/Người thực hiện:** Claude Code (Denis: "lỗi không thấy hình 3d ở background")
+**Files thay đổi:** bg-3d.js, index.html
+**Nội dung:**
+- **Root cause:** gate `window.innerWidth >= 900` trong bg-3d.js chỉ chạy MỘT lần lúc load. Tab preview/pre-render load trang khi viewport = 0px → rơi nhánh tắt, `#stage` bị `display:none` vĩnh viễn dù sau đó cửa sổ phình to. (Đây cũng là lý do session trước phải dùng `?force3d`.)
+- **Fix:** bọc gate vào `maybeBoot()` — gọi lại khi `resize`, `visibilitychange`, `pageshow`; boot xong thì no-op. Load hẹp → phóng to ≥900px là 3D tự khởi động, không cần reload.
+- **Kèm theo:** đánh version `?v=20260703` cho script.js / bg-3d.js / scroll-fx.js trong index.html — bust cache trình duyệt khi JS đổi (đổi JS lần sau nhớ bump). Trước đó trang chạy JS cũ từ heuristic cache dù server đã có bản mới.
+**Lý do / ghi chú:** Verify: load 600px (3D off đúng) → resize 1280px → boot (8 pieces, 6 draws, canvas block), không lỗi console. **Bẫy env đáng nhớ:** `preview_resize` (CDP emulation) đổi innerWidth mà KHÔNG bắn event `resize` — verify resize-handler phải `window.dispatchEvent(new Event('resize'))` bằng tay.
+
+## [2026-07-03] — Nâng cấp UI 12 hạng mục theo frontend-design + UI/UX Pro Max + trend Dribbble 2026
+**Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis; nguồn guidance: anthropics/skills frontend-design, nextlevelbuilder/ui-ux-pro-max-skill, trend research 2026). Plan tổng hợp bởi workflow 5 lens (typography/hero/layout/darkmode/motion) + 1 synthesis.
+**Files thay đổi:** index.html, style.css, script.js, scroll-fx.js, bg-3d.js, cv.pdf + cv-vi.pdf (in lại)
+**Nội dung:**
+1. **Reduced-motion đầy đủ:** CSS block tắt pulse/smooth-scroll/transition; bg-3d freeze `t=1000` (skyline mọc đủ, pose tĩnh) + gate mọi tích lũy `+=` (floaters, About pages, Projects windows)
+2. **Hero thesis reorder:** tagline dời lên trước stats, thành dòng thesis serif Crimson (clamp 21-30px, strong=accent); role hạ thành kicker uppercase 13px
+3. **Hero entrance có đạo diễn:** GSAP timeline ~1.5s (thay stagger đều cũ) + h1 clip-path wipe (kinetic signature duy nhất)
+4. **Hero stats = 1 panel chia hairline** (bỏ 4 card rời); tick accent 24px thay bar full-width; `tabular-nums` chống giật count-up; fold 2 cột có border-top/left đúng
+5. **Typography scale:** h1 → clamp 44/6.5vw/76 lh 1.05; h2 → clamp 32/4vw/44; contact h2 54px; `text-wrap: balance`; preconnect fonts + bỏ weight thừa (Inter 300, Crimson 500); pin weight 600 cho thumb serif
+6. **Token gradient-fill + dark glow:** `--grad-a/b(-strong)`, `--cta-glow/--pill-glow/--num-glow/--dot-idle` — 9 chỗ fill đổi sang token; dark: hover SÁNG hơn, CTA/pill/số có glow, fix contrast trắng-trên-pastel; CTA hover cross-fade 350ms qua ::before (hết snap); press 60ms; `:focus-visible` toàn site
+7. **3D wireframe theo theme:** ink light/dark (trước đây dark mode wireframe tàng hình trên nền #1a1a18), ground slab hết chói, MutationObserver theo `data-theme`
+8. **Measure caps:** timeline ul 72ch (trước ~150ch), about 62ch, featured 60ch, contact 54ch centered
+9. **Tracking 2 bậc** `--track-kicker: 0.2em`/`--track-label: 0.08em` thống nhất 8 kiểu label; **fix bug:** `.contact p` đè `.section-kicker` → kicker Contact từng render 17px xám (giờ `:not(.section-kicker)`)
+10. **Skills bento** (≥901px): card thesis "Operations & Performance Systems" span 4/6 + list 2 cột; 6 card = 3 hàng kín
+11. **Projects bento** (≥1000px): card đầu full-width nằm ngang (lead), card có items[] span 2 (data-driven trong renderProjects); grid 3 cột kín
+12. **Featured project = white card Notion** + metric tiles surface-2; print strip về kiểu typographic cũ
+- **Thêm `?theme=dark|light`** vào no-flash script (tooling chụp headless + link chia sẻ, cùng pattern ?lang/?print)
+**Lý do / ghi chú:** Verify: DOM checks EN+VI light+dark qua preview (transition-throttle trap đã né bằng `transition:none` trước khi đo); screenshot headless light+dark (hero) + full-page light qua `?print=1` (GSAP kẹt giữa timeline dưới virtual-time nếu không có flag); 2 CV in lại — trang 1 đọc name → kicker → thesis → panel, metrics print vẫn typographic. Skill cài vào ~/.claude/skills bị permission chặn — dùng in-place từ scratchpad. Screenshot lưu scratchpad (hero-light/hero-dark/full-light.png).
+
 ## [2026-06-15] — Sửa page-break khi in CV (mỗi section sang trang mới)
 **Agent/Người thực hiện:** Claude Code (theo yêu cầu Denis: "cv xấu quá phần lớn bị cắt đôi, để phần lớn ở đầu trang")
 **Files thay đổi:** style.css, cv.pdf, cv-vi.pdf (in lại)

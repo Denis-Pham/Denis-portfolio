@@ -12,7 +12,7 @@
    "Operations Workflows" card to list several workflows in one place) */
 .project-items { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .project-items li { position: relative; padding-left: 18px; font-size: 14px; line-height: 1.45; color: var(--muted); }
-.project-items li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 6px; height: 6px; border-radius: 999px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); }
+.project-items li::before { content: ''; position: absolute; left: 2px; top: 7px; width: 6px; height: 6px; border-radius: 999px; background: linear-gradient(180deg, var(--grad-a), var(--grad-b)); }
 .project-items li strong { color: var(--fg); font-weight: 600; }
 
 /* Scroll choreography support (scroll-fx.js)
@@ -26,7 +26,7 @@
   z-index: 200;
   transform-origin: 0 50%;
   transform: scaleX(0);
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-b));
   pointer-events: none;
 }
 
@@ -60,6 +60,8 @@
     --surface-glass: #ffffff !important; --bg-glass: #ffffff !important;
     --nav-bg: #ffffff !important; --hero-top: #ffffff !important;
     --shadow-1: none !important; --shadow-2: none !important;
+    --cta-glow: 0 0 0 rgba(0,0,0,0) !important; --pill-glow: none !important;
+    --num-glow: none !important;
   }
   header.topnav, .contact, #progress { display: none !important; }
   /* GSAP reveals leave below-fold elements at opacity 0 / translated —
@@ -76,8 +78,10 @@
   section, .hero { padding: 14px 0 !important; background: white !important; }
   section h2 { font-size: 15pt !important; }
   .hero h1 { font-size: 24pt !important; -webkit-text-fill-color: black; color: black; background: none !important; }
-  .hero .role { font-size: 13pt !important; margin-bottom: 8px !important; }
-  .hero .tagline { font-size: 10.5pt !important; margin-bottom: 12px !important; }
+  /* role is a small uppercase kicker on screen — keep it modest on paper too */
+  .hero .role { font-size: 10pt !important; margin-bottom: 8px !important; letter-spacing: 0.14em !important; }
+  /* tagline is the serif thesis line on screen — one step above body in print */
+  .hero .tagline { font-size: 12pt !important; margin-bottom: 12px !important; }
   .timeline-item li, .skill-card li { font-size: 9.5pt !important; padding: 2px 0 !important; }
   .skills-grid { gap: 10px !important; }
   .skill-card { padding: 12px 14px !important; }
@@ -85,7 +89,14 @@
   .project-body { padding: 10px 14px 12px !important; }
   .hero-stats { margin-top: 16px !important; padding-top: 14px !important; }
   .about-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
-  .featured-project-card { grid-template-columns: 1fr !important; gap: 12px !important; }
+  /* screen gives the featured card a white surface + metric tiles — strip both
+     so the CV keeps its compact typographic metrics row */
+  .featured-project-card {
+    grid-template-columns: 1fr !important; gap: 12px !important;
+    background: none !important; border: none !important; box-shadow: none !important;
+    padding: 0 !important; border-radius: 0 !important;
+  }
+  .featured-metrics .metric-block { background: none !important; border: none !important; padding: 0 !important; }
   /* Keep each block whole — never split a card/item across a page break */
   .timeline-item, .project-card, .skill-card, .education-item,
   .featured-project-card, .stat, .project-items li {
