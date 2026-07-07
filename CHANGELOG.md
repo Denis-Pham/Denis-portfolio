@@ -55,6 +55,15 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-07-03] — Bộ kit tự sửa nội dung cho Denis (EDIT-CONTENT.md + 2 file .bat)
+**Agent/Người thực hiện:** Claude Code (Denis: "có cách nào để anh sửa nội dung chữ mà ra kết quả ngay không phải nhờ em")
+**Files thay đổi:** EDIT-CONTENT.md (mới), start-preview.bat (mới), rebuild-cv.bat (mới)
+**Nội dung:**
+- `EDIT-CONTENT.md`: bảng tra "muốn sửa gì → mở file nào" (4 arrays script.js + quy tắc UI_I18N sửa CẢ index.html lẫn script.js), cú pháp `{en, vi}` và `**metric**`, cách debug trang trắng (F12), 2 cách deploy (GitHub web editor / git push), nhắc bump `?v=`
+- `start-preview.bat`: double-click → mở server 5173 + trình duyệt (đã verify python 3.11 + Chrome có trên máy)
+- `rebuild-cv.bat`: in lại cv.pdf + cv-vi.pdf bằng headless Chrome (cần preview đang chạy)
+**Lý do / ghi chú:** Site vốn data-driven nên self-service được — thiếu mỗi hướng dẫn + launcher. Nội dung thuần chữ Denis tự sửa; layout/màu/hiệu ứng vẫn gọi Claude.
+
 ## [2026-07-03] — Fix 3D background không hiện: gate width chỉ check 1 lần lúc load
 **Agent/Người thực hiện:** Claude Code (Denis: "lỗi không thấy hình 3d ở background")
 **Files thay đổi:** bg-3d.js, index.html
