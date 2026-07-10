@@ -85,3 +85,5 @@ Try these accent swaps:
 - `#16a34a` — green (growth, success)
 
 Change one variable, the whole site reshades.
+
+> Pilot: quan ly boi Claude Code + Hermes collab tu 2026-07-10.
