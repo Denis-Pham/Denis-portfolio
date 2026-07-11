@@ -55,6 +55,15 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-07-11] — Viết lại kinh nghiệm Hasaki theo phạm vi công việc
+**Agent/Người thực hiện:** Neo (Hermes)
+**Files thay đổi:** script.js, CHANGELOG.md
+**Nội dung:**
+- Viết lại 6 bullet Hasaki theo các mảng công việc: phạm vi vận hành & hiệu suất, SOP/task workflow, workflow sự kiện bán lẻ, mua hàng & đánh giá nhà cung cấp, khung KPI và tự động hóa báo cáo
+- Giảm phần KPI từ 4/6 bullet xuống 2/6 bullet vì Hasaki KPI System đã có Featured Project riêng
+- Giữ nguyên các số liệu đã có căn cứ: **300+ cửa hàng**, **50+ KPI**, **100+ trường dữ liệu**, **5 ngày → real-time**, **3 ngày → ~30 phút**
+**Lý do / ghi chú:** Entry cũ thiên về giới thiệu một dự án KPI hơn là phản ánh đầy đủ vai trò Operations Performance Specialist. Nội dung mới chỉ dùng phạm vi và ví dụ đã xuất hiện trong CV/portfolio hoặc ghi chú công việc của Denis.
+
 ## [2026-07-03] — Bộ kit tự sửa nội dung cho Denis (EDIT-CONTENT.md + 2 file .bat)
 **Agent/Người thực hiện:** Claude Code (Denis: "có cách nào để anh sửa nội dung chữ mà ra kết quả ngay không phải nhờ em")
 **Files thay đổi:** EDIT-CONTENT.md (mới), start-preview.bat (mới), rebuild-cv.bat (mới)

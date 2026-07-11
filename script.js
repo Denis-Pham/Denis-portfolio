@@ -115,18 +115,18 @@ const experience = [
     brand: { mark: 'H', color: '#2e7d52' },
     bullets: [
       // Wrap numbers/key metrics in **double asterisks** — they render in accent color
-      { en: 'Own the end-to-end performance system for the Cosmetics division: **SOP system → daily task workflows → KPI scoring** across **300+** retail stores',
-        vi: 'Phụ trách toàn bộ hệ thống hiệu suất của khối Cosmetics: **hệ thống SOP → workflow công việc hằng ngày → chấm điểm KPI** cho **300+** cửa hàng bán lẻ' },
-      { en: 'Manage the store operating SOP system and turn it into daily task workflows assigned and tracked per store',
-        vi: 'Quản lý hệ thống SOP vận hành cho đội cửa hàng và chuyển thành workflow công việc hằng ngày, giao việc & theo dõi theo từng cửa hàng' },
-      { en: 'Designed the KPI framework that scores store staff against those workflows — the numbers behind monthly performance reviews',
-        vi: 'Thiết kế khung KPI chấm điểm nhân viên cửa hàng theo chính các workflow đó — con số đứng sau đánh giá hiệu suất hằng tháng' },
-      { en: 'Built the Hasaki KPI System end-to-end — raw Excel files → automated calculation → automated recording → monthly dashboard covering **300+** stores, **50+ KPIs** and **100+** data fields',
-        vi: 'Xây Hasaki KPI System trọn gói — file Excel thô → tính toán tự động → ghi nhận tự động → dashboard hằng tháng phủ **300+** cửa hàng, **50+ KPI** và **100+** trường dữ liệu' },
-      { en: 'Moved KPI tracking from **5-day** Excel batch calculations to a **real-time** KPI view — and cut monthly report preparation from **3 days** to **~30 minutes**',
-        vi: 'Chuyển việc theo dõi KPI từ **5 ngày** chạy Excel sang màn hình KPI **thời gian thực** — và rút thời gian làm báo cáo hằng tháng từ **3 ngày** xuống **~30 phút**' },
-      { en: 'Created combined sales × KPI cross-analytics and anomaly-detection logic flagging underperforming stores and suspected system errors',
-        vi: 'Tạo phân tích chéo doanh số × KPI và logic phát hiện bất thường, cảnh báo cửa hàng kém hiệu suất và nghi vấn lỗi hệ thống' }
+      { en: 'Own the operating-performance loop for the Cosmetics division: **SOPs → daily task workflows → compliance tracking → KPI scoring** across **300+** retail stores',
+        vi: 'Phụ trách vòng lặp vận hành & hiệu suất của khối Cosmetics: **SOP → workflow công việc hằng ngày → theo dõi tuân thủ → chấm điểm KPI** trên **300+** cửa hàng bán lẻ' },
+      { en: 'Manage operating SOPs and translate them into assigned, trackable store tasks, keeping standards, execution and performance reviews aligned',
+        vi: 'Quản lý SOP vận hành và chuyển thành đầu việc có người thực hiện, có thể theo dõi tại cửa hàng, giữ tiêu chuẩn, thực thi và đánh giá hiệu suất nhất quán' },
+      { en: 'Standardize workflows for recurring retail events, including new-store openings, store closures and liquidation, with clear checklists, handovers and sign-offs',
+        vi: 'Chuẩn hóa workflow cho các sự kiện bán lẻ lặp lại, gồm khai trương, đóng cửa & thanh lý, với checklist, bàn giao và xác nhận hoàn tất rõ ràng' },
+      { en: 'Structure administrative procurement and vendor evaluation workflows from request and approval through purchasing, receipt logging and weighted quote comparison',
+        vi: 'Xây workflow mua hàng hành chính và đánh giá nhà cung cấp từ đề xuất, phê duyệt đến mua, ghi nhận nhập hàng và so sánh báo giá có trọng số' },
+      { en: 'Designed the KPI framework and built its supporting system end to end, covering **300+ stores**, **50+ KPIs** and **100+ data fields**',
+        vi: 'Thiết kế khung KPI và xây hệ thống hỗ trợ trọn gói, bao phủ **300+ cửa hàng**, **50+ KPI** và **100+ trường dữ liệu**' },
+      { en: 'Moved KPI tracking from **5-day** Excel batches to a **real-time** view and cut monthly report preparation from **3 days** to **~30 minutes**',
+        vi: 'Chuyển theo dõi KPI từ các đợt chạy Excel **5 ngày** sang màn hình **thời gian thực**, đồng thời rút thời gian làm báo cáo tháng từ **3 ngày** xuống **~30 phút**' }
     ]
   },
   {
