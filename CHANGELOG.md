@@ -55,6 +55,13 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-07-14] — Thêm DESIGN-SYSTEM-PROMPT.md (prompt cho claude.ai Design)
+**Agent/Người thực hiện:** Claude Code (Denis: "đọc lại portfolio và cho anh một prompt tạo system design để đưa qua claude design")
+**Files thay đổi:** DESIGN-SYSTEM-PROMPT.md (mới)
+**Nội dung:**
+- Đóng gói toàn bộ design system hiện tại thành 1 prompt để Denis dán vào Project Instructions trên claude.ai (giống pattern "Vivi Soul Design System"): triết lý Notion-warm + numbers-first, đủ bảng token light/dark (kể cả --grad-*/glow/tracking sau đợt nâng cấp UI 12 hạng mục), typography scale clamp, component signatures (pill CTA, hero stats hairline panel, bento, loop card, dot-nav…), motion rules + reduced-motion, ràng buộc no-framework/no-build/print/i18n, và 5 quy tắc output (HTML chạy được, đủ 2 theme, nội dung thật, hỏi trước khi phá cách, mã ghép thẳng về index.html).
+**Lý do / ghi chú:** Token trích trực tiếp từ index.html hiện tại (bản sau UI upgrade 03/07). Agent sau sửa token trong index.html thì NHỚ sync lại file prompt này.
+
 ## [2026-07-11] — Viết lại kinh nghiệm Hasaki theo phạm vi công việc
 **Agent/Người thực hiện:** Neo (Hermes)
 **Files thay đổi:** script.js, CHANGELOG.md
