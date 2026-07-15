@@ -71,6 +71,7 @@
   .project-thumb, .featured-project-thumb, .hero-tech, .eyebrow,
   .loop-card, .hero .cta, .section-lede, #stage,
   .dot-nav, .lang-toggle,
+  .cred, .featured-cta, .nav-mobile-tools, .mobile-menu, /* iteration-2 chrome: web-only */
   .co-badge { display: none !important; } /* print strips backgrounds → white-on-white monogram */
   .hero::before { display: none !important; }
   .about-grid { grid-template-columns: 1fr !important; } /* loop-card hidden — don't leave an empty track */

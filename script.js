@@ -215,6 +215,16 @@ const projects = [
     },
     image: 'projects/kpi-dashboard.svg',
     initial: 'K',
+    // evidence rows (Context · Problem · My role) + the case-study page this card links to
+    caseStudyId: 'hasaki-kpi',
+    evidence: {
+      context: { en: "Hasaki's Cosmetics division scores 300+ stores on how well they run — numbers that feed real monthly performance reviews.",
+                 vi: 'Khối Cosmetics của Hasaki chấm điểm 300+ cửa hàng theo mức độ vận hành — số liệu phục vụ đánh giá hiệu suất hằng tháng thật.' },
+      problem: { en: 'Scores lived in hand-compiled Excel: ~5 days to refresh, no single basis to compare stores, and quietly accumulating errors.',
+                 vi: 'Điểm số nằm trong Excel tổng hợp tay: ~5 ngày mới cập nhật, không có chuẩn chung để so sánh, và âm thầm tích lũy sai số.' },
+      role: { en: 'I designed the KPI framework and built the whole pipeline — ingest → calculation → recording → dashboard — solo.',
+              vi: 'Tôi thiết kế khung KPI và xây toàn bộ pipeline — nạp → tính → ghi nhận → dashboard — một mình.' }
+    },
     tags: ['Excel', 'JavaScript', 'Chart.js', 'Automation', 'Anomaly detection'],
     // metrics show as 3 stat boxes on the Featured Project card. Only added to projects[0].
     // `was` renders as a struck-through old value above the new one — before/after at a glance
@@ -336,6 +346,45 @@ const education = [
   }
 ];
 
+// ---------- 5) CREDIBILITY STRIP (employers below hero) ----------
+const credibility = [
+  { mark: 'H', color: '#2e7d52', name: 'Hasaki' },
+  { mark: 'S', color: '#1c1a33', name: 'SIPHER' },
+  { mark: 'A', color: '#1e5aa8', name: 'Allied Technologies' },
+  { mark: 'F', color: '#f37021', name: 'FPT' }
+];
+
+// ---------- 6) ABOUT EXTRAS — working principles + who this fits ----------
+const principles = [
+  { title: { en: 'Own the whole loop', vi: 'Làm chủ trọn vòng lặp' },
+    body: { en: "When one person owns the standard, the task, and the score, they can't drift apart.",
+            vi: 'Khi một người làm chủ chuẩn, việc và điểm, chúng không thể lệch khỏi nhau.' } },
+  { title: { en: 'Automate the boring part first', vi: 'Tự động hoá phần nhàm chán trước' },
+    body: { en: 'Remove manual data entry so the numbers refresh themselves — the dashboard is the easy last mile.',
+            vi: 'Bỏ nhập liệu thủ công để số tự cập nhật — dashboard chỉ là chặng cuối dễ dàng.' } },
+  { title: { en: 'Make every number traceable', vi: 'Làm mọi con số truy vết được' },
+    body: { en: "A metric people are reviewed on has to be defensible back to its inputs, or it won't be trusted.",
+            vi: 'Một chỉ số dùng để đánh giá người khác phải bảo vệ được về dữ liệu gốc, nếu không sẽ không ai tin.' } },
+  { title: { en: 'Build what one person can maintain', vi: 'Xây thứ một người duy trì được' },
+    body: { en: 'A practical Excel + JS stack beats a heavier system that needs a whole team to keep running.',
+            vi: 'Stack Excel + JS thực dụng thắng một hệ thống nặng cần cả đội mới giữ chạy được.' } }
+];
+const goodFit = [
+  { en: 'Retail or operations teams that need field execution turned into metrics they can trust.',
+    vi: 'Đội bán lẻ/vận hành cần biến thực thi hiện trường thành chỉ số đáng tin.' },
+  { en: 'Companies that want internal tools and dashboards built fast — without a big engineering team.',
+    vi: 'Công ty muốn xây nhanh tool nội bộ & dashboard — không cần đội kỹ thuật lớn.' },
+  { en: 'Performance / KPI systems that must hold up under real monthly reviews.',
+    vi: 'Hệ thống hiệu suất/KPI phải trụ vững trong đánh giá hằng tháng thật.' }
+];
+
+// ---------- 7) CONTACT — good reasons to reach out ----------
+const contactReasons = [
+  { en: 'Turn field execution into a trustworthy KPI system', vi: 'Biến thực thi hiện trường thành hệ thống KPI đáng tin' },
+  { en: 'Build an internal tool or dashboard, fast', vi: 'Xây nhanh một tool nội bộ hoặc dashboard' },
+  { en: 'Talk about an operations-performance role', vi: 'Trao đổi về một vị trí hiệu suất vận hành' }
+];
+
 // ===========================================
 // RENDER FUNCTIONS — no need to edit below
 // ===========================================
@@ -400,6 +449,35 @@ function brandBadgeHTML(brand) {
   return `<span class="co-badge" style="background:${brand.color}">${brand.mark}</span>`;
 }
 
+function renderCredibility() {
+  const list = document.getElementById('cred-list');
+  if (!list) return;
+  list.innerHTML = credibility.map(c => `
+    <li class="cred-item">${brandBadgeHTML(c)}<span class="cred-name">${c.name}</span></li>
+  `).join('');
+}
+
+function renderAboutExtras() {
+  const grid = document.getElementById('principles-grid');
+  if (grid) grid.innerHTML = principles.map((p, i) => `
+    <div class="principle">
+      <span class="principle-num">${String(i + 1).padStart(2, '0')}</span>
+      <div>
+        <h4>${t(p.title)}</h4>
+        <p>${t(p.body)}</p>
+      </div>
+    </div>
+  `).join('');
+  const fit = document.getElementById('goodfit-list');
+  if (fit) fit.innerHTML = goodFit.map(g => `<li>${t(g)}</li>`).join('');
+}
+
+function renderContactReasons() {
+  const list = document.getElementById('contact-reasons');
+  if (!list) return;
+  list.innerHTML = contactReasons.map(r => `<li>${t(r)}</li>`).join('');
+}
+
 function renderTimeline() {
   const timeline = document.getElementById('timeline');
   if (!timeline) return;
@@ -441,14 +519,33 @@ function renderFeaturedProject() {
     </div>
   ` : '';
 
+  // Evidence rows — the case-study system's Context · Problem · My role
+  const evidenceHTML = p.evidence ? `
+    <dl class="evidence">
+      <div><dt>${t({ en: 'Context', vi: 'Bối cảnh' })}</dt><dd>${t(p.evidence.context)}</dd></div>
+      <div><dt>${t({ en: 'Problem', vi: 'Vấn đề' })}</dt><dd>${t(p.evidence.problem)}</dd></div>
+      <div><dt>${t({ en: 'My role', vi: 'Vai trò' })}</dt><dd>${t(p.evidence.role)}</dd></div>
+    </dl>
+  ` : '';
+
+  // Footer CTA → the data-driven case-study page (case-study.html?id=<slug>)
+  const caseCtaHTML = p.caseStudyId ? `
+    <div class="featured-cta">
+      <a class="btn btn-primary" href="case-study.html?id=${p.caseStudyId}">${t({ en: 'View case study →', vi: 'Xem case study →' })}</a>
+      <span class="featured-cta-note">${t({ en: 'Context · problem · decisions · outcome', vi: 'Bối cảnh · vấn đề · quyết định · kết quả' })}</span>
+    </div>
+  ` : '';
+
   container.innerHTML = `
     <div class="featured-project-thumb">${thumb}</div>
     <div class="featured-project-content">
       <h3>${t(p.title)}</h3>
       <p>${t(p.summary)}</p>
+      ${evidenceHTML}
       ${metricsHTML}
       <div class="tags">${p.tags.map(tagHTML).join('')}</div>
       <div class="actions">${renderProjectActions(p)}</div>
+      ${caseCtaHTML}
     </div>
   `;
 }
@@ -501,6 +598,13 @@ const UI_I18N = [
   { sel: 'nav.links a[href="#projects"]',   en: 'Projects',   vi: 'Dự án' },
   { sel: 'nav.links a[href="#education"]',  en: 'Education',  vi: 'Học vấn' },
   { sel: 'nav.links a[href="#contact"]',    en: 'Contact',    vi: 'Liên hệ' },
+  // mobile burger menu links
+  { sel: '.mobile-menu nav a[href="#about"]',      en: 'About',      vi: 'Giới thiệu' },
+  { sel: '.mobile-menu nav a[href="#skills"]',     en: 'Skills',     vi: 'Kỹ năng' },
+  { sel: '.mobile-menu nav a[href="#experience"]', en: 'Experience', vi: 'Kinh nghiệm' },
+  { sel: '.mobile-menu nav a[href="#projects"]',   en: 'Projects',   vi: 'Dự án' },
+  { sel: '.mobile-menu nav a[href="#education"]',  en: 'Education',  vi: 'Học vấn' },
+  { sel: '.mobile-menu nav a[href="#contact"]',    en: 'Contact',    vi: 'Liên hệ' },
   // dot-nav hover tooltips (attribute, not text)
   { sel: '.dot-nav a[href="#about"]',      attr: 'data-label', en: 'About',      vi: 'Giới thiệu' },
   { sel: '.dot-nav a[href="#skills"]',     attr: 'data-label', en: 'Skills',     vi: 'Kỹ năng' },
@@ -517,10 +621,11 @@ const UI_I18N = [
   { sel: '.hero .tagline', html: true,
     en: 'I design how <strong>300+ stores</strong> run — then build the systems that measure it. <strong>SOP → daily tasks → KPI scoring</strong>: one loop, one owner.',
     vi: 'Tôi thiết kế cách <strong>300+ cửa hàng</strong> vận hành — rồi tự xây hệ thống đo lường. <strong>SOP → công việc hằng ngày → chấm điểm KPI</strong>: một vòng lặp, một người làm chủ.' },
-  { sel: '.hero .cta .btn-primary',   en: 'Get in touch →', vi: 'Liên hệ ngay →' },
-  { sel: '.hero .cta .btn-secondary', en: 'Download CV (PDF)', vi: 'Tải CV (PDF)' },
+  { sel: '.hero .cta .btn-primary',   en: 'See the KPI system →', vi: 'Xem hệ thống KPI →' },
+  { sel: '.hero .cta .btn-secondary', en: 'Get in touch', vi: 'Liên hệ' },
+  { sel: '.hero .cta .cv-link', en: 'Download CV (PDF)', vi: 'Tải CV (PDF)' },
   // CV download points to the language-matched PDF (EN ships as cv.pdf; VI swaps to cv-vi.pdf)
-  { sel: '.hero .cta .btn-secondary', attr: 'href', en: 'cv.pdf', vi: 'cv-vi.pdf' },
+  { sel: '.hero .cta .cv-link', attr: 'href', en: 'cv.pdf', vi: 'cv-vi.pdf' },
   { sel: '.hero-meta .meta-item:nth-child(1)', html: true, en: '📍 <strong>Ho Chi Minh City</strong>', vi: '📍 <strong>TP. Hồ Chí Minh</strong>' },
   { sel: '.hero-meta .meta-item:nth-child(3)', html: true,
     en: '⏱ <strong>10+ years</strong> in quality, operations &amp; performance',
@@ -533,6 +638,11 @@ const UI_I18N = [
   { sel: '.hero-stats .stat:nth-child(3) .stat-label', en: 'Monthly report prep time', vi: 'Thời gian làm báo cáo hằng tháng' },
   { sel: '.hero-stats .stat:nth-child(4) .stat-label', en: 'Internal tools shipped', vi: 'Tool nội bộ đã xây' },
   { sel: '.hero-tech .label', en: 'Daily tech stack', vi: 'Tech stack hằng ngày' },
+  // credibility strip
+  { sel: '.cred-label', en: 'Operations & performance across', vi: 'Vận hành & hiệu suất qua' },
+  // about extras (list content renders via t(); only the two headings live in HTML)
+  { sel: '#principles-title', en: 'How I work', vi: 'Cách tôi làm việc' },
+  { sel: '#goodfit-title', en: 'A good fit for', vi: 'Phù hợp với' },
   // about
   { sel: '#about .section-kicker', en: 'About', vi: 'Giới thiệu' },
   { sel: '#about h2', en: 'I turn operating data into decisions teams can act on.', vi: 'Tôi biến dữ liệu vận hành thành quyết định có thể hành động.' },
@@ -571,12 +681,16 @@ const UI_I18N = [
   { sel: '#education .section-kicker', en: 'Education', vi: 'Học vấn' },
   { sel: '#education h2', en: 'Background', vi: 'Nền tảng' },
   // contact
+  { sel: '.contact-avail .avail-badge', en: 'Available for new projects', vi: 'Đang nhận dự án mới' },
   { sel: '#contact .section-kicker', en: 'Contact', vi: 'Liên hệ' },
   { sel: '#contact h2', en: "Let's talk.", vi: 'Cùng trò chuyện nhé.' },
-  { sel: '#contact .wrap > p:not(.section-kicker):not(.email-plain)',
-    en: 'Open to analytics work, operations-performance projects, internal-tool builds, freelance work, or a coffee chat.',
-    vi: 'Tôi luôn sẵn sàng trao đổi về công việc phân tích dữ liệu, dự án tối ưu hiệu suất vận hành, xây công cụ nội bộ, freelance hoặc đơn giản là một buổi cà phê.' },
-  { sel: '#contact .contact-buttons .btn-primary', en: 'Email me', vi: 'Gửi email cho tôi' },
+  { sel: '#contact .contact-body',
+    en: 'Reach out about turning operations into metrics, building an internal tool, or a performance/KPI system that has to hold up in real reviews.',
+    vi: 'Hãy liên hệ nếu bạn cần biến vận hành thành chỉ số, xây một tool nội bộ, hoặc một hệ thống hiệu suất/KPI phải trụ vững trong đánh giá thật.' },
+  { sel: '#contact .contact-buttons .btn-primary', en: 'Discuss a project →', vi: 'Trao đổi về một dự án →' },
+  { sel: '#contact .contact-next',
+    en: 'I read every message myself and usually reply within a day.',
+    vi: 'Tôi tự đọc mọi tin nhắn và thường phản hồi trong vòng một ngày.' },
   { sel: '.email-plain', html: true,
     en: 'Or write to me directly at <a href="mailto:manhduc1703@gmail.com">manhduc1703@gmail.com</a>',
     vi: 'Hoặc trao đổi trực tiếp với tôi qua email: <a href="mailto:manhduc1703@gmail.com">manhduc1703@gmail.com</a>' },
@@ -607,22 +721,39 @@ document.querySelectorAll('.lang-toggle button').forEach(btn => {
 });
 
 // Dark-mode toggle: <head> already applied the saved/OS theme before paint.
-// Here we just sync the icon and flip live on click (pure CSS-var swap, no reload).
-const themeToggle = document.querySelector('.theme-toggle');
-if (themeToggle) {
-  const syncIcon = () => {
+// Two instances now (inline nav + mobile tools cluster) — sync every one.
+const themeToggles = document.querySelectorAll('.theme-toggle');
+if (themeToggles.length) {
+  const syncIcons = () => {
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    themeToggle.textContent = dark ? '☀️' : '🌙';
-    themeToggle.setAttribute('aria-pressed', String(dark));
+    themeToggles.forEach(tg => {
+      tg.textContent = dark ? '☀️' : '🌙';
+      tg.setAttribute('aria-pressed', String(dark));
+    });
   };
-  syncIcon();
-  themeToggle.addEventListener('click', () => {
+  syncIcons();
+  themeToggles.forEach(tg => tg.addEventListener('click', () => {
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (dark) document.documentElement.removeAttribute('data-theme');
     else document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', dark ? 'light' : 'dark');
-    syncIcon();
-  });
+    syncIcons();
+  }));
+}
+
+// Mobile burger menu (≤820px): toggles the slide-down panel; closing on
+// link click lets the native smooth scroll take over (scroll-margin-top
+// on sections keeps the sticky header from covering the target).
+const burgerBtn = document.querySelector('.nav-burger');
+const mobileMenu = document.getElementById('mobile-menu');
+if (burgerBtn && mobileMenu) {
+  const setOpen = open => {
+    mobileMenu.hidden = !open;
+    burgerBtn.setAttribute('aria-expanded', String(open));
+    burgerBtn.querySelector('.burger').classList.toggle('is-open', open);
+  };
+  burgerBtn.addEventListener('click', () => setOpen(mobileMenu.hidden));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
 }
 
 // Auto-update footer year
@@ -630,8 +761,11 @@ const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 applyUI();
+renderCredibility();
 renderSkills();
+renderAboutExtras();
 renderTimeline();
 renderFeaturedProject();
 renderProjects();
 renderEducation();
+renderContactReasons();
