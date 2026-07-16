@@ -20,25 +20,26 @@ const CASE_STUDIES = {
     eyebrow: { en: 'Case study · Operations Performance', vi: 'Case study · Hiệu suất Vận hành' },
     title: 'Hasaki KPI System',
     subtitle: {
-      en: 'Turning 300+ stores of messy field execution into a real-time performance loop — one that store teams trust and managers can act on.',
-      vi: 'Biến thực thi vận hành nhiều biến động của 300+ cửa hàng thành một vòng lặp hiệu suất thời gian thực — đủ tin để đội cửa hàng chấp nhận và quản lý dựa vào để quyết định.'
+      en: 'Turning 300+ stores of messy field execution into a performance loop that refreshes every day — one that store teams trust and managers can act on.',
+      vi: 'Biến thực thi vận hành nhiều biến động của 300+ cửa hàng thành một vòng lặp hiệu suất cập nhật mỗi ngày — đủ tin để đội cửa hàng chấp nhận và quản lý dựa vào để quyết định.'
     },
     image: 'projects/kpi-dashboard.svg',
     imageAlt: { en: 'The Hasaki monthly KPI dashboard', vi: 'Dashboard KPI hằng tháng của Hasaki' },
 
     meta: [
       { label: { en: 'Role', vi: 'Vai trò' },
-        value: { en: 'Sole designer & builder — end to end', vi: 'Người thiết kế & xây dựng duy nhất — trọn gói' } },
+        value: { en: 'KPI framework owner — design to dashboard', vi: 'Chủ trì khung KPI — từ thiết kế đến dashboard' } },
       { label: { en: 'Timeline', vi: 'Thời gian' }, value: { en: '2023 — present', vi: '2023 — hiện tại' } },
       { label: { en: 'Scope', vi: 'Phạm vi' }, value: { en: '300+ stores · 50+ KPIs · 100+ data fields', vi: '300+ cửa hàng · 50+ KPI · 100+ trường dữ liệu' } },
       { label: { en: 'Tools', vi: 'Công cụ' }, value: 'Excel, JavaScript, Chart.js, Python' },
       { label: { en: 'Context', vi: 'Bối cảnh' }, value: { en: 'Hasaki Vietnam · Cosmetics division', vi: 'Hasaki Việt Nam · Khối Cosmetics' } },
-      { label: { en: 'Team', vi: 'Đội ngũ' }, value: null } // pending confirmation — do not invent
+      { label: { en: 'Team', vi: 'Đội ngũ' },
+        value: { en: "Me + the tech team's BA · formulas reviewed with BOM/BOD", vi: 'Tôi + BA team tech · công thức rà soát cùng BOM/BOD' } }
     ],
 
     summary: {
-      en: 'Hasaki runs 300+ cosmetics retail stores. I designed the KPI framework the division scores stores on, then built the system that produces those scores end to end: raw operational Excel → automated calculation → automated recording → an interactive monthly dashboard with anomaly flags. It replaced multi-day manual reporting with a near-real-time view that now drives monthly performance reviews.',
-      vi: 'Hasaki vận hành 300+ cửa hàng mỹ phẩm. Tôi thiết kế khung KPI mà khối dùng để chấm điểm cửa hàng, rồi tự xây hệ thống tạo ra điểm số đó trọn gói: Excel vận hành thô → tính toán tự động → ghi nhận tự động → dashboard tương tác hằng tháng kèm cảnh báo bất thường. Nó thay thế báo cáo thủ công nhiều ngày bằng một góc nhìn gần thời gian thực, hiện là cơ sở cho đánh giá hiệu suất hằng tháng.'
+      en: "Hasaki runs 300+ cosmetics retail stores. I designed the KPI framework the division scores stores on — every formula reviewed with BOM/BOD — then delivered the system that produces those scores: automated calculation and recording built with the tech team's BA, and an interactive dashboard I built myself with Claude Code. It replaced a month-start manual compile with an automated daily refresh that now drives monthly performance reviews.",
+      vi: 'Hasaki vận hành 300+ cửa hàng mỹ phẩm. Tôi thiết kế khung KPI mà khối dùng để chấm điểm cửa hàng — từng công thức được rà soát cùng BOM/BOD — rồi hoàn thiện hệ thống tạo ra điểm số đó: tính toán & ghi nhận tự động xây cùng BA team tech, và dashboard tương tác tôi tự xây bằng Claude Code. Nó thay thế việc tổng hợp thủ công đầu tháng bằng cập nhật tự động hằng ngày, hiện là cơ sở cho đánh giá hiệu suất hằng tháng.'
     },
 
     context: {
@@ -46,11 +47,11 @@ const CASE_STUDIES = {
       body: {
         en: [
           'The Cosmetics division measures how well each store runs — from SOP compliance to operational execution — and those scores feed real monthly performance reviews for store staff.',
-          'When I took it on, the numbers lived in Excel files compiled by hand. A full refresh took about five days, so by the time anyone saw a problem the month had moved on. There was no reliable way to compare 300+ stores on the same basis, and manual compilation quietly introduced errors.'
+          'When I took it on, the numbers lived in Excel files compiled by hand at the start of each month. A full refresh took about five days, so by the time anyone saw a problem the month had moved on. There was no reliable way to compare 300+ stores on the same basis, and manual compilation quietly introduced errors.'
         ],
         vi: [
           'Khối Cosmetics đo mức độ vận hành tốt của từng cửa hàng — từ tuân thủ SOP đến thực thi vận hành — và các điểm số đó phục vụ đánh giá hiệu suất hằng tháng thật cho nhân viên cửa hàng.',
-          'Khi tôi tiếp nhận, dữ liệu nằm trong các file Excel tổng hợp bằng tay. Một lần cập nhật đầy đủ mất khoảng năm ngày, nên đến lúc thấy được vấn đề thì tháng đã trôi qua. Không có cách đáng tin để so sánh 300+ cửa hàng trên cùng một chuẩn, và việc tổng hợp thủ công âm thầm tạo ra sai số.'
+          'Khi tôi tiếp nhận, dữ liệu nằm trong các file Excel tổng hợp bằng tay vào đầu mỗi tháng. Một lần cập nhật đầy đủ mất khoảng năm ngày, nên đến lúc thấy được vấn đề thì tháng đã trôi qua. Không có cách đáng tin để so sánh 300+ cửa hàng trên cùng một chuẩn, và việc tổng hợp thủ công âm thầm tạo ra sai số.'
         ]
       }
     },
@@ -58,27 +59,27 @@ const CASE_STUDIES = {
     challenge: {
       title: { en: 'The challenge', vi: 'Thách thức' },
       body: {
-        en: ['Measure execution across 300+ stores consistently and near-real-time — without adding manual work for store teams, and with numbers trustworthy enough to sit under a performance review.'],
-        vi: ['Đo thực thi trên 300+ cửa hàng một cách nhất quán và gần thời gian thực — mà không thêm việc thủ công cho đội cửa hàng, và với số liệu đủ tin để làm cơ sở đánh giá hiệu suất.']
+        en: ['Measure execution across 300+ stores consistently, with numbers refreshed daily instead of once a month — without adding manual work for store teams, and trustworthy enough to sit under a performance review.'],
+        vi: ['Đo thực thi trên 300+ cửa hàng một cách nhất quán, số liệu tươi mỗi ngày thay vì mỗi tháng một lần — mà không thêm việc thủ công cho đội cửa hàng, và đủ tin để làm cơ sở đánh giá hiệu suất.']
       }
     },
 
     role: {
       title: { en: 'My role', vi: 'Vai trò của tôi' },
       body: {
-        en: ['I owned the whole loop — both the framework and the tool that runs it:'],
-        vi: ['Tôi làm chủ toàn bộ vòng lặp — cả khung lẫn công cụ vận hành nó:']
+        en: ['I owned the loop end to end — the framework, the alignment, and the dashboard:'],
+        vi: ['Tôi phụ trách vòng lặp từ đầu đến cuối — khung KPI, khâu thống nhất và dashboard:']
       },
       bullets: {
         en: [
           'Designed the KPI framework: which metrics matter, how each is defined and weighted, and how a store rolls up to a single comparable score.',
-          'Built the pipeline end to end: ingest, calculation, recording, and the dashboard — no dedicated dev team.',
-          'Own it in production: I maintain and extend it, and it is the source of the numbers used in monthly reviews.'
+          "Reviewed and locked every formula and weight with BOM/BOD, then worked with the tech team's BA to automate calculation and recording to that spec.",
+          'Built the interactive dashboard myself with Claude Code, and run it in production — it is the source of the numbers used in monthly reviews.'
         ],
         vi: [
           'Thiết kế khung KPI: chỉ số nào quan trọng, mỗi chỉ số định nghĩa và tính trọng số ra sao, và một cửa hàng gộp lại thành một điểm số so sánh được như thế nào.',
-          'Xây pipeline trọn gói: nạp dữ liệu, tính toán, ghi nhận và dashboard — không có đội dev riêng.',
-          'Vận hành thật: tôi duy trì và mở rộng nó, và đây là nguồn số liệu dùng trong đánh giá hằng tháng.'
+          'Rà soát và chốt từng công thức, trọng số cùng BOM/BOD, rồi phối hợp BA team tech tự động hóa khâu tính toán & ghi nhận theo đúng spec đó.',
+          'Tự xây dashboard tương tác bằng Claude Code và vận hành thật — đây là nguồn số liệu dùng trong đánh giá hằng tháng.'
         ]
       }
     },
@@ -87,15 +88,15 @@ const CASE_STUDIES = {
       title: { en: 'Constraints', vi: 'Ràng buộc' },
       items: {
         en: [
-          'No dedicated engineering team — it had to be built and maintained by one person.',
+          'KPI formulas had to be agreed with BOM/BOD before automation — the system computes a spec everyone signed off on, not one person\'s private logic.',
           'Had to run on the data stores already produce; no new field data-entry burden.',
-          'Practical, low-cost stack (Excel + JavaScript), deployable without heavy infrastructure.',
+          'A practical, low-cost dashboard stack (JavaScript + Claude Code) I can maintain myself, deployable without heavy infrastructure.',
           'Numbers must be defensible: a store manager should be able to trace a score back to its inputs.'
         ],
         vi: [
-          'Không có đội kỹ thuật riêng — phải do một người xây và duy trì.',
+          'Công thức KPI phải được thống nhất với BOM/BOD trước khi tự động hóa — hệ thống tính theo spec mọi người đã duyệt, không phải logic riêng của một người.',
           'Phải chạy trên dữ liệu cửa hàng vốn đã tạo ra; không thêm gánh nặng nhập liệu tại hiện trường.',
-          'Stack thực dụng, chi phí thấp (Excel + JavaScript), triển khai không cần hạ tầng nặng.',
+          'Stack dashboard thực dụng, chi phí thấp (JavaScript + Claude Code) tôi tự duy trì được, triển khai không cần hạ tầng nặng.',
           'Số liệu phải bảo vệ được: quản lý cửa hàng có thể truy ngược một điểm số về dữ liệu gốc.'
         ]
       }
@@ -127,7 +128,7 @@ const CASE_STUDIES = {
           why: { en: "Field teams get a read-only dashboard, not an editable Excel file. The number they see is the number of record, so scores can't be quietly changed on the way up.", vi: 'Đội hiện trường nhận dashboard chỉ-đọc, không phải file Excel sửa được. Số họ thấy là số chính thức, nên điểm không thể bị âm thầm thay đổi trên đường đi lên.' },
           tradeoff: { en: 'more upfront work to automate the ingest instead of emailing sheets around.', vi: 'tốn công ban đầu để tự động hóa nạp dữ liệu thay vì gửi file qua email.' } },
         { title: { en: 'Automate the ingest before polishing the charts', vi: 'Tự động hóa nạp dữ liệu trước khi làm đẹp biểu đồ' },
-          why: { en: 'The durable win was removing manual compilation. Once raw Excel flowed into calculation and recording automatically, a monthly refresh dropped from days to minutes — the dashboard was the easy last mile.', vi: 'Thắng lợi bền vững là loại bỏ tổng hợp thủ công. Khi Excel thô chảy vào tính toán và ghi nhận tự động, một lần cập nhật tháng giảm từ vài ngày xuống vài phút — dashboard chỉ là chặng cuối dễ dàng.' },
+          why: { en: 'The durable win was removing manual compilation. Once raw Excel flowed into calculation and recording automatically, the refresh went from a five-day month-start run to a daily update — the dashboard was the easy last mile.', vi: 'Thắng lợi bền vững là loại bỏ tổng hợp thủ công. Khi Excel thô chảy vào tính toán và ghi nhận tự động, cập nhật đi từ đợt chạy 5 ngày đầu tháng thành làm tươi hằng ngày — dashboard chỉ là chặng cuối dễ dàng.' },
           tradeoff: null },
         { title: { en: 'Flag anomalies so reviews look at exceptions', vi: 'Cảnh báo bất thường để đánh giá tập trung vào ngoại lệ' },
           why: { en: 'The system flags anomalies and likely data errors automatically, so a reviewer looks at the handful of stores that need attention instead of scanning all 300+.', vi: 'Hệ thống tự cảnh báo bất thường và lỗi dữ liệu, nên người đánh giá chỉ nhìn vào số ít cửa hàng cần chú ý thay vì rà hết 300+.' },
@@ -163,7 +164,7 @@ const CASE_STUDIES = {
         vi: ['So với quy trình thủ công mà nó thay thế:']
       },
       beforeAfters: [
-        { before: { en: '5-day Excel batches', vi: 'Chạy Excel 5 ngày' }, after: { en: 'Real-time', vi: 'Thời gian thực' },
+        { before: { en: '5-day month-start batch', vi: 'Chạy 5 ngày đầu tháng' }, after: { en: 'Daily', vi: 'Hằng ngày' },
           note: { en: 'KPI refresh cadence across 300+ stores', vi: 'Nhịp cập nhật KPI trên 300+ cửa hàng' }, tone: 'accent' },
         { before: { en: '3 days', vi: '3 ngày' }, after: { en: '~30 min', vi: '~30 phút' },
           note: { en: 'To prepare the monthly report', vi: 'Để làm báo cáo hằng tháng' }, tone: 'accent-2' }

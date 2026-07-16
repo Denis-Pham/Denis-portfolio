@@ -123,10 +123,10 @@ const experience = [
         vi: 'Chuẩn hóa workflow cho các sự kiện bán lẻ lặp lại, gồm khai trương, đóng cửa & thanh lý, với checklist, bàn giao và xác nhận hoàn tất rõ ràng' },
       { en: 'Structure administrative procurement and vendor evaluation workflows from request and approval through purchasing, receipt logging and weighted quote comparison',
         vi: 'Xây workflow mua hàng hành chính và đánh giá nhà cung cấp từ đề xuất, phê duyệt đến mua, ghi nhận nhập hàng và so sánh báo giá có trọng số' },
-      { en: 'Designed the KPI framework and built its supporting system end to end, covering **300+ stores**, **50+ KPIs** and **100+ data fields**',
-        vi: 'Thiết kế khung KPI và xây hệ thống hỗ trợ trọn gói, bao phủ **300+ cửa hàng**, **50+ KPI** và **100+ trường dữ liệu**' },
-      { en: 'Moved KPI tracking from **5-day** Excel batches to a **real-time** view and cut monthly report preparation from **3 days** to **~30 minutes**',
-        vi: 'Chuyển theo dõi KPI từ các đợt chạy Excel **5 ngày** sang màn hình **thời gian thực**, đồng thời rút thời gian làm báo cáo tháng từ **3 ngày** xuống **~30 phút**' }
+      { en: "Designed the KPI framework — formulas reviewed with **BOM/BOD** — and delivered its supporting system with the tech team's BA, covering **300+ stores**, **50+ KPIs** and **100+ data fields**",
+        vi: 'Thiết kế khung KPI — công thức rà soát cùng **BOM/BOD** — và hoàn thiện hệ thống hỗ trợ cùng BA team tech, bao phủ **300+ cửa hàng**, **50+ KPI** và **100+ trường dữ liệu**' },
+      { en: 'Moved KPI tracking from month-start **5-day** Excel runs to an automated **daily** refresh and cut monthly report preparation from **3 days** to **~30 minutes**; built the interactive dashboard myself with **Claude Code**',
+        vi: 'Chuyển theo dõi KPI từ đợt chạy Excel **5 ngày** đầu tháng sang cập nhật tự động **hằng ngày**, rút thời gian làm báo cáo tháng từ **3 ngày** xuống **~30 phút**; tự xây dashboard tương tác bằng **Claude Code**' }
     ]
   },
   {
@@ -135,8 +135,8 @@ const experience = [
     company: 'SIPHER · Ho Chi Minh City',
     brand: { mark: 'S', color: '#1c1a33' },
     bullets: [
-      { en: 'Defined project scope, goals and deliverables with Animation & VFX leads; built and maintained project plans, timelines and budgets',
-        vi: 'Xác định phạm vi, mục tiêu và sản phẩm bàn giao cùng các lead Animation & VFX; xây dựng và duy trì kế hoạch, timeline và ngân sách dự án' },
+      { en: 'Defined project scope, goals and deliverables with Animation & VFX leads; ran plans, timelines and budgets for a **~10-person** team co-managed with the art leads',
+        vi: 'Xác định phạm vi, mục tiêu và sản phẩm bàn giao cùng các lead Animation & VFX; quản lý kế hoạch, timeline và ngân sách cho đội **~10 người** đồng quản lý cùng lead art' },
       { en: 'Managed outsourced vendors end-to-end — contract signing, cost and delivery negotiation, and production progress tracking to keep assets on schedule',
         vi: 'Quản lý vendor thuê ngoài trọn gói — ký hợp đồng, đàm phán chi phí & tiến độ giao, theo dõi sản xuất để asset đúng hạn' },
       { en: 'Ran cross-department communication: status, progress and risk reporting, project documentation, meetings, agendas and follow-up on decisions',
@@ -155,8 +155,8 @@ const experience = [
         vi: 'Nhận diện rủi ro quy trình sản xuất, phân tích xu hướng dữ liệu và triển khai biện pháp phòng ngừa giảm thiểu lỗi' },
       { en: 'Prepared monthly in-house quality reports and customer-facing quality documentation (Shipment Approval, RoHS, inspection documents)',
         vi: 'Lập báo cáo chất lượng nội bộ hằng tháng và tài liệu chất lượng cho khách hàng (Shipment Approval, RoHS, tài liệu kiểm tra)' },
-      { en: 'Planned QC manpower per production line with HR and line managers to keep quality coverage fully staffed',
-        vi: 'Hoạch định nhân lực QC theo từng line sản xuất cùng HR và quản lý line để phủ kín kiểm soát chất lượng' }
+      { en: 'Managed **~20** QC inspectors across production lines, planning manpower with HR and line managers to keep quality coverage fully staffed',
+        vi: 'Quản lý **~20** nhân viên QC trên các line sản xuất, hoạch định nhân lực cùng HR và quản lý line để phủ kín kiểm soát chất lượng' }
     ]
   },
   {
@@ -210,8 +210,8 @@ const projects = [
   {
     title: 'Hasaki KPI System',
     summary: {
-      en: 'End-to-end KPI system for 300+ cosmetics retail stores: raw Excel files → automated calculations → automated recording → interactive monthly dashboard. Tracks 50+ KPIs across 100+ data fields and flags anomalies such as negative KPI values and formula-source mismatches. It moved KPI tracking from 5-day Excel batch runs to a real-time view, and cut monthly report preparation from 3 days to ~30 minutes.',
-      vi: 'Hệ thống KPI trọn gói cho 300+ cửa hàng mỹ phẩm: file Excel thô → tính toán tự động → ghi nhận tự động → dashboard tương tác hằng tháng. Theo dõi 50+ KPI trên 100+ trường dữ liệu và cảnh báo các bất thường như KPI âm hoặc lệch nguồn công thức. Hệ thống chuyển việc theo dõi KPI từ 5 ngày chạy Excel sang thời gian thực, và rút thời gian làm báo cáo hằng tháng từ 3 ngày xuống ~30 phút.'
+      en: 'End-to-end KPI system for 300+ cosmetics retail stores: raw Excel files → automated calculations → automated recording → interactive dashboard. Tracks 50+ KPIs across 100+ data fields and flags anomalies such as negative KPI values and formula-source mismatches. KPI tracking now refreshes daily instead of through month-start 5-day Excel runs, and monthly report preparation fell from 3 days to ~30 minutes.',
+      vi: 'Hệ thống KPI trọn gói cho 300+ cửa hàng mỹ phẩm: file Excel thô → tính toán tự động → ghi nhận tự động → dashboard tương tác. Theo dõi 50+ KPI trên 100+ trường dữ liệu và cảnh báo các bất thường như KPI âm hoặc lệch nguồn công thức. Việc theo dõi KPI giờ được cập nhật hằng ngày thay cho đợt chạy Excel 5 ngày đầu tháng, và thời gian làm báo cáo tháng giảm từ 3 ngày xuống ~30 phút.'
     },
     image: 'projects/kpi-dashboard.svg',
     initial: 'K',
@@ -222,15 +222,15 @@ const projects = [
                  vi: 'Khối Cosmetics của Hasaki chấm điểm 300+ cửa hàng theo mức độ vận hành — số liệu phục vụ đánh giá hiệu suất hằng tháng thật.' },
       problem: { en: 'Scores lived in hand-compiled Excel: ~5 days to refresh, no single basis to compare stores, and quietly accumulating errors.',
                  vi: 'Điểm số nằm trong Excel tổng hợp tay: ~5 ngày mới cập nhật, không có chuẩn chung để so sánh, và âm thầm tích lũy sai số.' },
-      role: { en: 'I designed the KPI framework and built the whole pipeline — ingest → calculation → recording → dashboard — solo.',
-              vi: 'Tôi thiết kế khung KPI và xây toàn bộ pipeline — nạp → tính → ghi nhận → dashboard — một mình.' }
+      role: { en: "I designed the KPI framework, reviewed the formulas with BOM/BOD, worked with the tech team's BA to automate calculation and recording — and built the dashboard myself with Claude Code.",
+              vi: 'Tôi thiết kế khung KPI, rà soát công thức cùng BOM/BOD, phối hợp BA team tech tự động hóa tính toán & ghi nhận — và tự xây dashboard bằng Claude Code.' }
     },
     tags: ['Excel', 'JavaScript', 'Chart.js', 'Automation', 'Anomaly detection'],
     // metrics show as 3 stat boxes on the Featured Project card. Only added to projects[0].
     // `was` renders as a struck-through old value above the new one — before/after at a glance
     metrics: [
-      { was: { en: '5 days', vi: '5 ngày' }, value: 'live',
-        label: { en: 'KPI refresh (was Excel batch)', vi: 'Cập nhật KPI (trước: chạy Excel)' } },
+      { was: { en: '5 days', vi: '5 ngày' }, value: { en: 'daily', vi: 'hằng ngày' },
+        label: { en: 'KPI refresh (was monthly batch)', vi: 'Cập nhật KPI (trước: chạy đầu tháng)' } },
       { was: { en: '3 days', vi: '3 ngày' }, value: { en: '30 min', vi: '30 phút' },
         label: { en: 'To build the monthly report', vi: 'Thời gian làm báo cáo tháng' } },
       { value: '50+ KPIs', label: { en: 'Across 100+ data fields', vi: 'Trên 100+ trường dữ liệu' } }
@@ -246,46 +246,14 @@ const projects = [
     image: 'projects/task-workflow-system.svg',
     initial: 'W',
     tags: ['Workflow system', 'Task tracking', '300+ stores', 'Compliance'],
-    links: { live: '', github: '', caseStudy: '' }
-  },
-  {
-    title: { en: 'Hermes — Personal AI Agent', vi: 'Hermes — Agent AI Cá Nhân' },
-    summary: {
-      en: 'A self-hosted AI agent I built and run on Docker — my own personal assistant. It helps review and draft content, organize work, and handle day-to-day operations tasks, and is being actively expanded. (Hermes ran the copy review behind this very site.)',
-      vi: 'Một agent AI tôi tự xây và tự host trên Docker — trợ lý cá nhân của riêng tôi. Nó hỗ trợ review & soạn nội dung, sắp xếp công việc và xử lý các tác vụ vận hành hằng ngày, và đang được mở rộng tích cực. (Chính Hermes đã rà soát câu chữ cho trang này.)'
-    },
-    image: 'projects/hermes-agent.svg',
-    initial: 'H',
-    tags: ['AI agent', 'Docker', 'Self-hosted', 'Claude'],
-    links: { live: '', github: '', caseStudy: '' }
-  },
-  {
-    title: 'Combined Sales × KPI Dashboard',
-    summary: {
-      en: 'Joins two separate dashboards (Sales + KPI) to surface a key insight: which stores have low sales but suspiciously high KPI — a flag for performance reviews.',
-      vi: 'Ghép hai dashboard riêng (Doanh số + KPI) để lộ ra insight then chốt: cửa hàng nào doanh số thấp nhưng KPI cao bất thường — cờ đỏ cho kỳ đánh giá hiệu suất.'
-    },
-    image: 'projects/sales-kpi.svg',
-    initial: 'C',
-    tags: ['Data joining', 'Cross-analytics', 'JavaScript'],
-    links: { live: '', github: '', caseStudy: '' }
-  },
-  {
-    title: 'Bills Dashboard',
-    summary: {
-      en: 'Heatmap of bills × hour × weekday plus a cash deposit calculator, built from raw payment receipt files. FastAPI backend + static frontend.',
-      vi: 'Heatmap hóa đơn × giờ × thứ trong tuần kèm máy tính nộp tiền mặt, xây từ file phiếu thu thô. Backend FastAPI + frontend tĩnh.'
-    },
-    image: 'projects/bills-heatmap.svg',
-    initial: 'B',
-    tags: ['Python', 'FastAPI', 'Heatmap', 'JS'],
+    note: { en: 'Internal company system — illustrated with mockups', vi: 'Hệ thống nội bộ công ty — hình minh họa' },
     links: { live: '', github: '', caseStudy: '' }
   },
   {
     title: { en: 'Operations Workflows', vi: 'Bộ Quy trình Vận hành' },
     summary: {
-      en: 'Standardized, auditable workflows I built for recurring retail-operations events — each breaks into assigned, tracked tasks so every site runs to the same standard:',
-      vi: 'Bộ quy trình chuẩn hóa, có thể truy vết tôi xây cho các sự kiện vận hành bán lẻ lặp lại — mỗi quy trình chia thành đầu việc có người phụ trách và theo dõi, để mọi nơi chạy cùng một chuẩn:'
+      en: "Standardized, auditable workflows I've built from zero — and keep improving — for recurring retail-operations events, separate from the daily task-execution system. Each breaks into assigned, tracked tasks so every site runs to the same standard. Four examples:",
+      vi: 'Bộ quy trình chuẩn hóa, truy vết được tôi xây từ con số 0 — và liên tục cải tiến — cho các sự kiện vận hành bán lẻ lặp lại, tách biệt với hệ thống thực thi task hằng ngày. Mỗi quy trình chia thành đầu việc có người phụ trách, có theo dõi, để mọi nơi chạy cùng một chuẩn. Bốn ví dụ:'
     },
     items: [
       { en: '<strong>New store opening</strong> — site readiness, fit-out, pre-opening checklist, grand-opening sign-off',
@@ -300,6 +268,55 @@ const projects = [
     image: 'projects/operations-workflows.svg',
     initial: 'W',
     tags: ['Workflow', 'SOP', 'Compliance', 'Operations'],
+    note: { en: 'Internal company system — illustrated with mockups', vi: 'Hệ thống nội bộ công ty — hình minh họa' },
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: 'Combined Sales × KPI Dashboard',
+    summary: {
+      en: 'One of the control boards I built around the KPI system: it joins two separate dashboards (Sales + KPI) to surface a key insight — which stores have low sales but suspiciously high KPI, a flag for performance reviews.',
+      vi: 'Một trong các board kiểm soát tôi xây quanh hệ thống KPI: ghép hai dashboard riêng (Doanh số + KPI) để lộ ra insight then chốt — cửa hàng nào doanh số thấp nhưng KPI cao bất thường, cờ đỏ cho kỳ đánh giá hiệu suất.'
+    },
+    image: 'projects/sales-kpi.svg',
+    initial: 'C',
+    tags: ['Data joining', 'Cross-analytics', 'JavaScript'],
+    note: { en: 'Internal company system — illustrated with mockups', vi: 'Hệ thống nội bộ công ty — hình minh họa' },
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: 'Bills Dashboard',
+    summary: {
+      en: 'Another control board in the KPI toolkit: turns raw payment-receipt files into a heatmap of bills × hour × weekday, plus a cash-deposit calculator. FastAPI backend + static frontend.',
+      vi: 'Một board kiểm soát khác trong bộ công cụ KPI: biến file phiếu thu thô thành heatmap hóa đơn × giờ × thứ trong tuần, kèm công cụ tính tiền nộp. Backend FastAPI + frontend tĩnh.'
+    },
+    image: 'projects/bills-heatmap.svg',
+    initial: 'B',
+    tags: ['Python', 'FastAPI', 'Heatmap', 'JS'],
+    note: { en: 'Internal company system — illustrated with mockups', vi: 'Hệ thống nội bộ công ty — hình minh họa' },
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: { en: 'Hermes — Personal AI Agent', vi: 'Hermes — Agent AI Cá Nhân' },
+    summary: {
+      en: "A self-hosted AI agent I built and run on Docker as my personal assistant — it reviews and drafts content, organizes my day-to-day and automates small recurring chores. Hermes helped review this site's copy; I checked and approved the final version.",
+      vi: 'Agent AI tôi tự xây và tự host trên Docker, làm trợ lý cá nhân — hỗ trợ review & soạn nội dung, sắp xếp việc hằng ngày và tự động hóa các việc nhỏ lặp lại. Hermes hỗ trợ rà soát câu chữ trang này; tôi kiểm tra và duyệt bản cuối.'
+    },
+    image: 'projects/hermes-agent.svg',
+    initial: 'H',
+    badge: { en: 'Side project', vi: 'Dự án cá nhân' },
+    tags: ['AI agent', 'Docker', 'Self-hosted', 'Claude'],
+    links: { live: '', github: '', caseStudy: '' }
+  },
+  {
+    title: { en: 'Chi Tiêu — Family Finance Hub', vi: 'Chi Tiêu — Dashboard Tài chính Gia đình' },
+    summary: {
+      en: 'A personal dashboard for family spending and household life: budget cycles, category charts, weekly meal plans, shopping lists and recurring chores — data lives in Google Sheets + Apps Script, and the whole app ships as one self-contained HTML file.',
+      vi: 'Dashboard cá nhân cho chi tiêu và sinh hoạt gia đình: chu kỳ ngân sách, biểu đồ danh mục, thực đơn tuần, danh sách đi chợ và việc nhà lặp lại — dữ liệu nằm trên Google Sheets + Apps Script, cả app đóng gói trong một file HTML duy nhất.'
+    },
+    image: 'projects/chitieu-hub.svg',
+    initial: '₫',
+    badge: { en: 'Side project', vi: 'Dự án cá nhân' },
+    tags: ['Python', 'JavaScript', 'Google Sheets', 'Apps Script'],
     links: { live: '', github: '', caseStudy: '' }
   },
   {
@@ -310,6 +327,7 @@ const projects = [
     },
     image: 'projects/vivi-soul.svg',
     initial: 'V',
+    badge: { en: 'Side project', vi: 'Dự án cá nhân' },
     tags: ['HTML', 'CSS', 'JS', 'GitHub Pages'],
     links: {
       live: 'https://denis-pham.github.io/vivi-soul/',
@@ -382,7 +400,7 @@ const goodFit = [
 const contactReasons = [
   { en: 'Turn field execution into a trustworthy KPI system', vi: 'Biến thực thi hiện trường thành hệ thống KPI đáng tin' },
   { en: 'Build an internal tool or dashboard, fast', vi: 'Xây nhanh một tool nội bộ hoặc dashboard' },
-  { en: 'Talk about an operations-performance role', vi: 'Trao đổi về một vị trí hiệu suất vận hành' }
+  { en: 'Talk about an operations-performance or project-delivery role', vi: 'Trao đổi về vị trí hiệu suất vận hành hoặc triển khai dự án' }
 ];
 
 // ===========================================
@@ -563,11 +581,13 @@ function renderProjects() {
       <div class="project-card${i === 0 ? ' project-card--lead' : ''}${p.items ? ' project-card--wide' : ''}">
         <div class="project-thumb">${thumb}</div>
         <div class="project-body">
+          ${p.badge ? `<span class="project-badge">${t(p.badge)}</span>` : ''}
           <h3>${t(p.title)}</h3>
           <p>${t(p.summary)}</p>
           ${p.items ? `<ul class="project-items">${p.items.map(it => `<li>${t(it)}</li>`).join('')}</ul>` : ''}
           <div class="tags">${p.tags.map(tagHTML).join('')}</div>
           ${renderProjectActions(p) ? `<div class="actions">${renderProjectActions(p)}</div>` : ''}
+          ${p.note ? `<p class="project-note">${t(p.note)}</p>` : ''}
         </div>
       </div>
     `;
@@ -632,7 +652,8 @@ const UI_I18N = [
     vi: '⏱ <strong>10+ năm</strong> trong chất lượng, vận hành &amp; hiệu suất' },
   { sel: '.hero-stats .stat:nth-child(1) .stat-label', en: 'Retail stores tracked', vi: 'Cửa hàng đang theo dõi' },
   { sel: '.hero-stats .stat:nth-child(2) .stat-value .was', en: '5 days', vi: '5 ngày' },
-  { sel: '.hero-stats .stat:nth-child(2) .stat-label', en: 'KPI refresh — Excel batch → real-time', vi: 'Cập nhật KPI — Excel → thời gian thực' },
+  { sel: '.hero-stats .stat:nth-child(2) .stat-value .unit', en: 'daily', vi: 'hằng ngày' },
+  { sel: '.hero-stats .stat:nth-child(2) .stat-label', en: 'KPI refresh — monthly Excel batch → daily', vi: 'Cập nhật KPI — Excel đầu tháng → hằng ngày' },
   { sel: '.hero-stats .stat:nth-child(3) .stat-value .was', en: '3 days', vi: '3 ngày' },
   { sel: '.hero-stats .stat:nth-child(3) .stat-value .unit', en: ' min', vi: ' phút' },
   { sel: '.hero-stats .stat:nth-child(3) .stat-label', en: 'Monthly report prep time', vi: 'Thời gian làm báo cáo hằng tháng' },
@@ -656,7 +677,7 @@ const UI_I18N = [
   { sel: '.loop-card .loop-step:nth-child(4) strong', en: 'Translate into tasks', vi: 'Chuyển thành công việc' },
   { sel: '.loop-card .loop-step:nth-child(4) small', en: 'daily work, assigned & tracked', vi: 'việc hằng ngày, giao & theo dõi' },
   { sel: '.loop-card .loop-step:nth-child(6) strong', en: 'Score the KPI', vi: 'Chấm KPI' },
-  { sel: '.loop-card .loop-step:nth-child(6) small', en: 'real-time, across 300+ stores', vi: 'thời gian thực, trên 300+ cửa hàng' },
+  { sel: '.loop-card .loop-step:nth-child(6) small', en: 'daily, across 300+ stores', vi: 'cập nhật hằng ngày, trên 300+ cửa hàng' },
   { sel: '.loop-card .loop-return', en: '↻ KPI results improve the next SOP', vi: '↻ Kết quả KPI giúp cải tiến chu kỳ SOP tiếp theo' },
   { sel: '.about-text p:nth-of-type(1)', html: true,
     en: 'I run the performance system for Hasaki Vietnam\'s Cosmetics division, end to end: I <span class="hl">manage the SOP system</span> that defines how stores operate, turn it into daily task workflows, then measure the results with the <span class="hl">KPI framework I designed</span> — the same numbers that drive monthly performance reviews. One owner for the whole loop keeps the standards, the tasks, and the scores aligned.',
@@ -696,7 +717,9 @@ const UI_I18N = [
     vi: 'Hoặc trao đổi trực tiếp với tôi qua email: <a href="mailto:manhduc1703@gmail.com">manhduc1703@gmail.com</a>' },
   // footer links (separate from top-nav links above)
   { sel: 'footer.site a[href="#about"]',   en: 'About',   vi: 'Giới thiệu' },
-  { sel: 'footer.site a[href="#contact"]', en: 'Contact', vi: 'Liên hệ' }
+  { sel: 'footer.site a[href="#contact"]', en: 'Contact', vi: 'Liên hệ' },
+  // footer CV link mirrors the hero one: same label both languages, href swaps to the VI export
+  { sel: 'footer.site .cv-link', attr: 'href', en: 'cv.pdf', vi: 'cv-vi.pdf' }
 ];
 
 function applyUI() {

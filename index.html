@@ -17,10 +17,11 @@
     })();
   </script>
   <title>Denis Pham — Operations Excellence &amp; Performance Management</title>
-  <meta name="description" content="Denis Pham — Operations Excellence & Performance Management. I design how 300+ Hasaki retail stores run, then build the systems that measure it: SOPs, task workflows, and realtime KPI scoring.">
+  <meta name="description" content="Denis Pham — Operations Excellence & Performance Management. I design how 300+ Hasaki retail stores run, then build the systems that measure it: SOPs, task workflows, and daily KPI scoring.">
   <meta property="og:title" content="Denis Pham — Operations Excellence & Performance Management">
-  <meta property="og:description" content="I design how 300+ Hasaki retail stores run, then build the systems that measure it: SOPs, task workflows, and realtime KPI scoring.">
+  <meta property="og:description" content="I design how 300+ Hasaki retail stores run, then build the systems that measure it: SOPs, task workflows, and daily KPI scoring.">
   <meta property="og:type" content="website">
+  <link rel="canonical" href="https://denis-pham.github.io/Denis-portfolio/">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#2563eb">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -772,6 +773,16 @@
     .project-body .tags { display: flex; flex-wrap: wrap; margin-top: auto; gap: 7px; }
     .project-body .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
     .project-body .actions a { font-size: 13px; padding: 0; }
+    /* quiet "Side project" pill above the title — decorative, never accent-painted */
+    .project-badge {
+      display: inline-block; align-self: flex-start;
+      font-size: 10px; font-weight: 600; letter-spacing: var(--track-label); text-transform: uppercase;
+      color: var(--soft); background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 3px 9px; margin: 0 0 10px;
+    }
+    /* confidentiality note under the tags — must not inherit p's flex:1 stretch */
+    .project-body .project-note { flex: 0 0 auto; margin: 12px 0 0; font-size: 12px; color: var(--soft); }
     /* Projects bento: card 0 leads full-width & horizontal, items[]-cards go
        double-width (classes set data-driven in script.js renderProjects).
        'screen and' keeps the printed CV grid untouched. */
@@ -1075,8 +1086,8 @@
           <div class="stat-label">Retail stores tracked</div>
         </div>
         <div class="stat">
-          <div class="stat-value"><s class="was">5 days</s><span class="unit">live</span></div>
-          <div class="stat-label">KPI refresh — Excel batch → real-time</div>
+          <div class="stat-value"><s class="was">5 days</s><span class="unit">daily</span></div>
+          <div class="stat-label">KPI refresh — monthly Excel batch → daily</div>
         </div>
         <div class="stat">
           <div class="stat-value"><s class="was">3 days</s>30<span class="unit"> min</span></div>
@@ -1151,7 +1162,7 @@
           <div class="loop-link"></div>
           <div class="loop-step">
             <span class="loop-num">3</span>
-            <div class="loop-body"><strong>Score the KPI</strong><small>real-time, across 300+ stores</small></div>
+            <div class="loop-body"><strong>Score the KPI</strong><small>daily, across 300+ stores</small></div>
           </div>
           <div class="loop-return">↻ KPI results improve the next SOP</div>
         </div>
@@ -1258,12 +1269,13 @@
     <div class="wrap">
       © <span id="year"></span> <span class="footer-name">Denis Pham</span> ·
       <a href="#about">About</a> ·
-      <a href="#contact">Contact</a>
+      <a href="#contact">Contact</a> ·
+      <a class="cv-link" href="cv.pdf" target="_blank">CV (PDF)</a>
     </div>
   </footer>
 
   <!-- ?v= busts browser caches when these files change — bump on each deploy touching JS -->
-  <script src="script.js?v=20260715"></script>
+  <script src="script.js?v=20260716"></script>
   <!-- 3D KPI Skyline hero — Three.js via CDN import map, no build step.
        Loads lazily after first paint; skipped on mobile / no-WebGL. -->
   <script type="importmap">

@@ -64,6 +64,7 @@
     --num-glow: none !important;
   }
   header.topnav, .contact, #progress { display: none !important; }
+  footer.site .cv-link { display: none !important; } /* a "download this CV" link inside the printed CV is noise */
   /* GSAP reveals leave below-fold elements at opacity 0 / translated —
      force everything visible so the printed CV is always complete */
   section, section *, .w > span { opacity: 1 !important; transform: none !important; }
