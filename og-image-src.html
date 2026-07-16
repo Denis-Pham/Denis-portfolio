@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- ============================================================
+  OG-IMAGE SOURCE — renders the 1200x630 social-share card.
+  This file is NOT linked from the site; it exists so any agent
+  can regenerate og-image.png after a copy/brand change:
+
+  chrome --headless=new --disable-gpu --hide-scrollbars ^
+    --user-data-dir="%TEMP%\og-shot" --window-size=1200,630 ^
+    --virtual-time-budget=12000 ^
+    --screenshot="<repo>\og-image.png" "file:///G:/My%20Drive/Project%20X/Denis-portfolio/og-image-src.html"
+
+  Design mirrors the hero: tokens + stat-panel signature copied from
+  index.html :root (keep in sync if tokens change).
+============================================================ -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>og-image source — Denis Pham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf9; --surface: #ffffff; --fg: #1c1b1a; --muted: #4a4843; --soft: #a8a5a0;
+    --border: #e6e4e0; --accent: #2563eb; --accent-2: #7c3aed; --accent-3: #0d9488;
+    --grad-a: #2563eb; --grad-b: #7c3aed;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Inter', sans-serif; background: var(--bg); color: var(--fg);
+    position: relative; padding: 60px 64px 56px;
+    display: flex; flex-direction: column;
+  }
+  /* soft brand wash, top-right — decorative only */
+  body::before {
+    content: ''; position: absolute; top: -220px; right: -160px;
+    width: 640px; height: 560px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(124, 58, 237, 0.10), rgba(37, 99, 235, 0.06) 55%, transparent 75%);
+  }
+  .kicker-row { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+  .mark {
+    width: 46px; height: 46px; border-radius: 12px; flex: none;
+    background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+    color: #fff; font-weight: 600; font-size: 19px; letter-spacing: 0.02em;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .kicker {
+    font-size: 15px; font-weight: 600; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  h1 {
+    font-family: 'Crimson Pro', Georgia, serif; font-weight: 600;
+    font-size: 92px; line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 18px;
+  }
+  .thesis {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 32px; line-height: 1.4; letter-spacing: -0.015em;
+    color: var(--fg); max-width: 24em; margin-bottom: 40px;
+  }
+  .thesis strong { color: var(--accent); font-weight: 600; }
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(28, 27, 26, 0.04), 0 8px 24px rgba(28, 27, 26, 0.05);
+    overflow: hidden;
+  }
+  .stat { padding: 22px 26px 20px; border-left: 1px solid var(--border); }
+  .stat:first-child { border-left: 0; }
+  .tick { display: block; width: 24px; height: 3px; border-radius: 2px; background: var(--accent); margin-bottom: 11px; }
+  .stat:nth-child(2) .tick { background: var(--accent-2); }
+  .stat:nth-child(3) .tick { background: var(--accent-3); }
+  .was {
+    display: block; font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+    color: var(--muted); text-decoration: line-through; margin-bottom: 2px; min-height: 16px;
+  }
+  .was--empty { text-decoration: none; } /* spacer only — a struck nbsp paints a stray dash */
+  .value {
+    font-family: 'Crimson Pro', Georgia, serif; font-weight: 600;
+    font-size: 47px; line-height: 1.1; letter-spacing: -0.02em; white-space: nowrap;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+  .stat:nth-child(1) .value .unit { color: var(--accent); }
+  .stat:nth-child(2) .value .unit { color: var(--accent-2); }
+  .stat:nth-child(3) .value .unit { color: var(--accent-3); }
+  .label {
+    font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); margin-top: 8px; font-weight: 500;
+  }
+  .foot {
+    margin-top: auto; padding-top: 26px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 16px; color: var(--muted);
+  }
+  .foot .loop b { color: var(--fg); font-weight: 600; }
+  .foot .loop .arrow { color: var(--soft); }
+  .foot .url { color: var(--soft); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="kicker-row">
+    <span class="mark">DP</span>
+    <span class="kicker">Operations Excellence &amp; Performance Management</span>
+  </div>
+  <h1>Denis Pham</h1>
+  <p class="thesis">I design how <strong>300+ stores</strong> run — then build the systems that measure it.</p>
+  <div class="stats">
+    <div class="stat">
+      <span class="tick"></span>
+      <span class="was was--empty" aria-hidden="true">&nbsp;</span>
+      <div class="value">300<span class="unit">+</span></div>
+      <div class="label">Retail stores tracked</div>
+    </div>
+    <div class="stat">
+      <span class="tick"></span>
+      <span class="was">5 days</span>
+      <div class="value"><span class="unit">daily</span></div>
+      <div class="label">KPI refresh</div>
+    </div>
+    <div class="stat">
+      <span class="tick"></span>
+      <span class="was">3 days</span>
+      <div class="value">30<span class="unit"> min</span></div>
+      <div class="label">Monthly report prep</div>
+    </div>
+  </div>
+  <div class="foot">
+    <span class="loop"><b>SOP</b> <span class="arrow">→</span> <b>daily tasks</b> <span class="arrow">→</span> <b>KPI scoring</b> · one loop, one owner</span>
+    <span class="url">denis-pham.github.io/Denis-portfolio</span>
+  </div>
+</body>
+</html>

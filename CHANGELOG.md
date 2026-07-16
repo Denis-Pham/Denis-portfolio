@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-07-16] — Thêm og:image cho link share (LinkedIn/Zalo/Facebook)
+**Agent/Người thực hiện:** Claude Code (Denis: "làm luôn og:image đi em")
+**Files thay đổi:** og-image.png (MỚI), og-image-src.html (MỚI), index.html, case-study.html
+**Nội dung:**
+- `og-image.png` 1200×630 (~98KB) render từ `og-image-src.html` — card theo đúng chữ ký hero: DP mark gradient, kicker OpEx, tên Crimson Pro, thesis line strong xanh, stats panel hairline 3 ô (300+ / ~~5 days~~ daily / ~~3 days~~ 30 min, tick + unit đúng 3 màu accent), footer "SOP → daily tasks → KPI scoring" + URL. **Lệnh regen nằm trong comment đầu og-image-src.html** (headless Chrome --screenshot 1200×630; token copy từ :root index.html — đổi token thì sync lại file này).
+- index.html: og:url + og:image (+width/height/alt — URL **tuyệt đối** vì scraper không ăn relative) + twitter:card summary_large_image.
+- case-study.html: bộ og đầy đủ riêng (title/description/type=article/url/image + twitter:card) — trước đó trang này không có og tag nào.
+**Verify:** đọc lại PNG bằng mắt: fonts CDN load đúng trong headless (virtual-time-budget=12000); fix 1 nhát — placeholder `&nbsp;` trong ô 300+ dính line-through thành vệt gạch mờ → thêm `.was--empty`. Sau push: og-image.png trả 200 trên Pages + meta og:image có trong HTML live.
+**Lý do / ghi chú:** Denis yêu cầu làm ngay sau đợt revise copy cùng ngày. Lần share đầu trên LinkedIn/Facebook có thể cần bấm re-scrape (Post Inspector / Sharing Debugger) vì cache scraper.
+
 ## [2026-07-16] — Sửa copy theo brief audit Neo/Hermes + 9 đáp án của Denis (daily thay real-time, hết "solo", nhóm side project)
 **Agent/Người thực hiện:** Claude Code (nguồn: PORTFOLIO-REVISION-BRIEF-FOR-CLAUDE.md ở Downloads + Denis trả lời 9 câu hỏi blocking trong chat)
 **Files thay đổi:** script.js, index.html, case-study.js, case-study.html, style.css, projects/chitieu-hub.svg (MỚI), cv.pdf + cv-vi.pdf (in lại); XÓA cv-new.pdf + PHAM-MANH-DUC-Project Manager.pdf
