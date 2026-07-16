@@ -55,6 +55,16 @@ Xây dựng trang portfolio cá nhân hoàn chỉnh cho **Denis** — KPI Analys
 
 # 📅 Lịch sử update
 
+## [2026-07-16] — Case study #2: Company-Wide Task Workflow System
+**Agent/Người thực hiện:** Claude Code (Denis: "dự án về hệ thống workflow không có nhỉ" → xác nhận card CÓ trên lưới nhưng thiếu case study riêng; Denis cung cấp dữ kiện: chạy trên hệ thống công ty, anh xây flowchart rồi config luồng, bắn task mỗi ngày cho nhân viên, vai trò chủ yếu là thiết kế luồng + config)
+**Files thay đổi:** case-study.js, script.js, index.html + case-study.html (bump ?v=20260716b), cv.pdf + cv-vi.pdf (in lại)
+**Nội dung:**
+- Thêm entry **`task-workflow`** vào CASE_STUDIES (template tái dùng — đúng như thiết kế): đủ 9 mục, song ngữ. Nội dung bám dữ kiện thật của Denis: vai trò = **thiết kế flowchart + config luồng trên nền tảng workflow nội bộ** (nền tảng do team tech xây — ghi rõ trong meta Team, KHÔNG nhận vơ); nhịp **bắn task hằng ngày**; kết quả nạp vào KPI (đã có trên site). Pipeline 5 bước: SOP → Flowchart → Config → Bắn task hằng ngày → Tuân thủ → KPI. **KHÔNG bịa số liệu** — outcome dùng before/after định tính (SOP dạng tài liệu → task bắn hằng ngày; tuân thủ khó thấy → một màn hình theo dõi) + metrics 300+/Daily/→KPI đều đã kiểm chứng; không có số task/ngày hay % tuân thủ vì Denis chưa cung cấp.
+- **Nối vòng 2 case study:** hasaki-kpi.next → `?id=task-workflow` (trước trỏ tạm về #projects); task-workflow.next → `?id=hasaki-kpi`.
+- **Card lưới "Company-Wide Task Workflow System"** giờ có nút **"Case study →"** (links.caseStudy — renderer sẵn có tự hiện).
+- Renderer: metric value đi qua `t()` để hỗ trợ giá trị song ngữ ({en:'Daily', vi:'Hằng ngày'}).
+**Lý do / ghi chú:** Verify preview: EN + VI đủ 9 mục/5 bước pipeline/3 decisions/3 lessons/2 before-after, metric "Daily"↔"Hằng ngày" đổi đúng, vòng next 2 chiều đúng href, card lưới hiện link, console sạch, không tràn ngang. In lại CẢ HAI CV. **Chờ Denis bổ sung khi có:** số task bắn mỗi ngày, số người dùng, % tuân thủ trước/sau, và 1-2 đánh đổi thật khi thiết kế luồng (hiện các decision để tradeoff: null). Quote phần Reflection viết theo giọng first-person của Denis — anh đọc lại, muốn sửa chữ nào báo em.
+
 ## [2026-07-16] — Thêm og:image cho link share (LinkedIn/Zalo/Facebook)
 **Agent/Người thực hiện:** Claude Code (Denis: "làm luôn og:image đi em")
 **Files thay đổi:** og-image.png (MỚI), og-image-src.html (MỚI), index.html, case-study.html

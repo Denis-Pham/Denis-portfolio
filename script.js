@@ -247,7 +247,7 @@ const projects = [
     initial: 'W',
     tags: ['Workflow system', 'Task tracking', '300+ stores', 'Compliance'],
     note: { en: 'Internal company system — illustrated with mockups', vi: 'Hệ thống nội bộ công ty — hình minh họa' },
-    links: { live: '', github: '', caseStudy: '' }
+    links: { live: '', github: '', caseStudy: 'case-study.html?id=task-workflow' }
   },
   {
     title: { en: 'Operations Workflows', vi: 'Bộ Quy trình Vận hành' },

@@ -199,7 +199,187 @@ const CASE_STUDIES = {
     next: {
       eyebrow: { en: 'Next project', vi: 'Dự án tiếp theo' },
       title: { en: 'Company-Wide Task Workflow System', vi: 'Hệ thống Task Workflow Toàn công ty' },
-      href: 'index.html#projects'
+      href: 'case-study.html?id=task-workflow'
+    }
+  },
+
+  'task-workflow': {
+    id: 'task-workflow',
+    eyebrow: { en: 'Case study · Operations Execution', vi: 'Case study · Thực thi Vận hành' },
+    title: { en: 'Company-Wide Task Workflow System', vi: 'Hệ thống Task Workflow Toàn công ty' },
+    subtitle: {
+      en: 'How SOPs stop being documents: designed as flowcharts, configured as flows on the company system, and dispatched as daily tasks to store teams across 300+ stores.',
+      vi: 'Để SOP không nằm trên giấy: thiết kế thành flowchart, config thành luồng chạy trên hệ thống công ty, và bắn thành task hằng ngày cho đội cửa hàng trên 300+ cửa hàng.'
+    },
+    image: 'projects/task-workflow-system.svg',
+    imageAlt: { en: 'Task compliance tracking across 300+ stores', vi: 'Theo dõi tuân thủ task trên 300+ cửa hàng' },
+
+    meta: [
+      { label: { en: 'Role', vi: 'Vai trò' },
+        value: { en: 'Workflow designer & configurator — flowchart → production flow', vi: 'Thiết kế & config workflow — từ flowchart đến luồng chạy thật' } },
+      { label: { en: 'Timeline', vi: 'Thời gian' }, value: { en: '2023 — present', vi: '2023 — hiện tại' } },
+      { label: { en: 'Scope', vi: 'Phạm vi' }, value: { en: '300+ stores · daily task dispatch', vi: '300+ cửa hàng · bắn task hằng ngày' } },
+      { label: { en: 'Tools', vi: 'Công cụ' }, value: { en: "Flowcharts · the company's internal workflow platform", vi: 'Flowchart · nền tảng workflow nội bộ của công ty' } },
+      { label: { en: 'Context', vi: 'Bối cảnh' }, value: { en: 'Hasaki Vietnam · Cosmetics division', vi: 'Hasaki Việt Nam · Khối Cosmetics' } },
+      { label: { en: 'Team', vi: 'Đội ngũ' },
+        value: { en: 'I design & configure the flows · the platform is built by the tech team', vi: 'Tôi thiết kế & config luồng · nền tảng do team tech xây' } }
+    ],
+
+    summary: {
+      en: "Hasaki's stores run on SOPs — but a standard only matters if it becomes work someone actually does. I take the operating SOPs I manage, design each process as a flowchart, and configure it as a running flow on the company's internal workflow system. Every day the system dispatches the resulting tasks to store staff, tracks completion and compliance across 300+ stores, and the results feed straight into KPI scoring.",
+      vi: 'Cửa hàng Hasaki vận hành theo SOP — nhưng một tiêu chuẩn chỉ có nghĩa khi biến thành việc có người làm thật. Tôi lấy các SOP vận hành mình quản lý, thiết kế từng quy trình thành flowchart, rồi config thành luồng chạy trên hệ thống workflow nội bộ của công ty. Mỗi ngày hệ thống bắn task cho nhân viên cửa hàng, theo dõi hoàn thành & tuân thủ trên 300+ cửa hàng, và kết quả chảy thẳng vào chấm điểm KPI.'
+    },
+
+    context: {
+      title: { en: 'Context', vi: 'Bối cảnh' },
+      body: {
+        en: [
+          'The Cosmetics division runs 300+ stores on a shared set of operating SOPs — daily routines plus recurring events like store openings, closures and procurement. On paper, every store follows the same standard.',
+          "In practice, a document can't assign work. Whether each store actually executed each standard, every day, was hard to see consistently from head office — and without execution data there is nothing objective for performance scoring to stand on."
+        ],
+        vi: [
+          'Khối Cosmetics vận hành 300+ cửa hàng trên cùng một bộ SOP — các routine hằng ngày cộng với những sự kiện lặp lại như khai trương, đóng cửa, mua hàng. Trên giấy, mọi cửa hàng theo cùng một chuẩn.',
+          'Nhưng thực tế, một tài liệu không tự giao việc được. Từng cửa hàng có thực sự thực thi từng tiêu chuẩn mỗi ngày hay không là điều văn phòng rất khó nhìn thấy một cách nhất quán — và không có dữ liệu thực thi thì chấm điểm hiệu suất không có gì khách quan để đứng lên.'
+        ]
+      }
+    },
+
+    challenge: {
+      title: { en: 'The challenge', vi: 'Thách thức' },
+      body: {
+        en: ['Turn static SOPs into daily, trackable work for every store — automatically, at 300+ store scale, without anyone hand-assigning tasks each morning — and make compliance visible in one place.'],
+        vi: ['Biến SOP tĩnh thành công việc hằng ngày, theo dõi được, cho từng cửa hàng — tự động, ở quy mô 300+ cửa hàng, không ai phải giao task bằng tay mỗi sáng — và làm tuân thủ nhìn thấy được ở một nơi.']
+      }
+    },
+
+    role: {
+      title: { en: 'My role', vi: 'Vai trò của tôi' },
+      body: {
+        en: ['My part is the layer between the standard and the system:'],
+        vi: ['Phần của tôi là lớp nằm giữa tiêu chuẩn và hệ thống:']
+      },
+      bullets: {
+        en: [
+          'Design each operating process as a flowchart — steps, owners, branches, and what counts as done.',
+          "Configure those flows on the company's internal workflow platform so they actually run: triggers, assignees, schedules and completion rules.",
+          'Keep them aligned with the SOP system I manage — when a standard changes, the flow and the tasks it dispatches change with it.'
+        ],
+        vi: [
+          'Thiết kế từng quy trình vận hành thành flowchart — các bước, người phụ trách, rẽ nhánh và tiêu chí hoàn thành.',
+          'Config các luồng đó trên nền tảng workflow nội bộ của công ty để chúng chạy thật: trigger, người nhận, lịch chạy và điều kiện hoàn thành.',
+          'Giữ chúng nhất quán với hệ thống SOP tôi quản lý — chuẩn thay đổi thì luồng và task nó bắn ra thay đổi theo.'
+        ]
+      }
+    },
+
+    constraints: {
+      title: { en: 'Constraints', vi: 'Ràng buộc' },
+      items: {
+        en: [
+          "Runs on the company's existing workflow platform — I design and configure; the platform itself is built and operated by the tech team.",
+          'Daily cadence at 300+ store scale: dispatch has to be automatic — no one hand-assigns tasks each morning.',
+          'Flows must mirror the SOPs of record — the task a store receives is the standard, not a paraphrase of it.',
+          'Results must be usable downstream: completion and compliance feed KPI scoring.'
+        ],
+        vi: [
+          'Chạy trên nền tảng workflow sẵn có của công ty — tôi thiết kế và config; bản thân nền tảng do team tech xây và vận hành.',
+          'Nhịp hằng ngày ở quy mô 300+ cửa hàng: việc bắn task phải tự động — không ai giao tay mỗi sáng.',
+          'Luồng phải phản chiếu đúng SOP gốc — task cửa hàng nhận được chính là tiêu chuẩn, không phải bản diễn dịch lại.',
+          'Kết quả phải dùng được ở hạ nguồn: hoàn thành & tuân thủ chảy vào chấm điểm KPI.'
+        ]
+      }
+    },
+
+    approach: {
+      title: { en: 'Approach', vi: 'Cách tiếp cận' },
+      body: {
+        en: [
+          "Start from the SOP, not the tool: I map each process as a flowchart first — every step, decision and owner explicit — because a flow that isn't clear on the diagram won't run clearly in production.",
+          "Then I translate the flowchart into configuration on the workflow platform: what triggers a flow, who receives each task, on what schedule, and what marks it complete. Once configured, the system dispatches the day's tasks to store teams automatically, and head office watches completion and compliance in one place."
+        ],
+        vi: [
+          'Bắt đầu từ SOP, không phải từ công cụ: tôi vẽ từng quy trình thành flowchart trước — mọi bước, mọi điểm rẽ nhánh, mọi người phụ trách đều tường minh — vì một luồng không rõ ràng trên sơ đồ thì cũng sẽ không chạy rõ ràng trong thực tế.',
+          'Sau đó tôi dịch flowchart thành cấu hình trên nền tảng workflow: điều gì kích hoạt một luồng, ai nhận từng task, theo lịch nào, và điều kiện nào tính là hoàn thành. Config xong, hệ thống tự bắn task trong ngày cho đội cửa hàng, còn văn phòng theo dõi hoàn thành & tuân thủ ở một nơi.'
+        ]
+      },
+      figure: {
+        src: 'projects/operations-workflows.svg',
+        alt: { en: 'Four standardized operations workflows', vi: 'Bốn quy trình vận hành chuẩn hóa' },
+        caption: { en: 'The same method covers recurring event workflows — new store opening, closure & liquidation, admin procurement, vendor evaluation.', vi: 'Cùng phương pháp này phủ các quy trình sự kiện lặp lại — khai trương, thanh lý mặt bằng, mua hàng hành chánh, đánh giá nhà cung cấp.' }
+      }
+    },
+
+    decisions: {
+      title: { en: 'Key decisions', vi: 'Quyết định then chốt' },
+      items: [
+        { title: { en: 'Flowchart first, configuration second', vi: 'Flowchart trước, config sau' },
+          why: { en: 'Every process is standardized as a drawn flow before it touches the system. The flowchart is the agreement — configuration is just its translation, so what runs is exactly what was designed.', vi: 'Mọi quy trình được chuẩn hóa thành sơ đồ trước khi đụng vào hệ thống. Flowchart là bản thống nhất — config chỉ là bản dịch của nó, nên thứ chạy thật chính xác là thứ đã thiết kế.' },
+          tradeoff: null },
+        { title: { en: 'Tasks arrive daily, not as month-end checklists', vi: 'Task đến hằng ngày, không phải checklist cuối tháng' },
+          why: { en: "The system dispatches work every day, so a standard becomes today's task with an owner — and a miss is visible the same day it happens, not weeks later.", vi: 'Hệ thống bắn việc mỗi ngày, nên tiêu chuẩn trở thành task hôm nay của một người cụ thể — và một lần bỏ sót nhìn thấy được ngay trong ngày, không phải nhiều tuần sau.' },
+          tradeoff: null },
+        { title: { en: 'Execution data flows into KPI scoring', vi: 'Dữ liệu thực thi chảy vào chấm điểm KPI' },
+          why: { en: "Completion and compliance aren't a separate report — they feed the KPI framework directly, closing the SOP → task → KPI loop with no translation gap.", vi: 'Hoàn thành & tuân thủ không phải một báo cáo riêng — chúng nạp thẳng vào khung KPI, khép kín vòng lặp SOP → task → KPI không qua khâu diễn dịch nào.' },
+          tradeoff: null }
+      ]
+    },
+
+    process: {
+      title: { en: 'From standard to scored execution', vi: 'Từ tiêu chuẩn đến thực thi được chấm điểm' },
+      body: {
+        en: ['Five stages, configured once and then running daily:'],
+        vi: ['Năm bước, config một lần rồi chạy hằng ngày:']
+      },
+      steps: {
+        en: ['Operating SOP', 'Flowchart design', 'Flow configuration', 'Daily task dispatch', 'Compliance tracking → KPI'],
+        vi: ['SOP vận hành', 'Thiết kế flowchart', 'Config luồng', 'Bắn task hằng ngày', 'Theo dõi tuân thủ → KPI']
+      },
+      figures: []
+    },
+
+    outcome: {
+      title: { en: 'Outcome', vi: 'Kết quả' },
+      body: {
+        en: ['What changed, in operational terms:'],
+        vi: ['Thay đổi về mặt vận hành:']
+      },
+      beforeAfters: [
+        { before: { en: 'SOPs as documents', vi: 'SOP dạng tài liệu' }, after: { en: 'Daily dispatched tasks', vi: 'Task bắn hằng ngày' },
+          note: { en: 'Every store gets its work with owners and completion rules — automatically', vi: 'Mỗi cửa hàng nhận việc kèm người phụ trách và điều kiện hoàn thành — tự động' }, tone: 'accent' },
+        { before: { en: 'Compliance hard to see', vi: 'Tuân thủ khó nhìn thấy' }, after: { en: 'One tracking view', vi: 'Một màn hình theo dõi' },
+          note: { en: 'Head office sees every store against the same standard', vi: 'Văn phòng nhìn mọi cửa hàng trên cùng một chuẩn' }, tone: 'accent-2' }
+      ],
+      metrics: [
+        { value: '300+', label: { en: 'Stores dispatched & tracked', vi: 'Cửa hàng được bắn task & theo dõi' }, tone: 'accent' },
+        { value: { en: 'Daily', vi: 'Hằng ngày' }, label: { en: 'Dispatch cadence — no manual assignment', vi: 'Nhịp bắn task — không giao tay' }, tone: 'accent-3' },
+        { value: '→ KPI', label: { en: 'Execution results feed scoring directly', vi: 'Kết quả thực thi nạp thẳng vào chấm điểm' }, tone: 'accent-4' }
+      ]
+    },
+
+    reflection: {
+      title: { en: 'Reflection', vi: 'Nhìn lại' },
+      quote: {
+        text: { en: "A standard that doesn't become somebody's task today is just a document. The workflow system is what turns our SOPs into work — and work into numbers.", vi: 'Một tiêu chuẩn không biến thành task của ai đó trong hôm nay thì mới chỉ là một tài liệu. Hệ thống workflow là thứ biến SOP thành công việc — và công việc thành con số.' },
+        cite: { en: 'Denis Pham, on the workflow system', vi: 'Denis Pham, về hệ thống workflow' }
+      },
+      lessons: {
+        en: [
+          { title: 'Draw it before you config it', body: 'Ambiguity left in the flowchart shows up later as tasks nobody owns — the diagram is where arguments are cheap.' },
+          { title: 'Daily beats month-end', body: 'Dispatching and tracking every day surfaces misses while they can still be fixed.' },
+          { title: 'Configuration is leverage', body: 'Designing flows on the platform the company already runs ships to 300+ stores without building new software.' }
+        ],
+        vi: [
+          { title: 'Vẽ rõ rồi mới config', body: 'Sự mơ hồ còn sót trong flowchart sẽ hiện ra sau này thành những task không ai nhận — tranh luận trên sơ đồ là lúc rẻ nhất.' },
+          { title: 'Hằng ngày thắng cuối tháng', body: 'Bắn và theo dõi mỗi ngày làm lộ những chỗ bỏ sót khi còn kịp sửa.' },
+          { title: 'Config là đòn bẩy', body: 'Thiết kế luồng trên nền tảng công ty đang chạy sẵn đưa được tới 300+ cửa hàng mà không phải xây phần mềm mới.' }
+        ]
+      }
+    },
+
+    next: {
+      eyebrow: { en: 'Next project', vi: 'Dự án tiếp theo' },
+      title: 'Hasaki KPI System',
+      href: 'case-study.html?id=hasaki-kpi'
     }
   }
 };
@@ -297,7 +477,7 @@ function render() {
   // outcome metrics reuse the meta grid look (3 hairline cells, toned values)
   const metricsHTML = `<dl class="dp-csmeta" style="grid-template-columns:repeat(3, minmax(0,1fr))">
     ${d.outcome.metrics.map(m => `<div class="dp-csmeta__cell">
-      <dd class="dp-csmeta__value" style="font-family:var(--font-display);font-size:clamp(26px,3vw,36px);font-weight:600;color:var(--${m.tone || 'accent'});text-shadow:var(--num-glow)">${m.value}</dd>
+      <dd class="dp-csmeta__value" style="font-family:var(--font-display);font-size:clamp(26px,3vw,36px);font-weight:600;color:var(--${m.tone || 'accent'});text-shadow:var(--num-glow)">${t(m.value)}</dd>
       <dt class="dp-csmeta__label" style="margin:6px 0 0">${t(m.label)}</dt>
     </div>`).join('')}
   </dl>`;
